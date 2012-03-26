@@ -2,3 +2,7 @@
 - @users.each do |user|
   %p
     = link_to user.name, user
+
+.signup-button
+  %a{ :href => new_user_registration_path, :id => 'join-button', :class => 'btn btn-primary' }
+    Get started...
