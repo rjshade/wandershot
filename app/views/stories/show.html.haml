@@ -1,15 +1,25 @@
-%p#notice= notice
+.row
+  .span12
+    .page-header
+      %h1
+        = @story.title
+        %small
+          by
+          = link_to @story.user.name, @story.user
+    %p
+      = @story.summary
 
-%p
-  %b Title:
-  = @story.title
-%p
-  %b Summary:
-  = @story.summary
-%p
-  %b Owned by:
-  = link_to @story.user.name, @story.user
+.row
+  - @story.posts.each do |p|
+    .span12
+      .page-header
+        %h2= p.title
 
-= link_to 'Edit', edit_story_path(@story)
-\|
-= link_to 'Back', stories_path
+      .row 
+        .span2
+          %ul.thumbnails
+            %li.span2
+              = link_to (image_tag "posts/morocco_#{[1,2,3].shuffle.first}.jpg"), '#', :class=>'thumbnail'
+        .span10
+          %p
+            = p.text

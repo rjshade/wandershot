@@ -9,8 +9,18 @@
         = link_to (image_tag 'posts/morocco_3.jpg'), '#', :class=>'thumbnail'
 .row
   .span12
-    %h1 Welcome to Wandershot
+    .page-header
+      %h1
+        Welcome to Wandershot
+        %small
+          Create your own travel blog quickly and easily
+    %p
+      Create your own travel blog and share it with the world. Record your memories through photos and text and relive them through your timeline.
     
     .signup-button
-      %a{ :href => new_user_registration_path, :id => 'join-button', :class => 'btn btn-primary' }
-        Get started...
+      %a{ :href => new_user_registration_path, :id => 'join-button', :class => 'btn btn-large' }
+        Take a tour
+      %a{ :href => new_user_registration_path, :id => 'join-button', :class => 'btn btn-large' }
+        See an example
+      %a{ :href => new_user_registration_path, :id => 'join-button', :class => 'btn btn-large btn-primary' }
+        Sign up now!
