@@ -3,5 +3,5 @@ Wandershot::Application.routes.draw do
 
   root :to => "home#index"
 
-  resources :users, :only => :show
+  resources :users, :only => [:index,:show]
 end
