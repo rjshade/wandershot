@@ -1,5 +1,16 @@
-%h1 Welcome to Wandershot
-
-.signup-button
-  %a{ :href => new_user_registration_path, :id => 'join-button', :class => 'btn btn-primary' }
-    Get started...
+.row
+  .span12
+    %ul.thumbnails
+      %li.span8
+        = link_to (image_tag 'posts/morocco_1.jpg'), '#', :class=>'thumbnail'
+      %li.span4
+        = link_to (image_tag 'posts/morocco_2.jpg'), '#', :class=>'thumbnail'
+      %li.span4
+        = link_to (image_tag 'posts/morocco_3.jpg'), '#', :class=>'thumbnail'
+.row
+  .span12
+    %h1 Welcome to Wandershot
+    
+    .signup-button
+      %a{ :href => new_user_registration_path, :id => 'join-button', :class => 'btn btn-primary' }
+        Get started...

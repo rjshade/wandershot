@@ -29,14 +29,5 @@
       - flash.each do |name, msg|
         = content_tag :div, msg, :class=>'modal', :id => "flash_#{name}" if msg.is_a?(String)
     .container
-      .row
-        .span12
-          %ul.thumbnails
-            %li.span8
-              = link_to (image_tag 'posts/morocco_1.jpg'), '#', :class=>'thumbnail'
-            %li.span4
-              = link_to (image_tag 'posts/morocco_2.jpg'), '#', :class=>'thumbnail'
-            %li.span4
-              = link_to (image_tag 'posts/morocco_3.jpg'), '#', :class=>'thumbnail'
-      .row
-        .span5= yield
+      = yield
+
