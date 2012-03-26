@@ -25,3 +25,6 @@ gem 'rspec-rails', '>= 2.7.0', :group => [:development, :test]
 gem 'bson_ext',    '>= 1.3.1'
 gem 'mongoid',     '>= 2.2.3'
 gem 'devise',      '>= 1.4.9'
+
+# friendly urls with mongoid
+gem 'mongoid_slug'
