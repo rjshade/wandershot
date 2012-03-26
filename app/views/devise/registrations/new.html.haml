@@ -6,8 +6,9 @@
   = f.input :email
   = f.input :password
   = f.input :password_confirmation
+
   .form-actions
     = f.button :submit, :class => 'btn btn-primary'
-    = link_to 'Cancel', '/', :class => 'btn'
+    = link_to 'Cancel', :back, :class => 'btn'
 
 = render "links"

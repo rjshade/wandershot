@@ -16,12 +16,18 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand{:href => "#"} Wandershot
+          %a.brand{:href => "/"} Wandershot
           .nav-collapse
             %ul.nav
               %li= link_to "What is this?"
               %li= link_to "Browse"
               %li= link_to "Popular"
+          .nav.pull-right
+            = render :partial => 'shared/user_nav'
+
+    %header
+      - flash.each do |name, msg|
+        = content_tag :div, msg, :class=>'modal', :id => "flash_#{name}" if msg.is_a?(String)
     .container
       .row
         .span12= yield
