@@ -33,6 +33,8 @@ class User
 
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
+  embeds_many :stories
+
   ## Encryptable
   # field :password_salt, :type => String
 

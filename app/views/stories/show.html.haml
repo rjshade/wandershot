@@ -1,0 +1,17 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @story.title
+%p
+  %b Summary:
+  = @story.summary
+%p
+  %b Owned by:
+  = link_to @story.user.name, @story.user
+
+= link_to 'Edit', edit_story_path(@story)
+\|
+= link_to 'Back', stories_path
+
+=link_to 'blah','/'
