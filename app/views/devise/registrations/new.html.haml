@@ -1,0 +1,13 @@
+%h2 Sign up
+
+= simple_form_for(@user, :html => {:class => 'form-horizontal' }) do |f|
+  = devise_error_messages!
+  = f.input :name
+  = f.input :email
+  = f.input :password
+  = f.input :password_confirmation
+  .form-actions
+    = f.button :submit, :class => 'btn btn-primary'
+    = link_to 'Cancel', '/', :class => 'btn'
+
+= render "links"
