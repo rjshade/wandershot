@@ -1,21 +1,19 @@
-%h1 Listing stories
+.row
+  .span12
+    .page-header
+      %h1 Stories
 
-%table
-  %tr
-    %th Title
-    %th Summary
-    %th
-    %th
-    %th
-
+.row
   - @stories.each do |story|
-    %tr
-      %td= story.title
-      %td= story.summary
-      %td= link_to 'Show', story
-      %td= link_to 'Edit', edit_story_path(story)
-      %td= link_to 'Destroy', story, :confirm => 'Are you sure?', :method => :delete
+    .span2
+      %ul.thumbnails
+        %li.span2
+          = link_to (image_tag "posts/morocco_#{[1,2,3].shuffle.first}.jpg"), story, :class=>'thumbnail'
+    .span10
+      .page-header
+        %h2
+          = link_to story.title, story
+          by
+          = link_to story.user.name, story.user
+      %p= story.summary
 
-%br
-
-= link_to 'New Story', new_story_path

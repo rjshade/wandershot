@@ -8,19 +8,31 @@
       %li.span4
         = link_to (image_tag 'posts/morocco_3.jpg'), '#', :class=>'thumbnail'
 .row
-  .span12
-    .page-header
-      %h1
-        Welcome to Wandershot
-        %small
-          Create your own travel blog quickly and easily
+  .span4
+    %h2
+      Create your own travel blog
     %p
-      Create your own travel blog and share it with the world. Record your memories through photos and text and relive them through your timeline.
+      Create your own travel blog and share it with the world. Record your memories through photos and text.
     
-    .signup-button
-      %a{ :href => new_user_registration_path, :id => 'join-button', :class => 'btn btn-large' }
-        Take a tour
-      %a{ :href => new_user_registration_path, :id => 'join-button', :class => 'btn btn-large' }
-        See an example
-      %a{ :href => new_user_registration_path, :id => 'join-button', :class => 'btn btn-large btn-primary' }
-        Sign up now!
+  .span4
+    %h2
+      Upload photos, text, more
+    %p
+      Tell a story by adding photos from your travels, describing your memories, and displaying location information.
+
+  .span4
+    %h2
+      Get started
+    %p
+      It's easy to get started with Wandershot. Create an account and you can start posting content immediately!
+
+.row
+  .span4
+    %a{ :href => stories_path, :id => 'join-button', :class => 'btn btn-large' }
+      Take a tour of the site
+  .span4
+    %a{ :href => stories_path, :id => 'join-button', :class => 'btn btn-large' }
+      See an example story
+  .span4
+    %a{ :href => new_user_registration_path, :id => 'join-button', :class => 'btn btn-large btn-primary' }
+      Sign up now for free!

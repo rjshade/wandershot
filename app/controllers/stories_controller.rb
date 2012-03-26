@@ -13,7 +13,7 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
-    @story = Story.find(params[:id])
+    @story = Story.find_by_slug(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
