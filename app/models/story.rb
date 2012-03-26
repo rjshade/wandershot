@@ -3,5 +3,6 @@ class Story
   field :title, :type => String
   field :summary, :type => String
 
-  embedded_in :user
+  belongs_to :user
+  has_many :posts
 end

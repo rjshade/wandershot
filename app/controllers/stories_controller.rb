@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    @stories = current_user.stories.all
+    @stories = Story.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
-    @story = current_user.stories.find(params[:id])
+    @story = Story.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
