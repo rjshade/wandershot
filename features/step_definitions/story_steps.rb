@@ -33,4 +33,3 @@ And /^I am on the story page$/ do
   visit story_path @story
 end
 
-

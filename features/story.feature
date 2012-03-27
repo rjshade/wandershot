@@ -11,14 +11,22 @@ Feature: Story
     And I create a new story
     Then there should be one story
 
+  Scenario: Edit an existing story
+    Given I have a story
+    And I am on the story page
+    And I edit the story
+    Then I should see the updated story
+
   Scenario: Create a new post
     Given I have a story
     And I am on the story page
     And I create a new post
     Then I should see the post
 
-  Scenario: Edit an existing story
+  Scenario: Edit an existing post
     Given I have a story
-    And I am on the story page
-    And I edit the story
-    Then I should see the updated story
+    And I have a post
+    And I am on the post page
+    And I edit the post
+    Then I should see the updated post
+
