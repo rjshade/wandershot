@@ -2,37 +2,32 @@
   .span12
     %ul.thumbnails
       %li.span8
-        = link_to (image_tag 'posts/morocco_1.jpg'), '#', :class=>'thumbnail'
+        = link_to (image_tag @post_main.image_path), story_path(@post_main.story), :class=>'thumbnail'
       %li.span4
-        = link_to (image_tag 'posts/morocco_2.jpg'), '#', :class=>'thumbnail'
+        = link_to (image_tag @post_second.image_path), story_path(@post_second.story), :class=>'thumbnail'
       %li.span4
-        = link_to (image_tag 'posts/morocco_3.jpg'), '#', :class=>'thumbnail'
+        = link_to (image_tag @post_third.image_path), story_path(@post_third.story), :class=>'thumbnail'
 .row
   .span4
     %h2
       Explore...
     %p
       Create your own travel blog and share it with the world. Record your memories through photos and text.
+    %a{ :href => stories_path, :class => 'btn btn-large' }
+      Look at an example
     
   .span4
     %h2
       Dream...
     %p
       Have a wander through our most popular blogs and find inspiration for your next adventure.
+    %a{ :href => stories_path, :class => 'btn btn-large' }
+      See some popular stories
 
   .span4
     %h2
       Discover...
     %p
       It's easy to get started with #{wandershot_text}. Create an account and you can start posting content immediately!
-
-.row
-  .span4
-    %a{ :href => stories_path, :class => 'btn btn-large' }
-      See an example
-  .span4
-    %a{ :href => stories_path, :class => 'btn btn-large' }
-      Popular stories
-  .span4
     %a{ :href => new_user_registration_path, :id => 'join-button', :class => 'btn btn-large btn-primary' }
-      Sign up now for free!
+      Sign up now and get started!
