@@ -2,11 +2,14 @@
   .span12
     %ul.thumbnails
       %li.span8
-        = link_to (image_tag @post_main.image_path), story_path(@post_main.story), :class=>'thumbnail'
+        - if @post_main
+          = link_to (image_tag @post_main.image_path), story_path(@post_main.story), :class=>'thumbnail'
       %li.span4
-        = link_to (image_tag @post_second.image_path), story_path(@post_second.story), :class=>'thumbnail'
+        - if @post_second
+          = link_to (image_tag @post_second.image_path), story_path(@post_second.story), :class=>'thumbnail'
       %li.span4
-        = link_to (image_tag @post_third.image_path), story_path(@post_third.story), :class=>'thumbnail'
+        - if @post_third
+          = link_to (image_tag @post_third.image_path), story_path(@post_third.story), :class=>'thumbnail'
 .row
   .span4
     %h2
