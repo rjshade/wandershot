@@ -1,0 +1,12 @@
+.wandershot-logo {
+  font-weight: 300;
+
+  &.light-bg {
+    .wander { color: #555; }
+    .shot   { color: #008844; }
+  }
+  &.dark-bg {
+    .wander { color: #efefef; }
+    .shot   { color: #55dd99; }
+  }
+}
