@@ -24,7 +24,7 @@ class StoriesController < ApplicationController
   # GET /stories/new
   # GET /stories/new.json
   def new
-    @story = current_user.stories.new
+    @story = Story.new
 
     respond_to do |format|
       format.html # new.html.erb
