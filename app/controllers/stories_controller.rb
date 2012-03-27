@@ -1,6 +1,4 @@
 class StoriesController < ApplicationController
-  # GET /stories
-  # GET /stories.json
   def index
     @stories = Story.all
 
@@ -10,8 +8,6 @@ class StoriesController < ApplicationController
     end
   end
 
-  # GET /stories/1
-  # GET /stories/1.json
   def show
     @story = Story.find_by_slug(params[:id])
 
@@ -21,10 +17,8 @@ class StoriesController < ApplicationController
     end
   end
 
-  # GET /stories/new
-  # GET /stories/new.json
   def new
-    @story = Story.new
+    @story = current_user.stories.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -32,15 +26,12 @@ class StoriesController < ApplicationController
     end
   end
 
-  # GET /stories/1/edit
   def edit
     @story = current_user.stories.find(params[:id])
   end
 
-  # POST /stories
-  # POST /stories.json
   def create
-    @story = current_user.stories.new(params[:story])
+    @story = current_user.stories.build(params[:story])
 
     respond_to do |format|
       if @story.save
@@ -53,8 +44,6 @@ class StoriesController < ApplicationController
     end
   end
 
-  # PUT /stories/1
-  # PUT /stories/1.json
   def update
     @story = current_user.stories.find(params[:id])
 
@@ -69,8 +58,6 @@ class StoriesController < ApplicationController
     end
   end
 
-  # DELETE /stories/1
-  # DELETE /stories/1.json
   def destroy
     @story = current_user.stories.find(params[:id])
     @story.destroy

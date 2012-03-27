@@ -1,19 +1,7 @@
 class PostsController < ApplicationController
-  # GET /posts
-  # GET /posts.json
-  def index
-    @posts = Post.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
-    end
-  end
-
-  # GET /posts/1
-  # GET /posts/1.json
   def show
-    @post = Post.find(params[:id])
+    @story = Story.find_by_slug(params[:story_id])
+    @post = @story.posts.find_by_slug(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -21,10 +9,9 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET /posts/new
-  # GET /posts/new.json
   def new
-    @post = Post.new
+    @story = Story.find_by_slug(params[:story_id])
+    @post = @story.posts.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -32,19 +19,14 @@ class PostsController < ApplicationController
     end
   end
 
-  # GET /posts/1/edit
-  def edit
-    @post = Post.find(params[:id])
-  end
-
-  # POST /posts
-  # POST /posts.json
   def create
-    @post = Post.new(params[:post])
+    @story = Story.find_by_slug(params[:story_id])
+    @post = @story.posts.build(params[:post])
+    @post.image_path = "stock/stock_#{(0..8).to_a.shuffle.first}.jpg"
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to [@story,@post], notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { render action: "new" }
@@ -53,14 +35,18 @@ class PostsController < ApplicationController
     end
   end
 
-  # PUT /posts/1
-  # PUT /posts/1.json
+  def edit
+    @story = current_user.stories.find_by_slug(params[:story_id])
+    @post = @story.posts.find_by_slug(params[:id])
+  end
+
   def update
-    @post = Post.find(params[:id])
+    @story = current_user.stories.find_by_slug(params[:story_id])
+    @post = @story.posts.find_by_slug(params[:id])
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to [@story,@post], notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -69,10 +55,8 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
-    @post = Post.find(params[:id])
+    @post = Post.find_by_slug(params[:id])
     @post.destroy
 
     respond_to do |format|
