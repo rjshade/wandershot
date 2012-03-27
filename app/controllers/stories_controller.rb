@@ -29,7 +29,7 @@ class StoriesController < ApplicationController
   end
 
   def edit
-    @story = current_user.stories.find(params[:id])
+    @story = current_user.stories.find_by_slug(params[:id])
   end
 
   def create
@@ -47,7 +47,7 @@ class StoriesController < ApplicationController
   end
 
   def update
-    @story = current_user.stories.find(params[:id])
+    @story = current_user.stories.find_by_slug(params[:id])
 
     respond_to do |format|
       if @story.update_attributes(params[:story])
@@ -61,7 +61,7 @@ class StoriesController < ApplicationController
   end
 
   def destroy
-    @story = current_user.stories.find(params[:id])
+    @story = current_user.stories.find_by_slug(params[:id])
     @story.destroy
 
     respond_to do |format|

@@ -1,4 +1,8 @@
-Feature: New Story
+Feature: Story
+  As a user of the site
+  I want to create, edit, and view stories
+  In order to share my adventures with the world
+
   Background:
     Given a logged in user
 
@@ -12,3 +16,9 @@ Feature: New Story
     And I am on the story page
     And I create a new post
     Then I should see the post
+
+  Scenario: Edit an existing story
+    Given I have a story
+    And I am on the story page
+    And I edit the story
+    Then I should see the updated story

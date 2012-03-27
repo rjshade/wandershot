@@ -12,6 +12,6 @@
         %p
           = @post.text
 
-- if current_user.id == @story.user.id
+- if current_user && current_user.id == @story.user.id
   = link_to 'Edit', edit_story_post_path(@story,@post), :class => 'btn btn-success'
 = link_to 'Back to story', story_path(@story), :class => 'btn'

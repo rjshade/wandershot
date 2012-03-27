@@ -4,7 +4,7 @@ class Post
   include Mongoid::Timestamps
 
   field :title, :type => String
-  slug :title
+  slug :title, :scope => :story
 
   field :text, :type => String
   field :image_path, :type => String

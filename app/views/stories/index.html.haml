@@ -3,9 +3,12 @@
     .page-header
       %h1 Stories
 
+    .controls
+      - if current_user
+        = link_to 'New story', new_story_path, :class => 'btn btn-large btn-primary'
+        %hr
+
 - @stories.each do |story|
   = render :partial => 'stories/teaser', :locals => { :story => story }
   %hr
 
-- if current_user
-  = link_to 'New story', new_story_path, :class => 'btn btn-large btn-primary'
