@@ -1,14 +1,11 @@
-.row
-  .span3
-    %ul.thumbnails
-      %li.span3
-        - if story.posts.size > 0
-          = link_to (image_tag story.posts.first.image_path ), story, :class=>'thumbnail'
-  .span9
-    .page-header
-      %h2
-        = link_to story.title, story
-        by
-        = link_to story.user.name, story.user
-    %p= story.summary
-
+.story
+  .row
+    .span3
+      %ul.thumbnails
+        %li.span3
+          - if story.posts.size > 0
+            = link_to (image_tag story.posts.first.image_path ), story, :class=>'thumbnail'
+    .span9
+      .page-header
+        =render :partial => 'stories/title', :locals => { :story => story }
+      %p= story.summary

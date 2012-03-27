@@ -1,0 +1,6 @@
+.title
+  %h2
+    %a{:href => story_path(story)}
+      %span.title= story.title
+      %span.author= "by " + story.user.name
+      %span.date= story.created_at.strftime("%B %e %Y")

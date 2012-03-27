@@ -1,15 +1,12 @@
-.row
-  .span12
-    .page-header
-      %h1
-        = @story.title
-        %small
-          by
-          = link_to @story.user.name, @story.user
-    %p= @story.summary
-
-- @story.posts.each do |post|
-  = render :partial => 'posts/teaser', :locals => { :post => post }
-  %hr
-
-= link_to 'New post', new_story_post_path( @story ), :class => 'btn btn-large btn-primary'
+.story
+  .row
+    .span12
+      .page-header
+        =render :partial => 'stories/title', :locals => { :story => @story }
+      %p= @story.summary
+  
+  - @story.posts.each do |post|
+    = render :partial => 'posts/teaser', :locals => { :post => post }
+    %hr
+  
+  = link_to 'New post', new_story_post_path( @story ), :class => 'btn btn-large btn-primary'

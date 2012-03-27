@@ -1,9 +1,10 @@
-.row
-  .span3
-    %ul.thumbnails
-      %li.span3
-        = link_to (image_tag post.image_path ), [@story,post], :class=>'thumbnail'
-  .span9
-    .page-header
-      %h2= post.title
-    %p= post.text
+.post
+  .row
+    .span3
+      %ul.thumbnails
+        %li.span3
+          = link_to (image_tag post.image_path ), [@story,post], :class=>'thumbnail'
+    .span9
+      .page-header
+        = render :partial => 'posts/title', :locals => { :post => post }
+      %p= post.text
