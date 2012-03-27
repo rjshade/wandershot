@@ -1,9 +1,8 @@
 class User
   include Mongoid::Document
   include Mongoid::Slug
+  include Mongoid::Timestamps
 
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -25,7 +24,6 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
 
-
   ## Name
   field :name
   slug :name
@@ -34,21 +32,4 @@ class User
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
   has_many :stories
-
-  ## Encryptable
-  # field :password_salt, :type => String
-
-  ## Confirmable
-  # field :confirmation_token,   :type => String
-  # field :confirmed_at,         :type => Time
-  # field :confirmation_sent_at, :type => Time
-  # field :unconfirmed_email,    :type => String # Only if using reconfirmable
-
-  ## Lockable
-  # field :failed_attempts, :type => Integer, :default => 0 # Only if lock strategy is :failed_attempts
-  # field :unlock_token,    :type => String # Only if unlock strategy is :email or :both
-  # field :locked_at,       :type => Time
-
-  ## Token authenticatable
-  # field :authentication_token, :type => String
 end
