@@ -6,22 +6,10 @@
         %small
           by
           = link_to @story.user.name, @story.user
-    %p
-      = @story.summary
+    %p= @story.summary
 
-.row
-  - @story.posts.each do |p|
-    .span12
-      .page-header
-        %h2= p.title
+- @story.posts.each do |post|
+  = render :partial => 'posts/teaser', :locals => { :post => post }
+  %hr
 
-      .row 
-        .span2
-          %ul.thumbnails
-            %li.span2
-              = link_to (image_tag "posts/morocco_#{[1,2,3].shuffle.first}.jpg"), '#', :class=>'thumbnail'
-        .span10
-          %p
-            = p.text
-
-= link_to 'New post', new_post_path, :class => 'btn btn-large btn-primary'
+= link_to 'New post', new_story_post_path( @story ), :class => 'btn btn-large btn-primary'

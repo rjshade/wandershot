@@ -1,6 +1,7 @@
 Wandershot::Application.routes.draw do
-  resources :posts
-  resources :stories
+  resources :stories do
+    resources :posts
+  end
 
   devise_for :users
   resources :users, :only => [:index,:show]

@@ -1,9 +1,8 @@
-= simple_form_for(@post, :html => { :class => 'form-horizontal' }) do |f|
+= simple_form_for([@story,@post]) do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :title
     = f.input :text
 
-  .form-actions
-    = f.button :submit
+  = f.button :wrapped, :cancel => :back
