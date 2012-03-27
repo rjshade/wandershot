@@ -1,0 +1,21 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.brand{:href => "/"}= wandershot_text( darkbg = true )
+ 
+      .nav-collapse
+        %ul.nav
+          %li= link_to "What is this?", '/about'
+          %li= link_to "Browse", stories_path
+          %li= link_to "Popular", stories_path
+        %ul.nav.pull-right
+          - if user_signed_in?
+            %li= link_to(current_user.name, edit_user_registration_path)
+            %li= link_to('Logout', destroy_user_session_path, :method=>'delete')
+          - else
+            %li= link_to('Login', new_user_session_path)
+            %li= link_to('Sign up', new_user_registration_path)

@@ -9,6 +9,10 @@ h1.frontpage {
   }
 }
 
+.center {
+  text-align: center;
+}
+
 .post {
   .date {
     color: #ccc;
@@ -31,15 +35,31 @@ h1.frontpage {
 .story {
   .title {
     .title {
-      color: #555;
+      a {
+        color: #555;
+      }
     }
-    .author {
+    .author, .author a {
       color: #999;
     }
     .date {
       color: #ccc;
     }
   }
+
+  .teaser-summary {
+    height: 150px;
+  }
+}
+
+hr.soften {
+  height: 1px;
+  margin: 54px 0;
+  background-image: -webkit-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+  background-image: -moz-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+  background-image: -ms-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+  background-image: -o-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+  border: 0;
 }
 
 .wandershot-logo {
@@ -54,3 +74,4 @@ h1.frontpage {
     .shot   { color: #11cc88; }
   }
 }
+

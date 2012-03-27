@@ -1,11 +1,22 @@
 .story
   .row
-    .span3
+    .span4
       %ul.thumbnails
-        %li.span3
+        %li.span4
           - if story.posts.size > 0
             = link_to (image_tag story.posts.first.image_path ), story, :class=>'thumbnail'
-    .span9
-      .page-header
-        =render :partial => 'stories/title', :locals => { :story => story }
-      %p= story.summary
+      .center
+        %h6 
+          length: 
+          %strong 42 days
+          | posts:
+          %strong= story.posts.size
+          | distance:
+          %strong 526 miles
+        %a{:href=> story_path(story)}
+          %h6
+            Read this story »
+    .span8
+      =render :partial => 'stories/title', :locals => { :story => story }
+      %hr
+      = md story.summary
