@@ -1,17 +1,14 @@
-.row
-  .span12
-    .page-header
-      %h2= @post.title
+.post
+  .row
+    .span4
+      .page-header
+        = render :partial => 'posts/title', :locals => { :post => @post }
+      %p= @post.text
+    .span8
+      %ul.thumbnails
+        %li.span8
+          = link_to (image_tag @post.image_path), '#', :class=>'thumbnail'
 
-    .row 
-      .span2
-        %ul.thumbnails
-          %li.span2
-            = link_to (image_tag @post.image_path), '#', :class=>'thumbnail'
-      .span10
-        %p
-          = @post.text
-
-- if current_user && current_user.id == @story.user.id
-  = link_to 'Edit', edit_story_post_path(@story,@post), :class => 'btn btn-success'
-= link_to 'Back to story', story_path(@story), :class => 'btn'
+  - if current_user && current_user.id == @story.user.id
+    = link_to 'Edit', edit_story_post_path(@story,@post), :class => 'btn btn-success'
+  = link_to 'Back to story', story_path(@story), :class => 'btn'

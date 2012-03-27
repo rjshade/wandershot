@@ -11,6 +11,7 @@ gem 'mongoid_slug'            # friendly urls with mongoid
 gem 'devise',      '>= 1.4.9' # authentication
 gem 'cancan'                  # role-based authorization
 gem 'heroku'                  # cli for heroku
+gem "maruku",      '~> 0.6.0' # markdown
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

@@ -2,6 +2,13 @@ body {
   padding-bottom: 50px;
 }
 
+h1.frontpage {
+  .main {}
+  .subtitle {
+    color: #ccc;
+  }
+}
+
 .post {
   .date {
     color: #ccc;
@@ -40,10 +47,10 @@ body {
 
   &.light-bg {
     .wander { color: #555; }
-    .shot   { color: #008844; }
+    .shot   { color: #11cc88; }
   }
   &.dark-bg {
     .wander { color: #efefef; }
-    .shot   { color: #55dd99; }
+    .shot   { color: #11cc88; }
   }
 }

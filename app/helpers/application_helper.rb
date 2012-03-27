@@ -16,4 +16,8 @@ module ApplicationHelper
         type.to_s
     end
   end
+
+  def md( text )
+    text.blank? ? "" : raw(Maruku.new(text).to_html)
+  end
 end

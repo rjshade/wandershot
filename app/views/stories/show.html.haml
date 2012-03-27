@@ -9,9 +9,10 @@
           = link_to 'Edit story', edit_story_path( @story ), :class => 'btn btn-large'
           %hr
 
-      %p= @story.summary
+      .summary
+        = md @story.summary
+      %hr
   
-  - @story.posts.each do |post|
-    = render :partial => 'posts/teaser', :locals => { :post => post }
-    %hr
-  
+  .row
+    - @story.posts.each do |post|
+      = render :partial => 'posts/teaser', :locals => { :post => post }
