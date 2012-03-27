@@ -7,9 +7,9 @@ gem 'simple_form'             # nice form helpers
 gem 'haml-rails',  '>= 0.3.4' # better templating
 gem 'bson_ext',    '>= 1.3.1' # binary json for mongodb
 gem 'mongoid',     '>= 2.2.3' # ORM for mongodb
+gem 'mongoid_slug'            # friendly urls with mongoid
 gem 'devise',      '>= 1.4.9' # authentication
 gem 'cancan'                  # role-based authorization
-gem 'mongoid_slug'            # friendly urls with mongoid
 gem 'heroku'                  # cli for heroku
 
 group :assets do

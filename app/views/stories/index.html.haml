@@ -7,4 +7,5 @@
   = render :partial => 'stories/teaser', :locals => { :story => story }
   %hr
 
-= link_to 'New story', new_story_path, :class => 'btn btn-large btn-primary'
+- if current_user
+  = link_to 'New story', new_story_path, :class => 'btn btn-large btn-primary'

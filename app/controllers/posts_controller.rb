@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show]
+
   def show
     @story = Story.find_by_slug(params[:story_id])
     @post = @story.posts.find_by_slug(params[:id])
@@ -10,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @story = Story.find_by_slug(params[:story_id])
+    @story = current_user.stories.find_by_slug(params[:story_id])
     @post = @story.posts.build
 
     respond_to do |format|
@@ -20,7 +22,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @story = Story.find_by_slug(params[:story_id])
+    @story = current_user.stories.find_by_slug(params[:story_id])
     @post = @story.posts.build(params[:post])
     @post.image_path = "stock/stock_#{(0..8).to_a.shuffle.first}.jpg"
 
