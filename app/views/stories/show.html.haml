@@ -1,6 +1,6 @@
 .story
   .row
-    .span12
+    .span6
       .page-header
         =render :partial => 'stories/title', :locals => { :story => @story }
       .controls.center
@@ -13,6 +13,6 @@
         = md @story.summary
       %hr
   
-  .row
-    - @story.posts.each do |post|
-      = render :partial => 'posts/teaser', :locals => { :post => post }
+    .span6
+      - @story.posts.each do |post|
+        = render :partial => 'posts/teaser', :locals => { :post => post }
