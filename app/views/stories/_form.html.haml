@@ -1,7 +1,18 @@
 = simple_form_for(@story) do |f|
   = f.error_notification
 
-  = f.input :title
-  = f.input :summary, :as => :text
+  %p
+    Give your story a descriptive title: this makes it easier to remember, and will attract more visitors.
+  %p
+    For example 
+    %strong Cycling across America
+    is much better than
+    %strong My Holiday 2012
+  %p
+    Your trip summary will be the first thing visitors see when viewing your story, so try to make it interesting and attention grabbing!
+
+  = f.input :title, :placeholder => 'Cycling across America'
+
+  = f.input :summary, :label => 'Trip Summary', :as => :text, :placeholder => 'Summarise your trip...'
 
   = f.button :wrapped, :cancel => :back

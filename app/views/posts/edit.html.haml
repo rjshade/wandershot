@@ -1,7 +1,4 @@
-%h1 Editing post
+.page-header
+  %h1 Editing #{@post.title} (from #{@story.title})
 
 = render 'form'
-
-= link_to 'Show', story_post_path(@story, @post )
-\|
-= link_to 'Back', story_posts_path

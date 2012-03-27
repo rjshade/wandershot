@@ -3,10 +3,10 @@
     .span12
       .page-header
         =render :partial => 'stories/title', :locals => { :story => @story }
-      .controls
+      .controls.center
         - if current_user && current_user.id == @story.user.id
-          = link_to 'New post', new_story_post_path( @story ), :class => 'btn btn-large btn-primary'
-          = link_to 'Edit story', edit_story_path( @story ), :class => 'btn btn-large'
+          = link_to 'Add post', new_story_post_path( @story ), :class => 'btn btn-primary'
+          = link_to 'Edit story', edit_story_path( @story ), :class => 'btn' 
           %hr
 
       .summary

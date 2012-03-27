@@ -38,5 +38,9 @@
     %br
     %br
     .center
-      %a{ :href => new_user_registration_path, :id => 'join-button', :class => 'btn btn-large btn-primary' }
-        Sign up now and get started!
+      - if current_user
+        %a{ :href => new_story_path, :id => 'join-button', :class => 'btn btn-large btn-primary' }
+          Start a new story...
+      - else
+        %a{ :href => new_user_registration_path, :id => 'join-button', :class => 'btn btn-large btn-primary' }
+          Sign up now and get started!

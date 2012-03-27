@@ -37,7 +37,7 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to @story, notice: 'Story was successfully created.' }
+        format.html { redirect_to @story, notice: 'Story was successfully created. Go ahead and add a Post by clicking "Add Post".' }
         format.json { render json: @story, status: :created, location: @story }
       else
         format.html { render action: "new" }
