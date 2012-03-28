@@ -13,6 +13,10 @@ gem 'cancan'                  # role-based authorization
 gem 'heroku'                  # cli for heroku
 gem 'maruku',      '~> 0.6.0' # markdown
 gem 'truncate_html'           # truncate html text
+                              # paperclip for file uploads
+gem 'mongoid-paperclip', :require => "mongoid_paperclip"
+gem 'aws-sdk'                 # to talk to amazon s3
+gem 'aws-s3'                  # to talk to amazon s3
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
