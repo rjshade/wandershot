@@ -1,29 +1,32 @@
 .story
   .row
-    .span6
+    .span12
+      .controls
+        - if current_user && current_user.id == @story.user.id
+          = link_to 'Add post', new_story_post_path( @story ), :class => 'btn btn-mini'
+          = link_to 'Edit story', edit_story_path( @story ), :class => 'btn btn-mini' 
+          = link_to 'Delete story', edit_story_path( @story ), :class => 'btn btn-mini btn-danger' 
+  .row
+    .span12
       .page-header
         =render :partial => 'stories/title', :locals => { :story => @story }
-      .controls.center
-        - if current_user && current_user.id == @story.user.id
-          = link_to 'Add post', new_story_post_path( @story ), :class => 'btn btn-primary'
-          = link_to 'Edit story', edit_story_path( @story ), :class => 'btn' 
-          %hr
-
-      .summary
-        = md @story.summary
-
-      %hr
-
-      .center
         %h6 
           length: 
           %strong= @story.length_in_days.to_s + " days"
           | posts:
           %strong= @posts.size
-
+  .row
     .span6
+      .summary
+        .page-header
+          %h3 Summary
+        = md @story.summary
+    .span6
+      .page-header
+        %h3 Latest post
       = render :partial => 'posts/story_latest', :locals => { :post => @story.posts.last }
 
+  %hr.soften
   .row
     .span12
       .page-header
