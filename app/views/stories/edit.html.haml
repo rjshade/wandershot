@@ -1,4 +1,27 @@
 .page-header
   %h1 Editing #{@story.title}
 
-= render 'form'
+.row
+  .span12
+    %p
+      Give your story a descriptive title: this makes it easier to remember, and will attract more visitors.
+    %p
+      For example 
+      %strong Cycling across America
+      is much better than
+      %strong My Holiday 2012
+    %p
+      Your trip summary will be the first thing visitors see when viewing your story, so try to make it interesting and attention grabbing!
+
+%hr
+
+.row
+  .span4
+    = render 'form'
+  .span8
+    %ul.thumbnails
+      - @story.posts_with_images.first(12).each do |post|
+        - if post
+          %li.span2
+            = link_to (image_tag post.image.url(:large)), '#', :class=>'thumbnail'
+
