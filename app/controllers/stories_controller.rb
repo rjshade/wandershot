@@ -12,7 +12,7 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find_by_slug(params[:id])
-    @posts = @story.posts.by_date
+    @posts = @story.posts.by_date.reverse
 
     respond_to do |format|
       format.html # show.html.erb

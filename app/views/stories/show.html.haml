@@ -15,20 +15,11 @@
           %strong= @story.length_in_days.to_s + " days"
           | posts:
           %strong= @posts.size
-  .row
-    .span6
-      .summary
-        .page-header
-          %h4 Summary
-        = md @story.summary
-    .span6
-      = render :partial => 'posts/story_latest', :locals => { :post => @story.posts.last }
+      = md @story.summary
 
   %hr.soften
   .row
     .span12
-      .page-header
-        %h4 All posts in this story
       - if @posts.size == 0
         .row
           - 3.times do |i|
