@@ -13,3 +13,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# s3 secrets in here...
+config/s3.yml
+
+# dev/test paperclip images
+public/system
