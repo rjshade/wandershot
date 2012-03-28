@@ -1,0 +1,13 @@
+.row
+  .span6
+    .page-header
+      - if post
+        = render :partial => 'posts/title', :locals => { :post => post }
+      - else
+        %h3 Your latest post
+    %ul.thumbnails
+      %li.span6
+        - if post
+          = link_to (image_tag post.image_path ), [@story,post], :class=>'thumbnail'
+        - else
+          = image_tag 'http://placehold.it/560x373&text=latest+post+shown+here', :class => 'thumbnail'

@@ -10,4 +10,12 @@ class Story
 
   belongs_to :user
   has_many :posts
+
+  def length_in_days
+    if self.posts.size > 0
+      (self.posts.last.created_at.to_datetime - self.posts.first.created_at.to_datetime).to_i
+    else
+      0
+    end
+  end
 end

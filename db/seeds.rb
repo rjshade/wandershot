@@ -13,10 +13,11 @@ Integer varius aliquet vulputate. Fusce id purus felis, vitae commodo lacus. Sus
 
 
 (rand(10)+1).times do |s|
-  story = user.stories.create! title: "Exciting story #{s}", summary: summary
+  start_date = rand(1000).days.ago
+  story = user.stories.create! title: "Exciting story #{s}", summary: summary, created_at: start_date
 
   (rand(10)+1).times do |i|
-    post = story.posts.create! title: "Entry number #{i}", text: summary, image_path: "stock/stock_#{(0..8).to_a.shuffle.first}.jpg"
+    post = story.posts.create! title: "Entry number #{i}", text: summary, image_path: "stock/stock_#{(0..8).to_a.shuffle.first}.jpg", created_at: start_date + i.days
   end
   puts "Story #{s} created"
 end

@@ -3,7 +3,7 @@
     .span4
       .page-header
         = render :partial => 'posts/title', :locals => { :post => @post }
-      %p= @post.text
+      = md @post.text
     .span8
       %ul.thumbnails
         %li.span8

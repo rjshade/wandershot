@@ -1,7 +1,0 @@
-.row
-  .span2
-    %ul.thumbnails
-      %li.span2
-        = link_to (image_tag post.image_path ), [@story,post], :class=>'thumbnail'
-  .span4
-    = render :partial => 'posts/title', :locals => { :post => post }

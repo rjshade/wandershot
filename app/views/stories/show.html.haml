@@ -11,21 +11,28 @@
 
       .summary
         = md @story.summary
+
       %hr
 
       .center
         %h6 
           length: 
-          %strong 42 days
+          %strong= @story.length_in_days.to_s + " days"
           | posts:
           %strong= @story.posts.size
-          | distance:
-          %strong 526 miles
 
     .span6
+      = render :partial => 'posts/story_latest', :locals => { :post => @story.posts.last }
+
+  .row
+    .span12
       .page-header
-        %h3 First post
-      = render :partial => 'posts/teaser', :locals => { :post => @story.posts.first }
-      .page-header
-        %h3 Last post
-      = render :partial => 'posts/teaser', :locals => { :post => @story.posts.last }
+        %h2 All posts in this story
+      - if @story.posts.size == 0
+        .row
+          - 3.times do |i|
+            = render :partial => 'posts/story_teaser', :locals => { :post => nil, :placeholder => true }
+      - @story.posts.in_groups_of(3) do |posts|
+        .row
+          - posts.each do |p|
+            = render :partial => 'posts/story_teaser', :locals => { :post => p, :placeholder => false }

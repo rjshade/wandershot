@@ -1,22 +1,19 @@
-.story
-  .row
-    .span4
-      %ul.thumbnails
-        %li.span4
-          - if story.posts.size > 0
-            = link_to (image_tag story.posts.first.image_path ), story, :class=>'thumbnail'
-      .center
-        %h6 
-          length: 
-          %strong 42 days
-          | posts:
-          %strong= story.posts.size
-          | distance:
-          %strong 526 miles
-        %a{:href=> story_path(story)}
-          %h6
-            Read this story »
-    .span8
-      =render :partial => 'stories/title', :locals => { :story => story }
-      %hr
-      = md story.summary
+- if story
+  .story
+    .row
+      .span8
+        =render :partial => 'stories/title', :locals => { :story => story }
+        %hr
+        = truncate_html( (md story.summary), :length => 200 )
+        = link_to 'More »', story_path(story)
+      .span4
+        %ul.thumbnails
+          %li.span4
+            - if story.posts.size > 0
+              = link_to (image_tag story.posts.shuffle.first.image_path ), story, :class=>'thumbnail'
+        .center
+          %h6 
+            length: 
+            %strong 42 days
+            | posts:
+            %strong= story.posts.size
