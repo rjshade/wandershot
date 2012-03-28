@@ -4,5 +4,7 @@ class HomeController < ApplicationController
     @post_main = Post.all.shuffle.first
     @post_second = Post.all.shuffle.first
     @post_third = Post.all.shuffle.first
+
+    @user = User.new
   end
 end

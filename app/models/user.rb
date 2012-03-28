@@ -28,6 +28,7 @@ class User
   field :name
   slug :name
   validates_presence_of :name
+  # NOTE: devise deals with validation of email + password
 
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 

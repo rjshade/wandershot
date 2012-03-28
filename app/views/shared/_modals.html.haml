@@ -1,0 +1,33 @@
+// if js is enabled then we change the click action of the sign up link (above) to activate this modal
+#signup-modal.modal.hide.fade.in
+  = simple_form_for(User.new, :html => { :class => "modal-form" }) do |f|
+    .modal-header
+      %a.close{:"data-dismiss" => 'modal'}×
+      %h2 create a #{wandershot_text} account
+    
+    .modal-body
+      .form-inputs
+        = f.input :name
+        = f.input :email
+        = f.input :password
+        = f.input :password_confirmation
+    .modal-footer
+      = f.button :submit, "Create account", :class => 'btn btn-primary', :id => 'signup-modal-submit'
+      or
+      = link_to 'cancel', nil, :"data-dismiss" => 'modal'
+
+#login-modal.modal.hide.fade.in
+  = simple_form_for(User.new, :url => session_path(:user), :html => { :class => "modal-form" }) do |f|
+    .modal-header
+      %a.close{:"data-dismiss" => 'modal'}×
+      %h2 Sign in to #{wandershot_text}
+
+    .modal-body
+      = f.input :email
+      = f.input :password
+      = f.input :remember_me, :as => :boolean
+
+    .modal-footer
+      = f.button :submit, "Sign in", :class => 'btn btn-primary'
+      or
+      = link_to 'cancel', nil, :"data-dismiss" => 'modal'

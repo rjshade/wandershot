@@ -13,6 +13,7 @@
 
     %header
     .container
+      =render :partial => "shared/modals"
       =render :partial => "shared/flash_messages", :locals => {:flash => flash}
       = yield
-
+    

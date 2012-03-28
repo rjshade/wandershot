@@ -12,7 +12,20 @@
       .summary
         = md @story.summary
       %hr
-  
+
+      .center
+        %h6 
+          length: 
+          %strong 42 days
+          | posts:
+          %strong= @story.posts.size
+          | distance:
+          %strong 526 miles
+
     .span6
-      - @story.posts.each do |post|
-        = render :partial => 'posts/teaser', :locals => { :post => post }
+      .page-header
+        %h3 First post
+      = render :partial => 'posts/teaser', :locals => { :post => @story.posts.first }
+      .page-header
+        %h3 Last post
+      = render :partial => 'posts/teaser', :locals => { :post => @story.posts.last }
