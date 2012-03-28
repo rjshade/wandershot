@@ -6,18 +6,15 @@
           = link_to 'Add post', new_story_post_path( @story ), :class => 'btn btn-mini'
           = link_to 'Edit story', edit_story_path( @story ), :class => 'btn btn-mini' 
           = link_to 'Delete story', edit_story_path( @story ), :class => 'btn btn-mini btn-danger' 
+
   .row
     .span12
       .page-header
         =render :partial => 'stories/title', :locals => { :story => @story }
-        %h6 
-          length: 
-          %strong= @story.length_in_days.to_s + " days"
-          | posts:
-          %strong= @posts.size
       = md @story.summary
 
   %hr
+
   .row
     .span12
       - if @posts.size == 0
