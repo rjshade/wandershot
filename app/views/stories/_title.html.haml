@@ -1,6 +1,5 @@
 .title
   %h3
-    %strong
-      %span.title= link_to story.title, story_path(story)
+    %span.title= link_to story.title, story_path(story)
     %span.author= "by ".html_safe + link_to(story.user.name, story.user)
     %span.date= story.created_at.strftime("%B %e %Y")
