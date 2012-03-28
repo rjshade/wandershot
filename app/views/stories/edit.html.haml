@@ -9,5 +9,5 @@
       - @story.posts_with_images.first(12).each do |post|
         - if post
           %li.span2
-            = image_tag post.image.url(:medium), :class => 'thumbnail'
+            = link_to (image_tag post.image.url(:medium), :class => 'thumbnail'), edit_story_post_path(@story,post)
 
