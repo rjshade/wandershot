@@ -15,4 +15,5 @@
     - if placeholder
       Description of your post...
     - else
-      = truncate_html((md post.text), :length => 200, :omission => "...<div class='center'>#{link_to 'Read more »', story_post_path( @story, post )}</div>".html_safe)
+      = truncate_html((md post.text), :length => 200, :omission => "...".html_safe)
+      .center= link_to 'Read more »', story_post_path( @story, post )
