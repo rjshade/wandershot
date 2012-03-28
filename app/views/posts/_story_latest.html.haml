@@ -8,6 +8,9 @@
     %ul.thumbnails
       %li.span6
         - if post
-          = link_to (image_tag post.image_path ), [@story,post], :class=>'thumbnail'
+          - if post.image?
+            = link_to (image_tag post.image.url(:large)), [@story,post], :class=>'thumbnail'
+          - else
+            = md post.text
         - else
           = image_tag 'http://placehold.it/560x373&text=latest+post+shown+here', :class => 'thumbnail'

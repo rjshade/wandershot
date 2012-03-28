@@ -1,19 +1,15 @@
 - if story
   .story
-    .row
+    .row.offset1
+      .span2
+        %ul.thumbnails
+          %li.span2
+            - if story.posts.size > 0
+              - post = story.posts_with_images.shuffle.first
+              - if post
+                = link_to (image_tag post.image.url(:medium) ), story, :class=>'thumbnail'
       .span8
         =render :partial => 'stories/title', :locals => { :story => story }
         %hr
         = truncate_html( (md story.summary), :length => 200 )
         = link_to 'More »', story_path(story)
-      .span4
-        %ul.thumbnails
-          %li.span4
-            - if story.posts.size > 0
-              = link_to (image_tag story.posts.shuffle.first.image_path ), story, :class=>'thumbnail'
-        .center
-          %h6 
-            length: 
-            %strong 42 days
-            | posts:
-            %strong= story.posts.size

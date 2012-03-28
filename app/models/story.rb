@@ -18,4 +18,8 @@ class Story
       0
     end
   end
+
+  def posts_with_images
+    self.posts.find_all{|post| post.image? }
+  end
 end

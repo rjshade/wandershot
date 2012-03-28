@@ -7,7 +7,8 @@
     .span8
       %ul.thumbnails
         %li.span8
-          = link_to (image_tag @post.image_path), '#', :class=>'thumbnail'
+          -if @post.image?
+            = link_to (image_tag @post.image.url(:large)), '#', :class=>'thumbnail'
  
   .controls.center
     - if current_user && current_user.id == @story.user.id
