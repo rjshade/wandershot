@@ -1,6 +1,6 @@
 development:
   host: localhost
-  database: wandershot_development
+  database: wandershot
 
 test:
   host: localhost
