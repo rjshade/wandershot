@@ -8,14 +8,8 @@
   .span8
     %ul.thumbnails
       %li.span8
-        - if @post_main
-          = link_to (image_tag @post_main.image_path), story_path(@post_main.story), :class=>'thumbnail'
-      -#%li.span4
-        -#- if @post_second
-          -#= link_to (image_tag @post_second.image_path), story_path(@post_second.story), :class=>'thumbnail'
-      -#%li.span4
-        -#- if @post_third
-          -#= link_to (image_tag @post_third.image_path), story_path(@post_third.story), :class=>'thumbnail'
+        - if @post
+          = link_to (image_tag @post.image.url(:large)), story_path(@post.story), :class=>'thumbnail'
   .span4
     .page-header
       %h2
