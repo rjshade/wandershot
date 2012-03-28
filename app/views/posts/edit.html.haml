@@ -1,4 +1,12 @@
 .page-header
   %h1 Editing #{@post.title} (from #{@story.title})
 
-= render 'form'
+.row
+  .span4
+    = render 'form'
+  .span8
+    %ul.thumbnails
+      %li.span8
+        -if @post.image?
+          = link_to (image_tag @post.image.url(:large)), '#', :class=>'thumbnail'
+ 
