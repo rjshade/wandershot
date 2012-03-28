@@ -2,7 +2,7 @@
   .span6
     .page-header
       - if post
-        = render :partial => 'posts/title', :locals => { :post => post }
+        = render :partial => 'posts/title', :locals => { :post => post, :prefix => 'Latest post: ' }
       - else
         %h3 Your latest post
     %ul.thumbnails

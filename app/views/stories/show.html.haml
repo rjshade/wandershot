@@ -19,18 +19,16 @@
     .span6
       .summary
         .page-header
-          %h3 Summary
+          %h4 Summary
         = md @story.summary
     .span6
-      .page-header
-        %h3 Latest post
       = render :partial => 'posts/story_latest', :locals => { :post => @story.posts.last }
 
   %hr.soften
   .row
     .span12
       .page-header
-        %h2 All posts in this story
+        %h4 All posts in this story
       - if @posts.size == 0
         .row
           - 3.times do |i|
