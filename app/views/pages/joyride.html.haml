@@ -1,0 +1,44 @@
+.page-header
+  %h1#numero1
+    An exciting tour of #{wandershot_text}
+
+#{wandershot_text} is designed to be a simple to use, minimalistic, and beautiful app for recording travel stories.
+
+%hr
+
+%h2#numero3
+%p Hello!
+
+%hr
+
+%p#numero2
+Second stop on the tour.
+
+=link_to 'show tour', nil, :id=>'show-tour', :class=>'btn'
+
+<!-- Tip Content -->
+<ol id="joyRideTipContent">
+<li data-id="numero1" data-text="Next" class="custom">
+<h2>Stop #1</h2>
+<p>You can control all the details for you tour stop. Any valid HTML will work inside of Joyride.</p>
+</li>
+<li data-id="numero2" data-text="Next" data-options="tipLocation:top;tipAnimation:fade">
+<h2>Stop #2</h2>
+<p>Get the details right by styling Joyride with a custom stylesheet!</p>
+</li>
+<li data-id="numero3" data-text="Close">
+<h2>Stop #3</h2>
+<p>Now what are you waiting for? Add this to your projects and get the most out of your apps!</p>
+</li>
+</ol>
+
+<!-- Run the plugin -->
+<script type="text/javascript">
+$(window).load(function() {
+$('#show-tour').attr('href', null)
+$('#show-tour').click( function(){
+$('#show-tour').hide()
+$(this).joyride()} )
+});
+</script>
+
