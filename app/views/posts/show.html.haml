@@ -3,6 +3,10 @@
     .span4
       .page-header
         = render :partial => 'posts/title', :locals => { :post => @post }
+      -if @post.address
+        %ul.thumbnails
+          %li.span4
+            = link_to (image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@post.address}&zoom=10&size=500x200&maptype=roadmap&sensor=false&", :class => "gmaps-image"), '#', :class => 'thumbnail'
       = md @post.text
     .span8
       %ul.thumbnails
