@@ -16,6 +16,8 @@ class Post
 
   field :title, :type => String
   slug :title, :scope => :story
+  validates_format_of :title, without: /(?i)new/
+  validates_format_of :title, without: /(?i)edit/
 
   field :text, :type => String
 
