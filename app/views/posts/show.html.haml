@@ -6,13 +6,15 @@
       -if @post.address
         %ul.thumbnails
           %li.span4
-            = link_to (image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@post.address}&zoom=10&size=500x200&maptype=roadmap&sensor=false&", :class => "gmaps-image"), '#', :class => 'thumbnail'
+            .thumbnail
+              = image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@post.address}&zoom=12&size=500x300&maptype=roadmap&sensor=false&", :class => "gmaps-image"
       = md @post.text
     .span8
       %ul.thumbnails
         %li.span8
           -if @post.image?
-            = link_to (image_tag @post.image.url(:large)), @post.image.url(:original), :class=>'thumbnail'
+            .thumbnail
+              = image_tag @post.image.url(:large)
  
   .controls.center
     - if current_user && current_user.id == @story.user.id
