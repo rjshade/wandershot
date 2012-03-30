@@ -5,6 +5,8 @@ class Story
 
   field :title, :type => String
   slug :title
+  validates_format_of :title, without: /(?i)new/
+  validates_format_of :title, without: /(?i)edit/
 
   field :summary, :type => String
 
