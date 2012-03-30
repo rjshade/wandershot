@@ -7,7 +7,7 @@
         %ul.thumbnails
           %li.span4
             .thumbnail
-              = image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@post.address}&zoom=12&size=500x300&maptype=roadmap&sensor=false&", :class => "gmaps-image"
+              = image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@post.address}&zoom=12&size=500x300&maptype=terrain&sensor=false&", :class => "gmaps-image"
       = md @post.text
     .span8
       %ul.thumbnails
