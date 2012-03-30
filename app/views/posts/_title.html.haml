@@ -3,6 +3,6 @@
     = (defined? prefix) ? prefix : ''
     %span.title= link_to post.title, story_post_path(@story, post)
     %span.date= post.created_at.strftime('%B %e %Y')
-    - if post.address
-      near
-      %span.location= truncate(post.address)
+
+  %h4
+    %span.location= (post.address ? "near " + truncate(post.address) : 'unknown location')

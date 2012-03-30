@@ -27,6 +27,7 @@ h1.frontpage {
     }
     .date {
       color: #aaa;
+      float: right;
     }
     .location {
       color: #999;
@@ -46,7 +47,11 @@ h1.frontpage {
       color: #999;
     }
     .date {
-        color: #ccc;
+      color: #ccc;
+      float:right;
+    }
+    .location {
+      color: #999;
     }
   }
 
