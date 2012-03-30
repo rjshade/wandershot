@@ -3,3 +3,6 @@
     = (defined? prefix) ? prefix : ''
     %span.title= link_to post.title, story_post_path(@story, post)
     %span.date= post.created_at.strftime('%B %e %Y')
+    - if post.address
+      in
+      %span.location= post.address

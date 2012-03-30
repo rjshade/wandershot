@@ -9,9 +9,8 @@ class Post
                               :original => ['1920x1680>', :jpg],
                               :thumb    => ['100x100#',   :jpg],
                               :medium   => ['400x400>',   :jpg],
-                              :large    => ['800x800>',   :jpg] },
+                              :large    => ['800x800>',   :jpg] }
 
-                            :path => "/public/:user_slug/stories/:story_slug/:post_slug/:attachment/:id/:style.:extension"
                             }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
   field :title, :type => String
@@ -19,6 +18,10 @@ class Post
   validates :title, presence: true, allow_blank: false, allow_nil: false
 
   field :text, :type => String
+
+  field :address, :type => String
+  field :latitude, :type => String
+  field :longitude, :type => String
 
   belongs_to :story
 

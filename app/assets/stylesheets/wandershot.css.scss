@@ -15,7 +15,7 @@ h1.frontpage {
 
 .post {
   .date {
-    color: #ccc;
+    color: #aaa;
   }
 
   .title {
@@ -26,9 +26,11 @@ h1.frontpage {
       color: #999;
     }
     .date {
-      color: #ccc;
+      color: #aaa;
     }
-
+    .location {
+      color: #999;
+    }
   }
 }
 
@@ -43,7 +45,7 @@ h1.frontpage {
       color: #999;
     }
     .date {
-      color: #ccc;
+        color: #ccc;
     }
   }
 

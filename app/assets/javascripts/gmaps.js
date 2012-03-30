@@ -48,8 +48,16 @@ function update_map( geometry ) {
 function update_ui( address, latLng ) {
   $('#gmaps-input-address').autocomplete("close");
   $('#gmaps-input-address').val(address);
-  $('#gmaps-output-latitude').html(latLng.lat());
-  $('#gmaps-output-longitude').html(latLng.lng());
+  if($("#gmaps-output-latitude").is("input")) {
+    $('#gmaps-output-latitude').val(latLng.lat());
+  } else {
+    $('#gmaps-output-latitude').html(latLng.lat());
+  }
+  if($("#gmaps-output-longitude").is("input")) {
+    $('#gmaps-output-longitude').val(latLng.lng());
+  } else {
+    $('#gmaps-output-longitude').html(latLng.lng());
+  }
 }
 
 // Query the Google geocode object

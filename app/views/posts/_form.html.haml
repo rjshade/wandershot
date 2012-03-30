@@ -1,22 +1,13 @@
-= simple_form_for([@story,@post]) do |f|
+= simple_form_for([@story,@post], :defaults => { :input_html => { :class => 'span4' } }) do |f|
   = f.error_notification
 
   .form-inputs
     = f.input :title
     = f.input :text, :as => :text
     = f.input :image, :label => "Add a photo"
-
-    #gmaps-canvas{:style => 'width:100%;height:400px;'}
-    %hr
-
-    %input.span6#gmaps-input-address{ :type => 'text', :placeholder => 'Start typing a place name...' }
-
-    #gmaps-error
-
-    %strong Latitude:
-    %span#gmaps-output-latitude
-    %br
-    %strong Longitude:
-    %span#gmaps-output-longitude
+    = f.input :address, :input_html =>{:id => 'gmaps-input-address'}, :placeholder => 'Start typing a place name...'
+    = f.input :latitude, :as => :hidden, :input_html => {:id => 'gmaps-output-latitude'}
+    = f.input :longitude, :as => :hidden, :input_html => {:id => 'gmaps-output-longitude'}
     
   = f.button :wrapped, :cancel => :back
+
