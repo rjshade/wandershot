@@ -12,6 +12,11 @@ h1.frontpage {
 .center {
   text-align: center;
 }
+ul {
+  li.full-width {
+    width: 90%;
+  }
+}
 
 .post {
   .date {
@@ -34,6 +39,25 @@ h1.frontpage {
     }
   }
   z-index: 1;
+}
+
+.post-teaser {
+  height: 300px;
+  margin-top: 30px;
+  border: 1px solid #efefef;
+  padding: 10px;
+  /*-moz-box-shadow:     0px 0px 5px #ccc; [> Firefox <]*/
+  /*-webkit-box-shadow:  0px 0px 5px #ccc; [> Safari, Chrome <]*/
+  /*box-shadow:          0px 0px 5px #ccc; [> CSS3 <]*/
+  -moz-border-radius:    3px; /* Firefox */
+  -webkit-border-radius: 3px; /* Safari, Chrome */
+  border-radius:         3px; /* CSS3 */
+
+  &:hover {
+    -moz-box-shadow:     0px 0px 10px #efefef; /* Firefox */
+    -webkit-box-shadow:  0px 0px 10px #efefef; /* Safari, Chrome */
+    box-shadow:          0px 0px 10px #efefef; /* CSS3 */
+  }
 }
 
 .story {

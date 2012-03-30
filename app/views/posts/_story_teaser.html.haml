@@ -1,19 +1,20 @@
 .span4
   - if post || placeholder
-    .page-header
+    .post-teaser
+      .page-header
+        - if placeholder
+          %h3 Post title
+        - else
+          = render :partial => 'posts/title', :locals => { :post => post }
+      - if placeholder || post.image?
+        %ul.thumbnails
+          %li.full-width
+            - if placeholder
+              = image_tag 'http://placehold.it/360x240&text=post+image', :class => 'thumbnail'
+            - else
+              = link_to (image_tag post.image.url(:medium)), story_post_path( @story, post ), :class=>'thumbnail'
       - if placeholder
-        %h3 Post title
+        Description of your post...
       - else
-        = render :partial => 'posts/title', :locals => { :post => post }
-    - if placeholder || post.image?
-      %ul.thumbnails
-        %li.span4
-          - if placeholder
-            = image_tag 'http://placehold.it/360x240&text=post+image', :class => 'thumbnail'
-          - else
-            = link_to (image_tag post.image.url(:medium)), story_post_path( @story, post ), :class=>'thumbnail'
-    - if placeholder
-      Description of your post...
-    - else
-      = truncate_html((md post.text), :length => 200, :omission => "...".html_safe)
-      .center= link_to 'Read more »', story_post_path( @story, post )
+        = truncate_html((md post.text), :length => 200, :omission => "...".html_safe)
+        .center= link_to 'Read more »', story_post_path( @story, post )
