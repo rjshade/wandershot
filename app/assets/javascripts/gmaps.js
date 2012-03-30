@@ -4,14 +4,17 @@ var marker;
 
 // initialise the google maps objects, and add listeners
 function gmaps_init(){
-  // first we create a map object with some default configuration
+
+  // center of the universe
   var latlng = new google.maps.LatLng(51.751724,-1.255284);
+
   var options = {
     zoom: 2,
     center: latlng,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
+  // create our map object
   map = new google.maps.Map(document.getElementById("gmaps-canvas"), options);
 
   // the geocoder object allows us to do latlng lookup based on address
@@ -43,9 +46,8 @@ function update_map( geometry ) {
 
 // fill in the UI elements with new position data
 function update_ui( address, latLng ) {
-  $('#address').val(address);
   $('#address').autocomplete("close");
-
+  $('#address').val(address);
   $('#latitude').html(latLng.lat());
   $('#longitude').html(latLng.lng());
 }
@@ -66,7 +68,7 @@ function geocode_lookup( type, value, update ) {
   request[type] = value;
 
   geocoder.geocode(request, function(results, status) {
-    $('#map-search-error').html('');
+    $('#gmaps-error').html('');
     if (status == google.maps.GeocoderStatus.OK) {
       // Google geocoding has succeeded!
       if (results[0]) {
@@ -78,7 +80,7 @@ function geocode_lookup( type, value, update ) {
         if( update ) { update_map( results[0].geometry ) }
       } else {
         // Geocoder status ok but no results!?
-        $('#map-search-error').html("Sorry, something went wrong. Try again!");
+        $('#gmaps-error').html("Sorry, something went wrong. Try again!");
       }
     } else {
       // Google Geocoding has failed. Two common reasons:
@@ -87,11 +89,11 @@ function geocode_lookup( type, value, update ) {
 
       if( type == 'address' ) {
         // User has typed in an address which we can't geocode to a location
-        $('#map-search-error').html("Sorry! We couldn't find " + value + ". Try a different search term, or click the map." );
+        $('#gmaps-error').html("Sorry! We couldn't find " + value + ". Try a different search term, or click the map." );
       } else {
         // User has clicked or dragged marker to somewhere that Google can't do a reverse lookup for
         // In this case we display a warning, clear the address box, but fill in LatLng
-        $('#map-search-error').html("Woah... that's pretty remote! You're going to have to manually enter a place name." );
+        $('#gmaps-error').html("Woah... that's pretty remote! You're going to have to manually enter a place name." );
         update_ui('', value)
       }
     };
@@ -132,8 +134,11 @@ function autocomplete_init() {
     if(event.keyCode == 13) {
       geocode_lookup( 'address', $('#address').val(), true );
 
-      // close the dropdown menu
-      $('#address').autocomplete("close")
+      // ensures dropdown disappears when enter is pressed
+      $('#address').autocomplete("disable")
+    } else {
+      // re-enable if previously disabled above
+      $('#address').autocomplete("enable")
     }
   });
 }; // autocomplete_init

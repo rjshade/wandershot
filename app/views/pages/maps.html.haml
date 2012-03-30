@@ -1,18 +1,19 @@
 .row
   .span12
     #gmaps-canvas{:style => 'width:100%;height:400px;'}
-
     %hr
 
 .row
   .span6.offset3
     .input
-      %input.span6#address{ :type => 'text', :placeholder => 'Start typing a place name...' }
+      %input.span6#gmaps-address{ :type => 'text', :placeholder => 'Start typing a place name...' }
+
+    #gmaps-error
+
     .results
       %strong Latitude:
-      %span#latitude
+      %span#gmaps-output-latitude
       %br
       %strong Longitude:
-      %span#longitude
+      %span#gmaps-output-longitude
     
-    #map-search-error
