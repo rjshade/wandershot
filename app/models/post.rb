@@ -16,8 +16,7 @@ class Post
 
   field :title, :type => String
   slug :title, :scope => :story
-  validates_format_of :title, without: /(?i)new/
-  validates_format_of :title, without: /(?i)edit/
+  validates :title, presence: true, allow_blank: false, allow_nil: false
 
   field :text, :type => String
 

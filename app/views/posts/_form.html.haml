@@ -6,4 +6,17 @@
     = f.input :text, :as => :text
     = f.input :image, :label => "Add a photo"
 
+    #gmaps-canvas{:style => 'width:100%;height:400px;'}
+    %hr
+
+    %input.span6#gmaps-input-address{ :type => 'text', :placeholder => 'Start typing a place name...' }
+
+    #gmaps-error
+
+    %strong Latitude:
+    %span#gmaps-output-latitude
+    %br
+    %strong Longitude:
+    %span#gmaps-output-longitude
+    
   = f.button :wrapped, :cancel => :back
