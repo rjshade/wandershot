@@ -1,6 +1,7 @@
 .span4
   - if post || placeholder
-    .post-teaser
+    .post-teaser{:onclick=>"location.href='#{story_post_path( @story, post )}';",
+                 :style=>"cursor:pointer;"}
       .page-header
         - if placeholder
           %h3 Post title
