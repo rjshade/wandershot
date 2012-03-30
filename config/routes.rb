@@ -10,4 +10,5 @@ Wandershot::Application.routes.draw do
 
   match 'about'   => 'pages#about'
   match 'contact' => 'pages#contact'
+  match 'maps'    => 'pages#maps'
 end
