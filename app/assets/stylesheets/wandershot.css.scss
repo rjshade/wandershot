@@ -42,13 +42,11 @@ ul {
 }
 
 .post-teaser {
-  height: 450px;
+  height: auto;
   margin-top: 30px;
   border: 1px solid #efefef;
   padding: 10px;
-  /*-moz-box-shadow:     0px 0px 5px #ccc; [> Firefox <]*/
-  /*-webkit-box-shadow:  0px 0px 5px #ccc; [> Safari, Chrome <]*/
-  /*box-shadow:          0px 0px 5px #ccc; [> CSS3 <]*/
+
   -moz-border-radius:    3px; /* Firefox */
   -webkit-border-radius: 3px; /* Safari, Chrome */
   border-radius:         3px; /* CSS3 */
