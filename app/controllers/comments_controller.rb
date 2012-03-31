@@ -5,10 +5,12 @@ class CommentsController < ApplicationController
     @parent_comment = @comment
 
     @comment = Comment.new(params[:comment])
-    @comment.user = current_user.id
-
-    @post.comments << @comment
-
-    redirect_to [@story,@post], :notice => "Added comment!"
+    if @comment.save
+      @comment.user = current_user.id
+      @post.comments << @comment
+      redirect_to [@story,@post], :notice => "Added comment!"
+    else
+      redirect_to [@story,@post], :notice => "Fail."
+    end
   end
 end
