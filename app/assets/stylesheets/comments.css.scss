@@ -1,0 +1,14 @@
+.comments {
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  .comment {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #efefef;
+  
+    .author {
+      font-weight: bold;
+    }
+  }
+}

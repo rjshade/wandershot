@@ -1,7 +1,8 @@
 When /^I comment on the post$/ do
-  pending # express the regexp above with the code you wish you had
+  fill_in('Add comment', :with => 'I can haz comment?')
+  click_button('Create Comment')
 end
 
 Then /^I should see the comment$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content('I can haz comment?')
 end

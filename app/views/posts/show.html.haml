@@ -10,6 +10,18 @@
               = image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@post.address}&zoom=10&size=500x300&maptype=terrain&sensor=false&", :class => "gmaps-image"
       = md @post.text
 
+      .comments
+        - @comments.each do |c|
+          .comment
+            .text= c.text
+            .author= c.user.name
+            .date= c.created_at.strftime('%d %B %Y')
+
+      .new-comment-form
+        = simple_form_for [@story,@post,Comment.new] do |f|
+          = f.error_notification
+          = f.input :text, :label => 'Add comment', :id => 'add-comment'
+          = f.button :wrapped
     .span8
       %ul.thumbnails
         %li.span8
@@ -17,7 +29,10 @@
             .thumbnail
               = image_tag @post.image.url(:large)
  
-  .controls.center
-    - if current_user && current_user.id == @story.user.id
-      = link_to 'Edit', edit_story_post_path(@story,@post), :class => 'btn btn-success'
-    = link_to 'Back to story', story_path(@story), :class => 'btn'
+      .controls.center
+        - if current_user && current_user.id == @story.user.id
+          = link_to 'Edit', edit_story_post_path(@story,@post), :class => 'btn btn-success'
+        = link_to 'Back to story', story_path(@story), :class => 'btn'
+
+
+ 

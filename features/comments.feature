@@ -10,5 +10,6 @@ Feature: Comments
 
   Scenario: Post comment
     Given I am logged in
+    And I am on the post page
     When I comment on the post
     Then I should see the comment

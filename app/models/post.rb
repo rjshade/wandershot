@@ -25,6 +25,8 @@ class Post
 
   belongs_to :story
 
+  has_many :comments
+
   scope :by_date, ascending(:created_at)
 
   def self.with_images
