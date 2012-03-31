@@ -14,6 +14,10 @@ Given /^I have a post$/ do
   @post = @story.posts.create!(:title => 'Post Title', :text => 'Post body text')
 end
 
+Given /^there is a post$/ do
+  @post = @story.posts.create!(:title => 'Post Title', :text => 'Post body text')
+end
+
 Given /^I am on the post page$/ do
   visit story_post_path(@story,@post)
 end
