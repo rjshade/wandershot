@@ -21,6 +21,10 @@ Feature: Story
     Given I have a story
     And I am on the story page
     And I create a new post
+    # on the new post page
+    Then I should see the post
+    And I am on the story page
+    # on the story page
     Then I should see the post
 
   Scenario: Edit an existing post

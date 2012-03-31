@@ -1,6 +1,6 @@
 .span4
   - if post || placeholder
-    .post-teaser{:onclick=>"location.href='#{story_post_path( @story, post )}';",
+    .post-teaser{:onclick=>"location.href='#{ post.nil? ?  new_story_post_path(@story) : story_post_path( @story, post )}';",
                  :style=>"cursor:pointer;"}
       .page-header
         - if placeholder
@@ -11,7 +11,7 @@
         %ul.thumbnails
           %li.full-width
             - if placeholder
-              = image_tag 'http://placehold.it/360x240&text=post+image', :class => 'thumbnail'
+              = image_tag 'http://placehold.it/340x200&text=post+image', :class => 'thumbnail'
             - else
               = link_to (image_tag post.image.url(:medium)), story_post_path( @story, post ), :class=>'thumbnail'
       - if placeholder

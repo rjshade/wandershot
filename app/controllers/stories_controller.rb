@@ -12,7 +12,11 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find_by_slug(params[:id])
-    @posts = @story.posts.by_date.reverse
+    if @story.posts.size > 0 
+      @posts = @story.posts.by_date.reverse
+    else
+      @posts = [];
+    end
 
     respond_to do |format|
       format.html # show.html.erb

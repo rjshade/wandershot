@@ -3,7 +3,7 @@
     .span12
       .controls
         - if current_user && current_user.id == @story.user.id
-          = link_to 'Add post', new_story_post_path( @story ), :class => 'btn btn-mini'
+          = link_to 'Add post', new_story_post_path( @story ), :class => 'btn btn-mini', :id => 'new-post'
           = link_to 'Edit story', edit_story_path( @story ), :class => 'btn btn-mini' 
           = link_to 'Delete story', edit_story_path( @story ), :class => 'btn btn-mini btn-danger' 
 
@@ -11,12 +11,15 @@
     .span12
       .page-header
         =render :partial => 'stories/title', :locals => { :story => @story }
+  .row
+    .span4
       = md @story.summary
 
       - output = @story.posts.map{|p| { 'address' => p.address,
                                         'latitude' => p.latitude,
                                         'longitude' => p.longitude } }
 
+    .span8
       = content_tag 'div', nil, id: "gmaps-story-view", style: "width:100%;height:300px;", data: { locations: "#{ output.to_json }" }
 
   %hr
@@ -27,7 +30,8 @@
         .row
           - 3.times do |i|
             = render :partial => 'posts/story_teaser', :locals => { :post => nil, :placeholder => true }
-      - @posts.to_a.in_groups_of(3) do |posts|
-        .row
-          - posts.each do |p|
-            = render :partial => 'posts/story_teaser', :locals => { :post => p, :placeholder => false }
+      - else
+        - @posts.to_a.in_groups_of(3) do |posts|
+          .row
+            - posts.each do |p|
+              = render :partial => 'posts/story_teaser', :locals => { :post => p, :placeholder => false }

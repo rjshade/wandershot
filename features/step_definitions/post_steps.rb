@@ -1,5 +1,5 @@
 Given /^I create a new post$/ do
-  click_link ('New post')
+  click_link ('new-post')
   fill_in('Title', :with => 'My first post title')
   fill_in('Text',  :with => 'Body text of post')
   click_button ('Create Post')

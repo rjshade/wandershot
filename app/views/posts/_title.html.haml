@@ -2,7 +2,7 @@
   %h4
     = (defined? prefix) ? prefix : ''
     %span.title= link_to post.title, story_post_path(@story, post)
-    %span.date= post.created_at.strftime('%B %e %Y')
 
   %h4
-    %span.location= (post.address ? "near " + truncate(post.address) : 'unknown location')
+    %span.location= (post.address ? truncate(post.address) : 'no location')
+    %span.date= post.created_at.strftime('%B %e %Y')

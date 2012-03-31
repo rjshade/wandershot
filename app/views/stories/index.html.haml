@@ -5,7 +5,7 @@
 
     .controls.center
       - if current_user
-        = link_to 'New story', new_story_path, :class => 'btn btn-large btn-primary'
+        = link_to 'New story', new_story_path, :class => 'btn btn-large btn-primary', :id => 'new-story'
         %hr
 
 - @stories.each do |story|
