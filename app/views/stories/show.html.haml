@@ -13,6 +13,10 @@
         =render :partial => 'stories/title', :locals => { :story => @story }
       = md @story.summary
 
+      - output = @story.posts.all.to_json
+      = content_tag 'div', nil, id: "gmaps-story-view", style: "width:100%;height:300px;", data: { locations: "#{ output}" }
+      .out= output
+
   %hr
 
   .row
