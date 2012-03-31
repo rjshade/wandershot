@@ -1,24 +1,22 @@
 .post
   .row
+    .span12
+      .controls
+        - if current_user && current_user.id == @story.user.id
+          = link_to 'Edit', edit_story_post_path(@story,@post), :class => 'btn btn-mini'
+  .row
     .span4
       .page-header
         = render :partial => 'posts/title', :locals => { :post => @post }
+      Part of
+      = link_to @story.title, story_path(@story)
+      %hr
       -if @post.address
         %ul.thumbnails
           %li.span4
             .thumbnail
               = image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@post.address}&zoom=10&size=500x300&maptype=terrain&sensor=false&", :class => "gmaps-image"
       = md @post.text
-
-      .comments
-        .new-comment-form
-          = form_for [@story,@post,Comment.new], :html => {:style => 'margin-bottom: 0px'} do |f|
-            = f.text_field :text, :style => "width: 100%", :placeholder => "Comment on this post..."
-        - @comments.each do |c|
-          .comment
-            %span.author= c.user.name
-            %span.date= c.created_at.strftime('%d %B %Y')
-            .text= c.text
     .span8
       %ul.thumbnails
         %li.span8
@@ -26,7 +24,19 @@
             .thumbnail
               = image_tag @post.image.url(:large)
 
-      .controls.center
-        - if current_user && current_user.id == @story.user.id
-          = link_to 'Edit', edit_story_post_path(@story,@post), :class => 'btn btn-success'
-        = link_to 'Back to story', story_path(@story), :class => 'btn'
+      .comments
+        - if current_user
+          .new-comment-form
+            = form_for [@story,@post,Comment.new], :html => {:style => 'margin-bottom: 0px'} do |f|
+              = f.text_field :text, :style => "width: 100%", :placeholder => "Comment on this post..."
+        - else
+          = link_to 'Sign up', new_user_registration_path
+          or
+          = link_to 'login', new_user_session_path
+          to post a comment
+
+        - @comments.each do |c|
+          .comment
+            %span.author= c.user.name
+            %span.date= c.created_at.strftime('%d %B %Y')
+            .text= c.text

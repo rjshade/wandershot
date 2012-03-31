@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def show
     @story = Story.find_by_slug(params[:story_id])
     @post  = @story.posts.find_by_slug(params[:id])
-    @comments = @post.comments
+    @comments = @post.comments.newest_first
 
     respond_to do |format|
       format.html # show.html.erb
