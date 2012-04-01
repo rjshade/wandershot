@@ -1,14 +1,24 @@
 - if story
-  .story
-    .row.offset1
-      .span2
+  .story.teaser
+    .row
+      .span3
         %ul.thumbnails
-          %li.span2
-            - if story.posts.size > 0
-              - post = story.posts_with_images.shuffle.first
-              - if post
-                = link_to (image_tag post.image.url(:medium) ), story, :class=>'thumbnail'
-      .span8
+          - if story.posts_with_images.size > 0
+            - post = story.posts_with_images.shuffle.first
+            - img = link_to (image_tag post.image.url(:medium) ), story, :class=>'thumbnail'
+          - if story.posts_with_locations.size > 0
+            - map =link_to (image_tag story.static_map( 400, 267 ) ), story, :class=>'thumbnail'
+          - if map || img
+            %li.span3
+              - if img
+                = img
+            %li.span3
+              - if map
+                = map
+
+
+
+      .span9
         =render :partial => 'stories/title', :locals => { :story => story }
         %hr
         = truncate_html( (md story.summary), :length => 200 )

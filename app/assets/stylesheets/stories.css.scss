@@ -1,3 +1,28 @@
-// Place all the styles related to the Stories controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.story {
+  .title {
+    .title {
+      a {
+        color: #555;
+      }
+    }
+    .author, .author a {
+      color: #999;
+    }
+    .date {
+      color: #ccc;
+      float:right;
+    }
+    .location {
+      color: #999;
+    }
+  }
+
+  .teaser-summary {
+    height: 150px;
+  }
+
+  &.teaser {
+    padding-top: 10px;
+    padding-bottom: 30px;
+  }
+}

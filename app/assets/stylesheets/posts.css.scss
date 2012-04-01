@@ -1,3 +1,41 @@
-// Place all the styles related to the Posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.post {
+  .date {
+    color: #aaa;
+  }
+
+  .title {
+    .title {
+      color: #555;
+    }
+    .author {
+      color: #999;
+    }
+    .date {
+      color: #aaa;
+      float: right;
+    }
+    .location {
+      color: #999;
+    }
+  }
+  z-index: 1;
+}
+
+.post-teaser {
+  height: auto;
+  margin-bottom: 30px;
+  border: 1px solid #efefef;
+  padding: 10px;
+
+  -moz-border-radius:    3px; /* Firefox */
+  -webkit-border-radius: 3px; /* Safari, Chrome */
+  border-radius:         3px; /* CSS3 */
+
+  &:hover {
+    -moz-box-shadow:     0px 0px 10px #efefef; /* Firefox */
+    -webkit-box-shadow:  0px 0px 10px #efefef; /* Safari, Chrome */
+    box-shadow:          0px 0px 10px #efefef; /* CSS3 */
+  }
+}
+
+

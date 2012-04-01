@@ -33,4 +33,10 @@ class Post
   def self.with_images
     all.find_all{|post| post.image?}
   end
+
+  def static_map
+    if self.address
+      "http://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=14&size=300x200&maptype=roadmap&sensor=false".html_safe
+    end
+  end
 end

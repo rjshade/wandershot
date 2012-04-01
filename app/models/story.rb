@@ -24,4 +24,20 @@ class Story
   def posts_with_images
     self.posts.find_all{|post| post.image? }
   end
+
+  def posts_with_locations
+    self.posts.find_all{|post| (post.latitude? && post.longitude?)}
+  end
+
+  def static_map( width = 512, height = 512, type = "terrain" )
+    locations = self.posts_with_locations
+    markers = ''
+    self.posts_with_locations.each{|p| markers += marker(p.latitude,p.longitude)}
+    "http://maps.googleapis.com/maps/api/staticmap?size=#{width}x#{height}&maptype=#{type}&#{markers}sensor=false".html_safe
+  end
+
+  private
+  def marker( lat, lng )
+    "markers=color:red%7Ccolor:red%7C#{lat},#{lng}&".html_safe
+  end
 end
