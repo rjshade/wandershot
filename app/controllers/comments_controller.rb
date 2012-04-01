@@ -11,4 +11,14 @@ class CommentsController < ApplicationController
       redirect_to [@post.story,@post], :notice => "Fail."
     end
   end
+
+  def destroy
+    @comment = current_user.comments.find(params[:id])
+    @post = @comment.post
+    if @comment.destroy
+      redirect_to [@post.story,@post], :notice => "Deleted comment"
+    else
+      redirect_to [@post.story,@post], :notice => "Failed to delete comment."
+    end
+  end
 end

@@ -44,3 +44,6 @@
             %span.author= c.user.name
             %span.date= c.created_at.strftime('%d %B %Y')
             .text= c.text
+
+            -if c.user == current_user
+              = link_to 'Delete', c, :method => :delete, :class => 'btn btn-mini btn-danger'
