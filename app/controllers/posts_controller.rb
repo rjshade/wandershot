@@ -5,35 +5,21 @@ class PostsController < ApplicationController
     @story = Story.find_by_slug(params[:story_id])
     @post  = @story.posts.find_by_slug(params[:id])
     @comments = @post.comments.newest_first
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @post }
-    end
   end
 
   def new
     @story = current_user.stories.find_by_slug(params[:story_id])
     @post = @story.posts.build
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @post }
-    end
   end
 
   def create
     @story = current_user.stories.find_by_slug(params[:story_id])
     @post = @story.posts.build(params[:post])
 
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to [@story,@post], notice: 'Post was successfully created.' }
-        format.json { render json: @post, status: :created, location: @post }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.save
+      redirect_to [@story,@post], notice: 'Post was successfully created.'
+    else
+      render action: "new"
     end
   end
 
@@ -46,24 +32,20 @@ class PostsController < ApplicationController
     @story = current_user.stories.find_by_slug(params[:story_id])
     @post = @story.posts.find_by_slug(params[:id])
 
-    respond_to do |format|
-      if @post.update_attributes(params[:post])
-        format.html { redirect_to [@story,@post], notice: 'Post was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update_attributes(params[:post])
+      redirect_to [@story,@post], notice: 'Post was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 
   def destroy
     @post = Post.find_by_slug(params[:id])
-    @post.destroy
-
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
+    @story = @post.story
+    if @post.destroy
+      redirect_to story_url(@story), notice: 'Post was successfully deleted'
+    else
+      redirect_to @post, notice: 'Sorry, something went wrong. Try again.'
     end
   end
 end

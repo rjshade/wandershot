@@ -1,5 +1,5 @@
 .page-header
-  %h2 Edit #{resource_name.to_s.humanize}
+  %h2 Account settings for #{resource.name}
 
 = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
   = f.error_notification
@@ -17,6 +17,15 @@
     or
     = link_to 'cancel', :back
 
-%h3 Cancel my account
-Unhappy? 
-= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete
+%hr
+
+.page-header
+  %h3 Delete my account
+%p
+  Unhappy? You can delete your #{wandershot_text} account at any time.
+
+%p
+  This will irrevocably delete your profile, all your stories, all your posts, and all your comments.
+
+%p
+  = link_to "Delete my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete, :class => 'btn btn-mini btn-danger'

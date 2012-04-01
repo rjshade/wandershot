@@ -4,6 +4,7 @@
       .controls
         - if current_user && current_user.id == @story.user.id
           = link_to 'Edit', edit_story_post_path(@story,@post), :class => 'btn btn-mini'
+          = link_to 'Delete', [@story,@post], :confirm => "Are you sure? This will irrevocably delete this post!", :method => :delete, :class => 'btn btn-mini btn-danger'
   .row
     .span4
       .page-header

@@ -32,6 +32,6 @@ class User
 
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 
-  has_many :stories
-  has_many :comments
+  has_many :stories, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
 end
