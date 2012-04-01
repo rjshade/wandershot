@@ -2,7 +2,7 @@ Given /^I create a new post$/ do
   click_link ('new-post')
   fill_in('Title', :with => 'My first post title')
   fill_in('Text',  :with => 'Body text of post')
-  click_button ('Create Post')
+  click_button ('Submit')
 end
 
 Then /^I should see the post$/ do
@@ -26,7 +26,7 @@ Given /^I edit the post$/ do
   click_link('Edit')
   fill_in('Title', :with => 'A new post title')
   fill_in('Text', :with => 'New post text')
-  click_button('Update Post')
+  click_button('Submit')
 end
 
 Then /^I should see the updated post$/ do

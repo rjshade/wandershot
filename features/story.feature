@@ -16,21 +16,3 @@ Feature: Story
     And I am on the story page
     And I edit the story
     Then I should see the updated story
-
-  Scenario: Create a new post
-    Given I have a story
-    And I am on the story page
-    And I create a new post
-    # on the new post page
-    Then I should see the post
-    And I am on the story page
-    # on the story page
-    Then I should see the post
-
-  Scenario: Edit an existing post
-    Given I have a story
-    And I have a post
-    And I am on the post page
-    And I edit the post
-    Then I should see the updated post
-

@@ -28,11 +28,12 @@ end
 Given /^I update my details$/ do
   fill_in('Name', :with => 'Changed Name')
   fill_in('Email', :with => 'new@email.com')
-  fill_in('Password', :with => 'please')
+  fill_in('Current password', :with => 'please')
   click_button('Update account')
 end
 
 Then /^I should see the new details$/ do
-  page.should have.contents('Changed Name')
-  page.should have.contents('new@email.com')
+  page.should have_content('You updated your account successfully.')
+  visit edit_user_registration_path
+  page.should have_content('Changed Name')
 end

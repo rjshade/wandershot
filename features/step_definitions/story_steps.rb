@@ -2,7 +2,7 @@ Given /^I create a new story$/ do
   click_link ('new-story')
   fill_in('Title', :with => 'My Super Story')
   fill_in('Summary', :with => 'This is an exciting description.')
-  click_button ('Create Story')
+  click_button ('Submit')
 end
 
 Given /^I have a story$/ do
@@ -21,7 +21,7 @@ Given /^I edit the story$/ do
   visit edit_story_path @story
   fill_in('Title', :with => 'A new title')
   fill_in('Summary', :with => 'A new summary')
-  click_button('Update Story')
+  click_button('Submit')
 end
 
 Then /^I should see the updated story$/ do
