@@ -8,5 +8,6 @@ class Comment
   scope :newest_first, descending(:created_at)
 
   belongs_to :post
+  belongs_to :story
   belongs_to :user
 end

@@ -12,6 +12,7 @@ class StoriesController < ApplicationController
     else
       @posts = [];
     end
+    @comments = @story.comments.newest_first
   end
 
   def new

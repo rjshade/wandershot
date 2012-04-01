@@ -25,18 +25,4 @@
             .thumbnail
               = image_tag @post.image.url(:large)
 
-      .comments
-        - if current_user
-          .new-comment-form
-            = form_for Comment.new, :html => {:'data-type' => 'html', :style => 'margin-bottom: 0px'}, :remote => true do |f|
-              = f.text_field :text, :style => "width: 100%", :placeholder => "Comment on this post..."
-              = hidden_field :post, :id
-        - else
-          = link_to 'Sign up', new_user_registration_path
-          or
-          = link_to 'login', new_user_session_path
-          to post a comment
-
-        #comment-block
-          - @comments.each do |c|
-            = render :partial => 'comments/show', :locals => { :comment => c }
+      = render :partial => 'comments/display_all_with_form', :locals => { :type => :post }

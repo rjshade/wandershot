@@ -10,7 +10,8 @@ class Story
   field :summary, :type => String
 
   belongs_to :user
-  has_many :posts
+  has_many :posts, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
 
   def length_in_days
     if self.posts.size > 0

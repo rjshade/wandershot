@@ -1,10 +1,15 @@
 class CommentsController < ApplicationController
   def create
-    @post = Post.find(params[:post][:id])
-
     @comment = Comment.new(params[:comment])
     @comment.user = current_user.id
-    @post.comments << @comment
+
+    if params[:post]
+      @post = Post.find(params[:post][:id])
+      @post.comments << @comment
+    elsif params[:story]
+      @story = Story.find(params[:story][:id])
+      @story.comments << @comment
+    end
 
     @comment.save
 

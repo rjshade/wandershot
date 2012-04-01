@@ -35,3 +35,8 @@
           .row
             - posts.each do |p|
               = render :partial => 'posts/story_teaser', :locals => { :post => p, :placeholder => false }
+  .row
+    .span12
+      .page-header
+        %h2 Comments
+      = render :partial => 'comments/display_all_with_form', :locals => { :type => :story }
