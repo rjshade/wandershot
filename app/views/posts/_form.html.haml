@@ -9,5 +9,7 @@
     = f.input :latitude, :as => :hidden, :input_html => {:id => 'gmaps-output-latitude'}
     = f.input :longitude, :as => :hidden, :input_html => {:id => 'gmaps-output-longitude'}
     
-  = f.button :wrapped, :cancel => :back
-
+  .form-actions
+    = f.button :submit, "Submit", :class => 'btn btn-primary'
+    or
+    = link_to 'cancel', :back

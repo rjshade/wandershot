@@ -21,3 +21,18 @@ And /^I am on the home page$/ do
   visit '/'
 end
 
+And /^I am on the account settings page$/ do
+  visit edit_user_registration_path
+end
+
+Given /^I update my details$/ do
+  fill_in('Name', :with => 'Changed Name')
+  fill_in('Email', :with => 'new@email.com')
+  fill_in('Password', :with => 'please')
+  click_button('Update account')
+end
+
+Then /^I should see the new details$/ do
+  page.should have.contents('Changed Name')
+  page.should have.contents('new@email.com')
+end
