@@ -2,13 +2,29 @@
   .comment {
     padding-top: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #efefef;
   
-    .author {
-      font-weight: 500;
+    .attribution {
+      .author a {
+        color: #262626;
+        font-weight: bold;
+        &:hover {
+          text-decoration: none;
+        }
+      }
+      .date {
+        font-size: 0.9em;
+      }
+
+      border-bottom: 1px solid #efefef;
     }
-    .date {
+
+    .controls {
       float: right;
+    }
+
+    .body {
+      padding-top: 5px;
+      padding-bottom: 5px;
     }
   }
 }

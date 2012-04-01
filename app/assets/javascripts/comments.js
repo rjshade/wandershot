@@ -1,8 +1,19 @@
 $(document).ready(function(){
   $(".delete-comment").live('ajax:complete', function(event, xhr, status) {
-    $(this).parent().toggle('fast', function(){ $(this).remove(); });
+    $(this).closest('.comment').fadeOut('fast')
   });
   $("#new_comment").bind('ajax:success', function(event, data, status, xhr) {
-    $(xhr.responseText).hide().prependTo("#comment-block").fadeIn('slow');
+    $(xhr.responseText).hide().prependTo("#comment-block").fadeIn('fast');
+  });
+
+  // controls are initially hidden with opacity 0
+  $('.comment').children('.controls').css({ opacity: 0.0 })
+  $('.comment').hover( function(){
+    // on hover they fade in so visible
+    $(this).children('.controls').fadeTo('fast',1);
+  },
+  function() {
+    // and fade out again...
+    $(this).children('.controls').fadeTo('fast',0);
   });
 });

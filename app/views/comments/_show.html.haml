@@ -5,9 +5,16 @@
     Something went wrong!
 - else
   .comment
-    %span.author= comment.user.name
-    %span.date= comment.created_at.strftime('%d %B %Y')
-    .text= comment.text
+    .controls
+      -if comment.user == current_user
+        = link_to '&times;'.html_safe, comment, :method => :delete, :class => 'delete-comment', :remote => true
 
-    -if comment.user == current_user
-      = link_to 'delete', comment, :method => :delete, :class => 'delete-comment', :remote => true
+    .attribution
+      %span.author= link_to comment.user.name, user_path( comment.user )
+      %span.date= time_ago_in_words(comment.created_at) + " ago"
+
+    .body
+      .text= md comment.text
+
+
+
