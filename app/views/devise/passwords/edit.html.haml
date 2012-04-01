@@ -2,12 +2,14 @@
   %h2 Change your password
 
 = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
-  = devise_error_messages!
-  = f.input :reset_password_token, :hidden => true
-  = f.input :password, "New password"
-  = f.label :password_confirmation, "Confirm new password"
+  = f.error_notification
+
+  = f.input :reset_password_token, :as => :hidden
+  = f.full_error :reset_password_token
+
+  .form-inputs
+    = f.input :password, "New password", :required => true
+    = f.label :password_confirmation, "Confirm new password", :required => true
 
   .form-actions
-    = f.button :submit, :class => 'btn btn-primary'
-
-= render "links"
+    = f.button :submit, "Change my password", :class => 'btn btn-primary'

@@ -2,8 +2,9 @@
   %h2 Sign in to #{wandershot_text}
 
 = simple_form_for(@user, :url => session_path(:user)) do |f|
-  = f.input :email
-  = f.input :password
+  = f.input :email, :required => false, :autofocus => true 
+  = f.input :password, :required => false
+
   - if devise_mapping.rememberable?
     = f.input :remember_me, :as => :boolean
 
@@ -11,5 +12,3 @@
     = f.button :submit, "Sign in", :class => 'btn btn-primary'
     or
     = link_to 'cancel', :back
-
-= render "links"
