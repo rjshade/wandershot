@@ -40,8 +40,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find_by_slug(params[:id])
-    @story = @post.story
+    @story = current_user.stories.find_by_slug(params[:story_id])
+    @post  = @story.posts.find_by_slug(params[:id])
     if @post.destroy
       redirect_to story_url(@story), notice: 'Post was successfully deleted'
     else
