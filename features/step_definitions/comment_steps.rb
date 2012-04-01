@@ -1,6 +1,6 @@
 When /^I comment on the post$/ do
-  fill_in('Add comment', :with => 'I can haz comment?')
-  click_button('Create Comment')
+  fill_in('comment[text]', :with => 'I can haz comment?')
+  click_button('submit')
 end
 
 Then /^I should see the comment$/ do
