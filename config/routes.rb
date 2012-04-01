@@ -1,9 +1,9 @@
 Wandershot::Application.routes.draw do
   resources :stories do
-    resources :posts do
-      resources :comments
-    end
+    resources :posts
   end
+
+  resources :comments
 
   devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout', :sign_up => 'signup' }
   resources :users, :only => [:index,:show]

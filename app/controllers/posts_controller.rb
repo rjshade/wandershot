@@ -15,6 +15,7 @@ class PostsController < ApplicationController
   def create
     @story = current_user.stories.find_by_slug(params[:story_id])
     @post = @story.posts.build(params[:post])
+    @post.user = current_user
 
     if @post.save
       redirect_to [@story,@post], notice: 'Post was successfully created.'
@@ -42,6 +43,7 @@ class PostsController < ApplicationController
   def destroy
     @story = current_user.stories.find_by_slug(params[:story_id])
     @post  = @story.posts.find_by_slug(params[:id])
+
     if @post.destroy
       redirect_to story_url(@story), notice: 'Post was successfully deleted'
     else

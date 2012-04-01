@@ -1,3 +1,9 @@
 %p 
   User:
   = @user.name
+
+%h1 Comments
+- @user.comments.each do |c|
+  %p
+    = link_to c.text, story_post_path( c.post.story, c.post )
+  %hr

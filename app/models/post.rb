@@ -24,8 +24,9 @@ class Post
   field :longitude, :type => String
 
   belongs_to :story
+  belongs_to :user
 
-  has_many :comments
+  has_many :comments, :dependent => :destroy
 
   scope :by_date, ascending(:created_at)
 

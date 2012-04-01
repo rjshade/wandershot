@@ -28,8 +28,9 @@
       .comments
         - if current_user
           .new-comment-form
-            = form_for [@story,@post,Comment.new], :html => {:style => 'margin-bottom: 0px'} do |f|
+            = form_for Comment.new, :html => {:style => 'margin-bottom: 0px'} do |f|
               = f.text_field :text, :style => "width: 100%", :placeholder => "Comment on this post..."
+              = hidden_field :post, :id
               = # display off screen. needed for capybara tests.
               = f.button :submit, :style => "position: absolute; left: -9999px; width: 1px; height: 1px;"
         - else
