@@ -1,0 +1,13 @@
+- if comment.errors.any?
+  .alert.alert-error
+    %a{:class=>'close',:"data-dismiss"=>'alert'} ×
+    %strong Error
+    Something went wrong!
+- else
+  .comment
+    %span.author= comment.user.name
+    %span.date= comment.created_at.strftime('%d %B %Y')
+    .text= comment.text
+
+    -if comment.user == current_user
+      = link_to 'delete', comment, :method => :delete, :class => 'delete-comment', :remote => true

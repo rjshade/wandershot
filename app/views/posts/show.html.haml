@@ -28,22 +28,15 @@
       .comments
         - if current_user
           .new-comment-form
-            = form_for Comment.new, :html => {:style => 'margin-bottom: 0px'} do |f|
+            = form_for Comment.new, :html => {:'data-type' => 'html', :style => 'margin-bottom: 0px'}, :remote => true do |f|
               = f.text_field :text, :style => "width: 100%", :placeholder => "Comment on this post..."
               = hidden_field :post, :id
-              = # display off screen. needed for capybara tests.
-              = f.button :submit, :style => "position: absolute; left: -9999px; width: 1px; height: 1px;"
         - else
           = link_to 'Sign up', new_user_registration_path
           or
           = link_to 'login', new_user_session_path
           to post a comment
 
-        - @comments.each do |c|
-          .comment
-            %span.author= c.user.name
-            %span.date= c.created_at.strftime('%d %B %Y')
-            .text= c.text
-
-            -if c.user == current_user
-              = link_to 'Delete', c, :method => :delete, :class => 'btn btn-mini btn-danger'
+        #comment-block
+          - @comments.each do |c|
+            = render :partial => 'comments/show', :locals => { :comment => c }
