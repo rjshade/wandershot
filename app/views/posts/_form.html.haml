@@ -1,15 +1,24 @@
-= simple_form_for([@story,@post], :defaults => { :input_html => { :class => 'span4' } }) do |f|
-  = f.error_notification
-
-  .form-inputs
-    = f.input :title
-    = f.input :text, :as => :text
-    = f.input :image, :label => "Add a photo"
-    = f.input :address, :input_html =>{:id => 'gmaps-input-address'}, :placeholder => 'Start typing a place name...'
-    = f.input :latitude, :as => :hidden, :input_html => {:id => 'gmaps-output-latitude'}
-    = f.input :longitude, :as => :hidden, :input_html => {:id => 'gmaps-output-longitude'}
+.row
+  .span6
+    = simple_form_for([@story,@post], :defaults => { :input_html => { :class => 'span4' } }) do |f|
+      = f.error_notification
     
-  .form-actions
-    = f.button :submit, "Submit", :class => 'btn btn-primary'
-    or
-    = link_to 'cancel', :back
+      .form-inputs
+        = f.input :title
+        = f.input :text, :as => :text
+        = f.input :image, :label => "Add a photo"
+        = f.input :address, :input_html =>{:id => 'gmaps-input-address'}, :placeholder => 'Start typing a place name...'
+        = f.input :latitude, :as => :hidden, :input_html => {:id => 'gmaps-output-latitude'}
+        = f.input :longitude, :as => :hidden, :input_html => {:id => 'gmaps-output-longitude'}
+
+      .form-actions
+        = f.button :submit, "Submit", :class => 'btn btn-primary'
+        or
+        = link_to 'cancel', :back
+  .span6
+    %ul.thumbnails
+      %li.span6
+        -if @post.image?
+          = link_to (image_tag @post.image.url(:large)), '#', :class=>'thumbnail'
+    #gmaps-canvas{:style => 'width:100%;height:200px;'}
+    #gmaps-error

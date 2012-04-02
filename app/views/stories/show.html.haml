@@ -14,13 +14,12 @@
   .row
     .span4
       = md @story.summary
-
-      - output = @story.posts.map{|p| { 'address' => p.address,
-                                        'latitude' => p.latitude,
-                                        'longitude' => p.longitude } }
-
     .span8
-      = content_tag 'div', nil, id: "gmaps-story-view", style: "width:100%;height:300px;", data: { locations: "#{ output.to_json }" }
+      - output = @story.posts_with_locations.map{|p| { 'address'   => p.address,
+                                                       'latitude'  => p.latitude,
+                                                       'longitude' => p.longitude } }
+      - if output.size > 0
+        = content_tag 'div', nil, id: "gmaps-story-view", style: "width:100%;height:300px;", data: { locations: "#{ output.to_json }" }
 
   %hr
 
