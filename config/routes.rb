@@ -7,8 +7,9 @@ Wandershot::Application.routes.draw do
 
   devise_for :users, :path_names => { :sign_in => 'login',
                                       :sign_out => 'logout',
-                                      :sign_up => 'signup' }
-
+                                      :sign_up => 'signup' },
+                     :controllers => { :sessions => 'sessions',
+                                       :registrations => 'registrations' }
   resources :users, :only => [:index,:show]
 
   root :to => 'home#index'
