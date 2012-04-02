@@ -7,9 +7,9 @@ jQuery ->
   $(".login-button").click ->
     target = ($ @).attr('data-target')
     url = ($ @).attr('href')
-    $(target).load('/users/login #modal-block');
+    $(target).load('/users/login .devise');
 
   $(".join-button").click ->
     target = ($ @).attr('data-target')
     url = ($ @).attr('href')
-    $(target).load('/users/signup #modal-block');
+    $(target).load('/users/signup .devise');
