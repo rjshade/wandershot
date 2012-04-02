@@ -8,8 +8,16 @@ Feature: Comments
     And there is a story
     And there is a post
 
-  Scenario: Post comment
+  Scenario: Add a Post comment
     Given I am logged in
     And I am on the post page
     When I comment on the post
+    Then the post should have a comment
+    Then I should see the comment
+
+  Scenario: Add a Story comment
+    Given I am logged in
+    And I am on the story page
+    When I comment on the story
+    Then the story should have a comment
     Then I should see the comment

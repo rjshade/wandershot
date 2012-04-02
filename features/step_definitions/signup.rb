@@ -1,5 +1,5 @@
 Given /^I click the join button$/ do
-  click_link 'join-button'
+  click_link 'Sign up'
 end
 
 Then /^I enter my details$/ do
