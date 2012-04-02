@@ -6,9 +6,9 @@
         = hidden_field type, :id
         = f.button :submit, :class => 'btn btn-mini'
     - else
-      = link_to 'Sign up', new_user_registration_path
+      = render :partial => 'users/signup_link',  :locals => { :content => "Sign up" }
       or
-      = link_to 'login', new_user_session_path
+      = render :partial => 'users/login_link',  :locals => { :content => "login" }
       to post a comment
 
   #comment-block

@@ -1,8 +1,4 @@
 - classes = ((defined? classes) ? classes : "")
 - content = ((defined? content) ? content : "")
 
-%a{ :href => new_user_registration_path, :class         => "join-button #{classes}",
-                                         :"data-target" => "#userModal",
-                                         :"data-toggle" => "modal",
-                                         :"data-prev"   => request.fullpath}
-  = content
+=link_to(content, new_user_registration_path, :class => "join-button #{classes}", :"data-target" => "#userModal", :"data-toggle" => "modal")
