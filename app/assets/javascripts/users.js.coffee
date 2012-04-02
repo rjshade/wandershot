@@ -4,16 +4,12 @@
 
 # for triggering modal login/signup dialogs
 jQuery ->
-  # first change link target
-  $('.join-button').attr('href', null)
+  $(".login-button").click ->
+    target = ($ @).attr('data-target')
+    url = ($ @).attr('href')
+    $(target).load('/users/login #modal-block');
 
-  # now trigger modal
-  $('.join-button').click ->
-    $('#signup-modal').modal('show')
-
-  # first change link target
-  $('.login-button').attr('href', null)
-
-  # now trigger modal
-  $('.login-button').click ->
-    $('#login-modal').modal('show')
+  $(".join-button").click ->
+    target = ($ @).attr('data-target')
+    url = ($ @).attr('href')
+    $(target).load('/users/signup #modal-block');
