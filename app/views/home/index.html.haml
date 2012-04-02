@@ -36,6 +36,4 @@
         %a{ :href => new_story_path, :class => 'btn btn-large btn-primary' }
           Start a new story...
       - else
-        %a{ :href => new_user_registration_path, :class => 'join-button btn btn-large btn-primary' }
-          Sign up now and get started!
-
+        = render :partial => 'users/signup_link', :locals => { :content => "Sign up now and get started!", :classes => "btn btn-large btn-primary" }
