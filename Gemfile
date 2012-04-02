@@ -18,6 +18,12 @@ gem 'mongoid-paperclip', :require => "mongoid_paperclip"
 gem 'aws-sdk'                 # to talk to amazon s3
 gem 'aws-s3'                  # to talk to amazon s3
 
+group :development do
+  gem 'guard-cucumber'
+  gem 'guard-spork'
+  gem 'growl'
+end
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
