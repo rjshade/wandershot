@@ -1,11 +1,16 @@
-.page-header
-  %h2 Resend unlock instructions
-
-= simple_form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f|
-  = f.error_notification
-
-  = f.input :email, :required => true
-  .form-actions
-    = f.button :submit, "Resend unlock instructions", :class => 'btn btn-primary'
-    or
-    = link_to 'cancel', :back
+.row
+  .span6.offset3
+    .devise
+      .page-header
+        %h2 Resend unlock instructions
+      
+      = simple_form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f|
+        = f.error_notification
+      
+        = f.input :email, :required => true
+        .form-actions
+          = f.button :submit, "Resend unlock instructions", :class => 'btn btn-primary'
+          or
+          = link_to 'cancel', :back
+      %hr
+      = render "links"

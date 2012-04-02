@@ -1,17 +1,22 @@
-#modal-block
-  .page-header
-    %h2 Create a #{wandershot_text} account
-  
-  = simple_form_for(@user) do |f|
-    = f.error_notification
-  
-    .form-inputs
-      = f.input :name, :required => true, :autofocus => true
-      = f.input :email, :required => true
-      = f.input :password, :required => true
-      = f.input :password_confirmation, :required => true
-  
-    .form-actions
-      = f.button :submit, "Create account", :class => 'btn btn-primary'
-      or
-      = link_to 'cancel', :back
+.row
+  .span6.offset3
+    .devise
+      .page-header
+        %h2 Create a #{wandershot_text} account
+      
+      = simple_form_for(@user) do |f|
+        = f.error_notification
+      
+        .form-inputs
+          = f.input :name, :required => true, :autofocus => true
+          = f.input :email, :required => true
+          = f.input :password, :required => true
+          = f.input :password_confirmation, :required => true
+      
+        .form-actions
+          = f.button :submit, "Create account", :class => 'btn btn-primary'
+          or
+          = link_to 'cancel', :back
+
+      %hr
+      = render "links"

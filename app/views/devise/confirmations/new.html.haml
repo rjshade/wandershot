@@ -1,11 +1,16 @@
-.page-header
-  %h2 Resend confirmation instructions
-= simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
-  = f.error_notification
-
-  = f.input :email, :required => true
-
-  .form-actions
-    = f.button :submit, "Resend confirmation instructions", :class => 'btn btn-primary'
-    or
-    = link_to 'Cancel', :back
+.row
+  .span6.offset3
+    .devise
+      .page-header
+        %h2 Resend confirmation instructions
+      = simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+        = f.error_notification
+      
+        = f.input :email, :required => true
+      
+        .form-actions
+          = f.button :submit, "Resend confirmation instructions", :class => 'btn btn-primary'
+          or
+          = link_to 'Cancel', :back
+        %hr
+        = render "links"
