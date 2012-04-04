@@ -6,8 +6,7 @@ class User
 
   has_mongoid_attached_file :avatar, {
                             :styles => {
-                              :thumb    => ['64x64#',     :jpg],
-                              :medium   => ['400x400>',   :jpg],
+                              :thumb    => ['96x96#',     :jpg],
                               :large    => ['800x800>',   :jpg] },
                             :default_url => '/assets/avatar/avatar_default_96x96.png'
                             }.merge(PAPERCLIP_STORAGE_OPTIONS)
