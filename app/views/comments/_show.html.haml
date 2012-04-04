@@ -11,7 +11,7 @@
       %span.date= time_ago_in_words(comment.created_at) + " ago"
 
       .controls
-        -if comment.user == current_user
+        -if can? :manage, comment
           = link_to '&times;'.html_safe, comment, :method => :delete,
                                                   :class => 'delete-comment',
                                                   :remote => true

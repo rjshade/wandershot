@@ -42,4 +42,11 @@ class User
 
   has_many :stories, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+
+  # roles, e.g. Admin
+  has_and_belongs_to_many :roles
+
+  def has_role?(role_sym)
+    roles.any? { |r| r.name.underscore.to_sym == role_sym }
+  end
 end
