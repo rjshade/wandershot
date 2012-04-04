@@ -10,11 +10,10 @@
         = link_to '&times;'.html_safe, comment, :method => :delete, :class => 'delete-comment', :remote => true
 
     .attribution
+      .avatar
+        = image_tag comment.user.avatar(:thumb)
       %span.author= link_to comment.user.name, user_path( comment.user )
       %span.date= time_ago_in_words(comment.created_at) + " ago"
 
     .body
       .text= md comment.text
-
-
-

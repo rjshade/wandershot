@@ -2,6 +2,15 @@ class User
   include Mongoid::Document
   include Mongoid::Slug
   include Mongoid::Timestamps
+  include Mongoid::Paperclip
+
+  has_mongoid_attached_file :avatar, {
+                            :styles => {
+                              :thumb    => ['64x64#',     :jpg],
+                              :medium   => ['400x400>',   :jpg],
+                              :large    => ['800x800>',   :jpg] },
+                            :default_url => '/assets/avatar/avatar_default_96x96.png'
+                            }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -30,7 +39,7 @@ class User
   validates_presence_of :name
   # NOTE: devise deals with validation of email + password
 
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :avatar
 
   has_many :stories, :dependent => :destroy
   has_many :comments, :dependent => :destroy

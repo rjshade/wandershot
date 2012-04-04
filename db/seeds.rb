@@ -26,4 +26,3 @@ Integer varius aliquet vulputate. Fusce id purus felis, vitae commodo lacus. Sus
   end
   puts "Story #{s} created"
 end
-

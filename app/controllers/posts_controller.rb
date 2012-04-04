@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
 
+  def index
+    @posts = Post.with_images.shuffle
+  end
+
   def show
     @story = Story.find_by_slug(params[:story_id])
     @post  = @story.posts.find_by_slug(params[:id])

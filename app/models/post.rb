@@ -7,10 +7,9 @@ class Post
   has_mongoid_attached_file :image, {
                             :styles => {
                               :original => ['1920x1680>', :jpg],
-                              :thumb    => ['100x100#',   :jpg],
+                              :small    => ['200x200>',   :jpg],
                               :medium   => ['400x400>',   :jpg],
                               :large    => ['800x800>',   :jpg] }
-
                             }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
   field :title, :type => String

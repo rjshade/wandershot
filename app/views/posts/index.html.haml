@@ -1,0 +1,8 @@
+.row
+  .span12
+    %ul.thumbnails
+      - @posts.in_groups_of(6) do |posts|
+        - posts.each do |post|
+          %li.span2
+            - if post
+              = link_to (image_tag post.image()), story_post_path(post.story,post), :class => 'thumbnail'
