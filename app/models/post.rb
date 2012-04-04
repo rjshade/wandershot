@@ -9,7 +9,8 @@ class Post
                               :original => ['1920x1680>', :jpg],
                               :small    => ['200x200>',   :jpg],
                               :medium   => ['400x400>',   :jpg],
-                              :large    => ['800x800>',   :jpg] }
+                              :large    => ['800x800>',   :jpg] },
+                            :default_url => '/assets/posts/default_photo_1024x768.png'
                             }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
   field :title, :type => String

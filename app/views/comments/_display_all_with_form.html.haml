@@ -1,4 +1,8 @@
 .comments
+  #comment-block
+    - if @comments
+      - @comments.each do |c|
+        = render :partial => 'comments/show', :locals => { :comment => c }
   .new-comment-form
     - if current_user
       = form_for Comment.new, :html => {:'data-type' => 'html', :style => 'margin-bottom: 0px'}, :remote => true do |f|
@@ -11,7 +15,3 @@
       = render :partial => 'users/login_link',  :locals => { :content => "login" }
       to post a comment
 
-  #comment-block
-    - if @comments
-      - @comments.each do |c|
-        = render :partial => 'comments/show', :locals => { :comment => c }

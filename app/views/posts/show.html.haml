@@ -6,7 +6,7 @@
           = link_to 'Edit', edit_story_post_path(@story,@post), :class => 'btn btn-mini'
           = link_to 'Delete', [@story,@post], :confirm => "Are you sure? This will irrevocably delete this post!", :method => :delete, :class => 'btn btn-mini btn-danger'
   .row
-    .span4
+    %div{:class => @post.image? ? 'span4' : 'span12'}
       .page-header
         = render :partial => 'posts/title', :locals => { :post => @post }
       Part of
@@ -18,11 +18,11 @@
             .thumbnail
               = image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@post.address}&zoom=10&size=500x300&maptype=terrain&sensor=false&", :class => "gmaps-image"
       = md @post.text
-    .span8
-      %ul.thumbnails
-        %li.span8
-          -if @post.image?
+    -if @post.image?
+      .span8
+        %ul.thumbnails
+          %li.span8
             .thumbnail
               = image_tag @post.image.url(:large)
 
-      = render :partial => 'comments/display_all_with_form', :locals => { :type => :post }
+= render :partial => 'comments/display_all_with_form', :locals => { :type => :post }
