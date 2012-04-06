@@ -20,6 +20,8 @@
     }
   }
 
+  .gmaps
+
   .teaser-summary {
     height: 150px;
   }
@@ -49,9 +51,9 @@
   .date {
     width: 120px;
     min-height: 180px;
-    font-size: 1.5em;
-    font-weight: 100;
-    color: #777;
+    font-size: 1.3em;
+    font-weight: 300;
+    /*color: #777;*/
     border-right: 1px solid #efefef;
     float:left;
   }
@@ -70,10 +72,10 @@
   }
   .body {
     .location {
-      font-weight: 100;
-      font-size: 1.5em;
       color: #555;
       padding-bottom: 5px;
+      font-size: 1.3em;
+      font-weight: 300;
     }
     width: 500px;
     float: right;
