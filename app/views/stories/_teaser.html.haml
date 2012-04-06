@@ -1,25 +1,15 @@
 - if story
-  .story.teaser
-    .row
-      .span3
-        %ul.thumbnails
-          - if story.posts_with_images.size > 0
-            - post = story.posts_with_images.shuffle.first
-            - img = link_to (image_tag post.image.url(:medium) ), story, :class=>'thumbnail'
-          - if story.posts_with_locations.size > 0
-            - map =link_to (image_tag story.static_map( 400, 267 ) ), story, :class=>'thumbnail'
-          - if map || img
-            %li.span3
-              - if img
-                = img
-            %li.span3
-              - if map
-                = map
-
-
-
-      .span9
-        =render :partial => 'stories/title', :locals => { :story => story }
-        %hr
-        = truncate_html( (md story.summary), :length => 200 )
-        = link_to 'More »', story_path(story)
+  .row
+    .span12
+      .story.teaser
+        .text
+          =render :partial => 'stories/title', :locals => { :story => story }
+          %hr
+          = truncate_html( (md story.summary), :length => 200 )
+          = link_to 'More »', story_path(story)
+          
+        .images.center
+          - posts = story.posts_with_images.shuffle
+          - posts[0..6].each do |post|
+            %span.image
+              = link_to (image_tag post.image.url(:medium)), story

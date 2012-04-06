@@ -2,17 +2,21 @@ class StoriesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index,:show,:popular]
 
   def index
-    @stories = Story.all
+    @stories = Story.latest.limit(3)
   end
 
   def show
     @story = Story.find_by_slug(params[:id])
-    if @story.posts.size > 0 
-      @posts = @story.posts.by_date.reverse
+    if @story
+      if @story.posts.size > 0 
+        @posts = @story.posts.by_date.reverse
+      else
+        @posts = [];
+      end
+      @comments = @story.comments.newest_first
     else
-      @posts = [];
+      redirect_to stories_path, notice: "No story with the title #{params[:id].humanize.titleize}!"
     end
-    @comments = @story.comments.newest_first
   end
 
   def new

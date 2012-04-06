@@ -13,6 +13,8 @@ class Post
                             :default_url => '/assets/posts/default_photo_1024x768.png'
                             }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
+    field :date, :type => DateTime
+
   field :title, :type => String
   slug :title, :scope => :story
   validates :title, presence: true, allow_blank: false, allow_nil: false
@@ -28,7 +30,7 @@ class Post
 
   has_many :comments, :dependent => :destroy
 
-  scope :by_date, ascending(:created_at)
+  scope :by_date, ascending(:date)
 
   def self.with_images
     all.find_all{|post| post.image?}

@@ -13,6 +13,8 @@ class Story
   has_many :posts, :dependent => :destroy
   has_many :comments, :dependent => :destroy
 
+  scope :latest, descending(:created_at)
+
   def length_in_days
     if self.posts.size > 0
       (self.posts.last.created_at.to_datetime - self.posts.first.created_at.to_datetime).to_i
