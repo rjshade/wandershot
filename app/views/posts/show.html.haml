@@ -6,14 +6,27 @@
           = link_to 'Edit', edit_story_post_path(@story,@post), :class => 'btn btn-mini'
           = link_to 'Delete', [@story,@post], :confirm => "Are you sure? This will irrevocably delete this post!", :method => :delete, :class => 'btn btn-mini btn-danger'
   .row
+    .span12
+      = render :partial => 'posts/title', :locals => { :post => @post }
+  .row
     .span4
-      .page-header
-        = render :partial => 'posts/title', :locals => { :post => @post }
-
       -if @post.address
-        = image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@post.address}&zoom=10&size=500x300&maptype=terrain&sensor=false&", :class => "gmaps-image thumbnail"
+        .location
+          = image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@post.address}&zoom=10&size=500x300&maptype=terrain&sensor=false&", :class => "gmaps-image"
+          .caption
+            = truncate(@post.address, length: 60)
+
+
       = md @post.text
 
+    .span8
+      -if @post.image?
+        .center.main-image
+          = image_tag @post.image.url(:original)
+        %hr
+      = render :partial => 'comments/display_all_with_form', :locals => { :type => :post }
+  .row
+    .span12
       %ul.pager
         - if prev_post = @post.prev
           %li.previous
@@ -22,11 +35,3 @@
           %li.next
             = link_to 'next &rarr;'.html_safe, story_post_path(@story,next_post)
 
-    .span8
-      -if @post.image?
-        .center
-          = image_tag @post.image.url(:large)
-
-.page-header
-  %h4 Comments
-= render :partial => 'comments/display_all_with_form', :locals => { :type => :post }

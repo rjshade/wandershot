@@ -2,7 +2,10 @@
 
 .post {
   .title {
-    .title {
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #efefef;
+    .text {
       color: #555;
     }
     .author {
@@ -18,12 +21,30 @@
   }
   z-index: 1;
 
-  img{
-    max-width: 800px;
-    max-height: 500px;
-    margin-left:auto;
-    margin-right:auto;
-    @include image-style;
+  .main-image {
+    img{
+      max-width: 600px;
+      max-height: 400px;
+      margin-left:auto;
+      margin-right:auto;
+      @include image-style;
+    }
+  }
+
+  .location {
+    margin-bottom: 10px;
+    img.gmaps-image{
+      max-width: 300px;
+      max-height: 200px;
+      margin-left:auto;
+      margin-right:auto;
+      @include image-style;
+    }
+    .caption {
+      text-align: center;
+      font-size: 0.8em;
+      color: #777;
+    }
   }
 }
 
