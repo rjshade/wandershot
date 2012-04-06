@@ -8,7 +8,7 @@
         - else
           = render :partial => 'posts/title', :locals => { :post => post }
       - if placeholder || post.image?
-        .center
+        .center.image
           - if placeholder
             = image_tag 'http://placehold.it/340x200&text=post+image'
           - else

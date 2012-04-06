@@ -1,39 +1,41 @@
-.row
-  .span12
-    .page-header
-      %h1.frontpage
-        %span.main= wandershot_text
-        %span.subtitle minimalist travel blogging
-.row
-  .span8
-    %ul.thumbnails
-      %li.span8
-        - if @post
-          = link_to (image_tag @post.image.url(:large)), story_path(@post.story), :class=>'thumbnail'
-  .span4
-    .page-header
-      %h2
-        Explore...
-    %p
-      Create your own travel blog and share it with the world. Record your memories through photos and text.
-        
-    .page-header
-      %h2
-        Dream...
-    %p
-      Have a wander through our most popular blogs and find inspiration for your next adventure.
-
-    .page-header
-      %h2
-        Discover...
-    %p
-      It's easy to get started with #{wandershot_text}. Create an account and you can start posting content immediately!
-
-    %br
-    %br
-    .center
-      - if current_user
-        %a{ :href => new_story_path, :class => 'btn btn-large btn-primary' }
-          Start a new story...
-      - else
-        = render :partial => 'users/signup_link', :locals => { :content => "Sign up now and get started!", :classes => "btn btn-large btn-primary" }
+.home
+  .row
+    .span12
+      .page-header
+        %h1.frontpage
+          %span.main= wandershot_text
+          %span.subtitle minimalist travel blogging
+  .row
+    .span8
+      - if @post
+        .main-image
+          .center
+            = link_to (image_tag @post.image.url(:large)), story_path(@post.story)
+    .span4
+      .page-header
+        %h3
+          Explore...
+      %p
+        Have a look at some 
+        = link_to 'popular stories', popular_stories_path
+          
+      .page-header
+        %h3
+          Dream...
+      %p
+        Get inspired for your next adventure.
+  
+      .page-header
+        %h3
+          Discover...
+      %p
+        Create an account and you can start posting content immediately!
+  
+      %br
+      %br
+      .center
+        - if current_user
+          %a{ :href => new_story_path, :class => 'btn btn-large btn-primary' }
+            Start a new story...
+        - else
+          = render :partial => 'users/signup_link', :locals => { :content => "Sign up now and get started!", :classes => "btn btn-large btn-primary" }
