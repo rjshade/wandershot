@@ -21,19 +21,30 @@
       - if output.size > 0
         = content_tag 'div', nil, id: "gmaps-story-view", style: "width:100%;height:300px;", data: { locations: "#{ output.to_json }" }
 
-  %hr
-
   .row
     .span12
+      .page-header
+        %h3 Posts in this story
       - if @posts.size == 0
         .row
           - 3.times do |i|
             = render :partial => 'posts/story_teaser', :locals => { :post => nil, :placeholder => true }
       - else
-        - @posts.to_a.in_groups_of(3) do |posts|
-          .row
-            - posts.each do |p|
-              = render :partial => 'posts/story_teaser', :locals => { :post => p, :placeholder => false }
+        - @posts.each do |post|
+          .new-post-teaser
+            %span.date= post.get_date.strftime("%d %b %Y")
+            %span.image= (image_tag post.image(:small)) if post.image?
+            .body
+              - if loc = post.get_location
+                .location= loc
+              .text= truncate_html(md post.text)
+          .clearfix
+
+
+        -#- @posts.to_a.in_groups_of(3) do |posts|
+          -#.row
+            -#- posts.each do |p|
+              -#= render :partial => 'posts/story_teaser', :locals => { :post => p, :placeholder => false }
 
 =# Comment block
 .row

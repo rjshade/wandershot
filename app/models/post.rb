@@ -9,8 +9,7 @@ class Post
                               :original => ['1920x1680>', :jpg],
                               :small    => ['200x200>',   :jpg],
                               :medium   => ['400x400>',   :jpg],
-                              :large    => ['800x800>',   :jpg] },
-                            :default_url => '/assets/posts/default_photo_1024x768.png'
+                              :large    => ['800x800>',   :jpg] }
                             }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
     field :date, :type => DateTime
@@ -31,6 +30,15 @@ class Post
   has_many :comments, :dependent => :destroy
 
   scope :by_date, ascending(:date)
+
+  def get_date
+    self.date if self.date
+    created_at
+  end
+
+  def get_location
+    self.address if self.address
+  end
 
   def self.with_images
     all.find_all{|post| post.image?}
