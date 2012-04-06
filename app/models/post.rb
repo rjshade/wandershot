@@ -39,4 +39,19 @@ class Post
       "http://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=14&size=300x200&maptype=roadmap&sensor=false".html_safe
     end
   end
+
+  def next
+    posts = self.story.posts.by_date.to_a
+    idx = posts.index(self)
+    if idx < (posts.size - 1)
+      posts[idx+1]
+    end
+  end
+  def prev
+    posts = self.story.posts.by_date.to_a
+    idx = posts.index(self)
+    if idx > 0
+      posts[idx-1]
+    end
+  end
 end

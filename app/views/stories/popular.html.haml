@@ -1,0 +1,4 @@
+#popular-stories
+  - @stories.each do |story|
+    .item
+      = image_tag story.posts_with_images.first.image([:small,:medium].shuffle.first)

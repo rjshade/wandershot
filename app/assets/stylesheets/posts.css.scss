@@ -1,3 +1,5 @@
+@import "shared/image_style";
+
 .post {
   .title {
     .title {
@@ -15,6 +17,14 @@
     }
   }
   z-index: 1;
+
+  img{
+    max-width: 800px;
+    max-height: 500px;
+    margin-left:auto;
+    margin-right:auto;
+    @include image-style;
+  }
 }
 
 .post-teaser {
@@ -31,5 +41,13 @@
     -moz-box-shadow:     0px 0px 10px #efefef; /* Firefox */
     -webkit-box-shadow:  0px 0px 10px #efefef; /* Safari, Chrome */
     box-shadow:          0px 0px 10px #efefef; /* CSS3 */
+  }
+
+  img{
+    max-width: 340px;
+    max-height: 250px;
+    margin-left:auto;
+    margin-right:auto;
+    @include image-style;
   }
 }

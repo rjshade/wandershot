@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index,:show]
+  before_filter :authenticate_user!, :except => [:index,:show,:popular]
 
   def index
     @stories = Story.all
@@ -50,5 +50,9 @@ class StoriesController < ApplicationController
     else
       redirect_to @story, notice: "Sorry, something went wrong. Try again."
     end
+  end
+
+  def popular
+    @stories = Story.with_images
   end
 end

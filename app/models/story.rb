@@ -21,6 +21,10 @@ class Story
     end
   end
 
+  def self.with_images
+    all.find_all{|story| !story.posts_with_images.empty?}
+  end
+
   def posts_with_images
     self.posts.find_all{|post| post.image? }
   end

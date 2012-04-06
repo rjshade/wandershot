@@ -1,3 +1,5 @@
+@import "shared/image_style";
+
 .story {
   .title {
     .title {
@@ -24,5 +26,14 @@
   &.teaser {
     padding-top: 10px;
     padding-bottom: 30px;
+  }
+}
+
+#popular-stories {
+  margin: 0 auto;
+  .item {
+    img { @include image-style; }
+    margin: 10px;
+    float: left;
   }
 }

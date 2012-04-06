@@ -1,6 +1,10 @@
 Wandershot::Application.routes.draw do
   resources :stories do
-    resources :posts
+    resources :posts # /stories/abc/posts/xyz
+
+    collection do
+      get 'popular'  # /stories/popular
+    end
   end
 
   resources :comments

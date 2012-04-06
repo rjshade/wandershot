@@ -8,12 +8,11 @@
         - else
           = render :partial => 'posts/title', :locals => { :post => post }
       - if placeholder || post.image?
-        %ul.thumbnails
-          %li.full-width
-            - if placeholder
-              = image_tag 'http://placehold.it/340x200&text=post+image', :class => 'thumbnail'
-            - else
-              = link_to (image_tag post.image.url(:medium)), story_post_path( @story, post ), :class=>'thumbnail'
+        .center
+          - if placeholder
+            = image_tag 'http://placehold.it/340x200&text=post+image'
+          - else
+            = link_to (image_tag post.image.url(:medium)), story_post_path( @story, post )
       - if placeholder
         Description of your post...
       - else
