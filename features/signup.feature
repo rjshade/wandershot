@@ -7,4 +7,5 @@ Feature: Sign up
     Given I am on the home page
     And I click the join button
     And I enter my details
-    Then I should be welcomed to the site
+    Then I should be told to confirm my email
+    And there should be one user

@@ -11,6 +11,6 @@ Then /^I enter my details$/ do
   click_button ('Create account')
 end
 
-Then /^I should be welcomed to the site$/ do
-  page.should have_content('Welcome! You have signed up successfully.')
+Then /^I should be told to confirm my email$/ do
+  page.should have_content('confirmation link has been sent')
 end

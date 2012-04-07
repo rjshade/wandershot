@@ -1,10 +1,10 @@
 When /^I comment on the post$/ do
-  fill_in('comment[text]', :with => 'I can haz comment?')
+  fill_in('comment_text', :with => 'I can haz comment?')
   click_button('submit')
 end
 
 When /^I comment on the story$/ do
-  fill_in('comment[text]', :with => 'I can haz comment?')
+  fill_in('comment_text', :with => 'I can haz comment?')
   click_button('submit')
 end
 
