@@ -1,0 +1,3 @@
+-if @post.address
+  .location
+    = image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@post.address}&zoom=10&size=500x300&maptype=terrain&sensor=false&", :class => "gmaps-image"

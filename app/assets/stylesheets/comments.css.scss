@@ -1,13 +1,15 @@
 @import "shared/image_style";
 .comments {
+  margin-top: 20px;
+  margin-bottom: 20px;
   .new-comment-form {
     padding-bottom: 10px;
   }
+
   .comment {
     padding-top: 10px;
     padding-bottom: 10px;
 
- 
     .author {
       padding-bottom: 10px;
       border-bottom: 1px solid #efefef;

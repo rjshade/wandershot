@@ -1,37 +1,26 @@
 .post
   .row
     .span12
-      .controls
-        - if current_user && current_user.id == @story.user.id
-          = link_to 'Edit', edit_story_post_path(@story,@post), :class => 'btn btn-mini'
-          = link_to 'Delete', [@story,@post], :confirm => "Are you sure? This will irrevocably delete this post!", :method => :delete, :class => 'btn btn-mini btn-danger'
-  .row
-    .span12
-      = render :partial => 'posts/title', :locals => { :post => @post }
+      .page-header
+        .title
+          %h1.date= @post.created_at.strftime('%B %e %Y')
+          %h1.text= link_to @post.title, story_post_path(@story, @post)
+          -if loc = @post.get_location
+            %h1.location= loc
   .row
     .span4
-      -if @post.address
-        .location
-          = image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@post.address}&zoom=10&size=500x300&maptype=terrain&sensor=false&", :class => "gmaps-image"
-          .caption
-            = truncate(@post.address, length: 60)
-
-
-      = md @post.text
+      = render 'controls'
+      .content
+        = md @post.text
+      = render 'navigation'
 
     .span8
       -if @post.image?
         .center.main-image
           = image_tag @post.image.url(:original)
-        %hr
-      = render :partial => 'comments/display_all_with_form', :locals => { :type => :post }
+
   .row
     .span12
-      %ul.pager
-        - if prev_post = @post.prev
-          %li.previous
-            = link_to '&larr; prev'.html_safe, story_post_path(@story,prev_post)
-        - if next_post = @post.next
-          %li.next
-            = link_to 'next &rarr;'.html_safe, story_post_path(@story,next_post)
-
+      .page-header
+        %h2 Comments
+      = render :partial => 'comments/display_all_with_form', :locals => { :type => :post }

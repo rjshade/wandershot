@@ -23,28 +23,21 @@
 
   .row
     .span12
-      .page-header
-        %h3 Posts in this story
       - if @posts.size == 0
         .row
           - 3.times do |i|
             = render :partial => 'posts/story_teaser', :locals => { :post => nil, :placeholder => true }
       - else
         - @posts.each do |post|
-          .new-post-teaser
+          .post-teaser
             %span.date= post.get_date.strftime("%d %b %Y")
             %span.image= (image_tag post.image(:small)) if post.image?
             .body
               - if loc = post.get_location
                 .location= loc
               .text= truncate_html(md post.text)
-          .clearfix
 
-
-        -#- @posts.to_a.in_groups_of(3) do |posts|
-          -#.row
-            -#- posts.each do |p|
-              -#= render :partial => 'posts/story_teaser', :locals => { :post => p, :placeholder => false }
+              = link_to 'MOAR!', story_post_path(@story,post)
 
 =# Comment block
 .row

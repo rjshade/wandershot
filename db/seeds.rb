@@ -21,10 +21,15 @@ Integer varius aliquet vulputate. Fusce id purus felis, vitae commodo lacus. Sus
   (rand(20)+10).times do |i|
     post = story.posts.create! title: "Entry number #{i}", text: summary, created_at: start_date + i.days
       
-    if rand(100) > 70
-      post.image = File.open("#{Rails.root}/app/assets/images/stock/stock_#{(0..12).to_a.shuffle.first}.jpg")
-      post.save
+    if rand(100) > 10
+      post.address = "Some sort of location, USA"
+      post.latitude = (rand() * 500)
+      post.longitude = (rand() * 500)
     end
+    if rand(100) > 10
+      post.image = File.open("#{Rails.root}/app/assets/images/stock/stock_#{(0..12).to_a.shuffle.first}.jpg")
+    end
+    post.save
   end
   puts "Story #{s} created"
 end
