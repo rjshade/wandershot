@@ -1,11 +1,12 @@
 .row
   .span6
-    = simple_form_for([@story,@post], :defaults => { :input_html => { :class => 'span4' } }) do |f|
+    = simple_form_for([@story,@post]) do |f|
       = f.error_notification
     
       .form-inputs
         = f.input :title
-        = f.input :date
+        = f.input :date, input_html: { id: 'datepicker' }
+        <script>$('#datepicker').datepicker({format: 'dd/mm/yyyy'});</script>
         = f.input :text, :as => :text
         = f.input :image, :label => "Add a photo"
         = f.input :address, :input_html =>{:id => 'gmaps-input-address'}, :placeholder => 'Start typing a place name...'

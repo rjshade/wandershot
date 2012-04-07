@@ -32,8 +32,8 @@ class Post
   scope :by_date, ascending(:date)
 
   def get_date
-    self.date if self.date
-    created_at
+    date = self.date ? self.date : created_at
+    date.strftime('%B %e %Y')
   end
 
   def get_location
