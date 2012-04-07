@@ -1,0 +1,11 @@
+.controls
+  - if can? :manage, @story
+    = link_to 'Add post', new_story_post_path( @story ),
+              :class => 'btn',
+              :id => 'new-post'
+    = link_to 'Edit story', edit_story_path( @story ),
+              :class => 'btn' 
+    = link_to 'Delete story', @story,
+              :confirm => "This will irrevocably destroy your story and all associated posts!",
+              :method => :delete,
+              :class => 'btn btn-danger'

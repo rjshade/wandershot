@@ -3,7 +3,7 @@ Mongoid.master.collections.reject { |c| c.name =~ /^system/}.each(&:drop)
 
 puts 'SETTING UP DEFAULT USER LOGIN'
 
-(rand(15)+10).times do |i|
+10.times do |i|
   user = User.create! :name => "#{i.to_s.humanize.titleize} User", :email => "user#{i}@example.com", :password => 'please', :password_confirmation => 'please'
   puts 'New user created: ' << user.name
 end
@@ -14,11 +14,11 @@ summary = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam moles
 Integer varius aliquet vulputate. Fusce id purus felis, vitae commodo lacus. Suspendisse potenti. Vivamus fringilla consectetur ligula, posuere volutpat nisl lobortis eu. In mauris velit, mattis vitae accumsan quis, lacinia quis ipsum. Quisque lorem enim, cursus in dignissim id, mollis vitae elit. Maecenas arcu quam, semper eu vestibulum ut, elementum eu metus. Donec risus diam, hendrerit quis sagittis et, rutrum consectetur elit. Aliquam non justo sit amet urna euismod ultricies. Nunc rhoncus egestas posuere.'
 
 
-(rand(30)+10).times do |s|
+10.times do |s|
   start_date = rand(1000).days.ago
   story = User.all.to_a.shuffle.first.stories.create! title: "Exciting story #{s}", summary: summary, created_at: start_date
 
-  (rand(20)+10).times do |i|
+  (rand(10)+1).times do |i|
     post = story.posts.create! title: "Entry number #{i}", text: summary, created_at: start_date + i.days
       
     if rand(100) > 10

@@ -1,26 +1,20 @@
 .post
   .row
     .span12
-      .page-header
-        .title
-          %h1.date= @post.created_at.strftime('%B %e %Y')
-          %h1.text= link_to @post.title, story_post_path(@story, @post)
-          -if loc = @post.get_location
-            %h1.location= loc
+      = render 'title'
   .row
     .span4
       = render 'controls'
+
       .content
         = md @post.text
+
       = render 'navigation'
 
     .span8
       -if @post.image?
         .center.main-image
-          = image_tag @post.image.url(:original)
-
+          = image_tag @post.image.url(:large)
   .row
     .span12
-      .page-header
-        %h2 Comments
       = render :partial => 'comments/display_all_with_form', :locals => { :type => :post }

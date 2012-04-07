@@ -3,13 +3,13 @@
     .span12
       .story.teaser
         .text
-          =render :partial => 'stories/title', :locals => { :story => story }
-          %hr
+          = render :partial => 'stories/title', :locals => { :story => story }
           = truncate_html( (md story.summary), :length => 200 )
-          = link_to 'More »', story_path(story)
+          %br
+          = link_to 'View story &raquo;'.html_safe, story_path(story), class: 'read-more'
           
         .images.center
           - posts = story.posts_with_images.shuffle
           - posts[0..6].each do |post|
             %span.image
-              = link_to (image_tag post.image.url(:medium)), story
+              = link_to (image_tag post.image.url(:small)), story_post_path(story,post)

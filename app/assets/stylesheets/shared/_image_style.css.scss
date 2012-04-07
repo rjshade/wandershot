@@ -1,21 +1,9 @@
+@import "shared/rounded_borders";
+@import "shared/shadows";
 @mixin image-style {
-  $rounding: 2px;
-
-  -moz-border-radius: $rounding $rounding;
-  -webkit-border-radius: $rounding $rounding;
-  -khtml-border-radius: $rounding $rounding;
-  -o-border-radius: $rounding $rounding;
-  border-radius: $rounding $rounding;
+  @include rounded-borders( 2px );
+  @include shadows( #efefef, 2px );
 
   padding: 5px;
   border: 1px solid #ddd;
-
-  $hoffset: 0px;
-  $voffset: 0px;
-  $fade: 5px;
-  $color: #efefef;
-  -o-box-shadow:      $hoffset $voffset $fade $color;
-  -webkit-box-shadow: $hoffset $voffset $fade $color;
-  -moz-box-shadow:    $hoffset $voffset $fade $color;
-  box-shadow:         $hoffset $voffset $fade $color;
 }

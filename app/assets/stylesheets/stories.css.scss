@@ -1,31 +1,25 @@
 @import "shared/image_style";
 @import "shared/box_style";
 
+
+// Used for both stories and posts
+.title {
+  .text, .text a {
+    color: #555;
+  }
+  .author, .author a {
+    color: #999;
+  }
+  .location {
+    color: #999;
+  }
+  .date {
+    color: #999;
+    float:right;
+  }
+}
+
 .story {
-  .title {
-    .title {
-      a {
-        color: #555;
-      }
-    }
-    .author, .author a {
-      color: #999;
-    }
-    .date {
-      color: #ccc;
-      float:right;
-    }
-    .location {
-      color: #999;
-    }
-  }
-
-  .gmaps
-
-  .teaser-summary {
-    height: 150px;
-  }
-
   &.teaser {
     @include box-style;
     padding: 10px;
@@ -33,6 +27,7 @@
     margin-top: 10px;
     margin-bottom: 40px;
     .images {
+      padding-top: 30px;
       .image{
         padding-right: 10px;
         img {
@@ -41,41 +36,6 @@
           @include image-style;
         }
       }
-    }
-  }
-
-  .post-teaser {
-    height: 180px;
-    overflow: hidden;
-    .date {
-      width: 120px;
-      min-height: 180px;
-      font-size: 1.5em;
-      font-weight: 100;
-      border-right: 1px solid #efefef;
-      float:left;
-    }
-    .image {
-      width: 250px;
-      padding-left: 20px;
-      text-align: center;
-      img {
-        margin-left:auto;
-        margin-right:auto;
-        max-height: 120px;
-        max-width: 200px;
-        @include image-style;
-      }
-      float:left;
-    }
-    .body {
-      .location {
-        color: #555;
-        padding-bottom: 5px;
-        font-size: 1.3em;
-      }
-      width: 500px;
-      float: right;
     }
   }
 }

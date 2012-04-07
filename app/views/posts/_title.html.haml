@@ -1,0 +1,6 @@
+.page-header
+  .title
+    %h2.date= @post.created_at.strftime('%B %e %Y')
+    %h1.text= link_to @post.title, story_post_path(@story, @post)
+    -if loc = @post.get_location
+      %h2.location= loc

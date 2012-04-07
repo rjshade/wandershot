@@ -9,8 +9,6 @@
       .page-header
         %h1= @user.name
         %h3 Member since #{@user.created_at.strftime("%d %B %Y")}
-
-
   .row
     .span12
       - if @user.stories.size > 0
@@ -19,14 +17,14 @@
         - @user.stories.each do |story|
           =render :partial => 'stories/teaser', :locals => {:story => story}
       
-      - if @user.comments.size > 0
-        .page-header
-          %h2 Comments
-        - @user.comments.each do |c|
-          %p
-            - if c.post
-              = link_to truncate(c.text), story_post_path( c.post.story, c.post )
-              in #{c.post.title}
-            - else
-              = link_to truncate(c.text), story_path( c.story )
-              in #{c.story.title}
+      =#- if @user.comments.size > 0
+      =#  .page-header
+      =#    %h2 Comments
+      =#  - @user.comments.each do |c|
+      =#    %p
+      =#      - if c.post
+      =#        = link_to truncate(c.text), story_post_path( c.post.story, c.post )
+      =#        in #{c.post.title}
+      =#      - else
+      =#        = link_to truncate(c.text), story_path( c.story )
+      =#        in #{c.story.title}

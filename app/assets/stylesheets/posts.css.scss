@@ -1,4 +1,5 @@
 @import "shared/image_style";
+@import "shared/rounded_borders";
 
 .post {
   .navigation {
@@ -11,32 +12,6 @@
     padding-top: 10px;
     padding-bottom: 10px;
   }
-
-  .title {
-    .text {
-      a {
-        color: #555;
-      }
-    }
-
-    .location {
-      color: #999;
-    }
-    .date {
-      color: #999;
-      float:right;
-    }
-    .details {
-      color: #999;
-    }
-    .author {
-      color: #999;
-    }
-    .callback {
-      font-size: 0.8em;
-    }
-  }
-  z-index: 1;
 
   .main-image {
     img{
@@ -58,5 +33,40 @@
 
   .controls {
     padding-bottom: 10px;
+  }
+}
+
+.post-teasers {
+  .post-teaser {
+    @include image-style;
+
+    .content {
+      width: 680px;
+    }
+    .image { 
+      width: 212px;
+      img {
+        @include image-style;
+      }
+      float:right;
+    }
+
+    height: 180px;
+    overflow: hidden;
+
+    padding: 10px;
+    padding-bottom: 30px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+  }
+}
+
+a.read-more {
+  padding: 10px;
+  border: 1px solid #ccc;
+  @include rounded-borders( 50px );
+  &:hover {
+    background: #efefef;
+    text-decoration: none;
   }
 }

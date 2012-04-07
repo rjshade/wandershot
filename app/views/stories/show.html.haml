@@ -1,16 +1,10 @@
 .story
   .row
     .span12
-      .controls
-        - if current_user && current_user.id == @story.user.id
-          = link_to 'Add post', new_story_post_path( @story ), :class => 'btn btn-mini', :id => 'new-post'
-          = link_to 'Edit story', edit_story_path( @story ), :class => 'btn btn-mini' 
-          = link_to 'Delete story', @story, :confirm => "Are you sure? This will irrevocably destroy your story and all associated posts!", :method => :delete, :class => 'btn btn-mini btn-danger'
-
+      = render 'controls'
   .row
     .span12
-      .page-header
-        =render :partial => 'stories/title', :locals => { :story => @story }
+      = render partial: 'title', locals: { story: @story }
   .row
     .span4
       = md @story.summary
@@ -19,29 +13,15 @@
                                                        'latitude'  => p.latitude,
                                                        'longitude' => p.longitude } }
       - if output.size > 0
-        = content_tag 'div', nil, id: "gmaps-story-view", style: "width:100%;height:300px;", data: { locations: "#{ output.to_json }" }
+        = content_tag 'div', nil, id: "gmaps-story-view",
+                                  style: "width:100%;height:300px;",
+                                  data: { locations: "#{ output.to_json }" }
 
   .row
     .span12
-      - if @posts.size == 0
-        .row
-          - 3.times do |i|
-            = render :partial => 'posts/story_teaser', :locals => { :post => nil, :placeholder => true }
-      - else
+      .post-teasers
         - @posts.each do |post|
-          .post-teaser
-            %span.date= post.get_date.strftime("%d %b %Y")
-            %span.image= (image_tag post.image(:small)) if post.image?
-            .body
-              - if loc = post.get_location
-                .location= loc
-              .text= truncate_html(md post.text)
-
-              = link_to 'MOAR!', story_post_path(@story,post)
-
-=# Comment block
-.row
-  .span12
-    .page-header
-      %h2 Comments
-    = render :partial => 'comments/display_all_with_form', :locals => { :type => :story }
+          = render partial: 'posts/teaser', locals: { post: post }
+  .row
+    .span12
+      = render partial: 'comments/display_all_with_form', locals: { type: :story }

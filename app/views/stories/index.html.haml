@@ -8,5 +8,7 @@
         = link_to 'New story', new_story_path, :class => 'btn btn-large btn-primary', :id => 'new-story'
         %hr
 
-- @stories.each do |story|
-  = render :partial => 'stories/teaser', :locals => { :story => story }
+.row
+  .span12
+    - @stories.each do |story|
+      = render :partial => 'stories/teaser', :locals => { :story => story }
