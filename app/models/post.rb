@@ -12,7 +12,7 @@ class Post
                               :large    => ['800x800>',   :jpg] }
                             }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
-    field :date, :type => DateTime
+  field :date, :type => DateTime
 
   field :title, :type => String
   slug :title, :scope => :story
