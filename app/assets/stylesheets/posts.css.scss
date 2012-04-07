@@ -7,6 +7,7 @@
     .prev { width: 60px; float: left; }
     .next { width: 60px; float: right; }
     .middle {padding-left: 10px; padding-right: 10px; width: 160px; text-align: center; float: left; }
+    .disabled{ color: #ccc; }
 
     overflow: hidden;
     padding-top: 10px;
@@ -47,7 +48,9 @@
     .image { 
       width: 212px;
       img {
+        float: right;
         @include image-style;
+        max-height: 180px;
       }
       float:right;
     }

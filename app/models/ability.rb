@@ -13,6 +13,7 @@ class Ability
       can :manage, Comment, :user_id => user.id
       can :manage, Post,    :user_id => user.id
       can :manage, Story,   :user_id => user.id
+      can :manage, User,    :id      => user.id
     end
   end
 end

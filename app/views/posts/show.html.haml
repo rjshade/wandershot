@@ -1,11 +1,12 @@
 .post
   .row
     .span12
+      = render 'controls'
+  .row
+    .span12
       = render 'title'
   .row
     .span4
-      = render 'controls'
-
       .content
         = md @post.text
 

@@ -31,7 +31,7 @@ class StoriesController < ApplicationController
     @story = current_user.stories.build(params[:story])
 
     if @story.save
-      redirect_to @story, notice: 'Story was successfully created. Go ahead and add a Post by clicking "Add Post".'
+      redirect_to @story, notice: 'Story was successfully created. Click "Add Post" to get started...'
     else
       render action: "new"
     end

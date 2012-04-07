@@ -7,13 +7,24 @@
             = image_tag @user.avatar(:medium)
     .span10
       .page-header
+        - if can? :manage, @user
+          .edit
+            = link_to 'Edit account', edit_user_registration_path,
+                      :class => 'btn btn-mini'
         %h1= @user.name
         %h3 Member since #{@user.created_at.strftime("%d %B %Y")}
+
+  - if current_user && current_user == @user && (can? :create, Story)
+    .row
+      .span12
+        .controls
+          .center
+            = link_to 'New story', new_story_path( @story ),
+                      :class => 'btn btn-large btn-primary'
+        
   .row
     .span12
       - if @user.stories.size > 0
-        .page-header
-          %h2 Stories
         - @user.stories.each do |story|
           =render :partial => 'stories/teaser', :locals => {:story => story}
       

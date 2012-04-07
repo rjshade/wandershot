@@ -2,8 +2,12 @@
   .prev
     - if prev_post = @post.prev
       = link_to '&larr; previous'.html_safe, story_post_path(@story,prev_post)
+    - else
+      .disabled &larr; prev
   .middle
     part of #{link_to truncate(@story.title, length: 20), @story}
   .next
     - if next_post = @post.next
       = link_to 'next &rarr;'.html_safe, story_post_path(@story,next_post)
+    - else
+      .disabled next &rarr;

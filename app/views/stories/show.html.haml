@@ -19,8 +19,14 @@
   .row
     .span12
       .post-teasers
-        - @posts.each do |post|
-          = render partial: 'posts/teaser', locals: { post: post }
+        - if @posts.empty?
+          .center
+            = link_to 'Add post', new_story_post_path( @story ),
+                      :class => 'btn btn-large btn-primary',
+                      :id => 'new-post'
+        - else
+          - @posts.each do |post|
+            = render partial: 'posts/teaser', locals: { post: post }
   .row
     .span12
       = render partial: 'comments/display_all_with_form', locals: { type: :story }
