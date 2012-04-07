@@ -11,8 +11,8 @@
         = f.full_error :reset_password_token
       
         .form-inputs
-          = f.input :password, "New password", :required => true
-          = f.label :password_confirmation, "Confirm new password", :required => true
+          = f.input :password, label: "New password", :required => true
+          = f.input :password_confirmation, label: "Confirm new password", :required => true
       
         .form-actions
           = f.button :submit, "Change my password", :class => 'btn btn-primary'

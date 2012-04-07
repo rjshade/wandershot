@@ -11,12 +11,18 @@ class User
                             :default_url => '/assets/avatar/avatar_default_96x96.png'
                             }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :confirmable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   ## Database authenticatable
   field :email,              :type => String, :null => false, :default => ""
   field :encrypted_password, :type => String, :null => false, :default => ""
+
+  ## Confirmable
+  field :confirmed_at,         :type => DateTime
+  field :confirmation_sent_at, :type => DateTime
+  field :confirmation_token,   :type => String, :unique => true
+  field :unconfirmed_email,    :type => String
 
   ## Recoverable
   field :reset_password_token,   :type => String
