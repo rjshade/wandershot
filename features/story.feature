@@ -7,8 +7,7 @@ Feature: Story
     Given a logged in user
 
   Scenario: Create a new story
-    Given I am on the stories page
-    And I create a new story
+    Given I create a new story
     Then there should be one story
 
   Scenario: Edit an existing story

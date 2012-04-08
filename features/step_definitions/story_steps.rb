@@ -1,5 +1,5 @@
 Given /^I create a new story$/ do
-  click_link ('new-story')
+  click_link ('New story')
   fill_in('Title', :with => 'My Super Story')
   fill_in('Summary', :with => 'This is an exciting description.')
   click_button ('Submit')

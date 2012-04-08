@@ -27,6 +27,10 @@ And /^I am on the account settings page$/ do
   visit edit_user_registration_path
 end
 
+And /^I am on my profile page$/ do
+  visit user_path @user
+end
+
 Given /^I update my details$/ do
   fill_in('Name', :with => 'Changed Name')
   fill_in('Email', :with => 'new@email.com')
