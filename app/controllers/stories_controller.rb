@@ -8,11 +8,7 @@ class StoriesController < ApplicationController
   def show
     @story = Story.find_by_slug(params[:id])
     if @story
-      if @story.posts.size > 0 
-        @posts = @story.posts.latest.reverse
-      else
-        @posts = [];
-      end
+      @posts = @story.posts.latest
       @comments = @story.comments.newest_first
     else
       redirect_to stories_path, notice: "No story with the title #{params[:id].humanize.titleize}!"

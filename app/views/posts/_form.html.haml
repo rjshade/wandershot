@@ -1,26 +1,45 @@
-.row
-  .span6
-    = simple_form_for([@story,@post]) do |f|
-      = f.error_notification
-    
-      .form-inputs
-        = f.input :title
-        = f.input :date, input_html: { id: 'datepicker' }
-        <script>$('#datepicker').datepicker({format: 'dd/mm/yyyy'});</script>
-        = f.input :text, :as => :text
-        = f.input :image, :label => "Add a photo"
-        = f.input :address, :input_html =>{:id => 'gmaps-input-address'}, :placeholder => 'Start typing a place name...'
-        = f.input :latitude, :as => :hidden, :input_html => {:id => 'gmaps-output-latitude'}
-        = f.input :longitude, :as => :hidden, :input_html => {:id => 'gmaps-output-longitude'}
-
-      .form-actions
+.post-form
+  = simple_form_for([@story,@post]) do |f|
+    = f.error_notification
+    .form-inputs
+      .row
+        .span6
+          .page-header
+            %h3 Details
+          = f.input :title, required: false
+          = f.input :date, input_html: { id: 'datepicker' }
+          <script>$('#datepicker').datepicker({format: 'dd/mm/yyyy'});</script>
+          %p The text can be formatted using Markdown:
+          = f.input :text, :as => :text, :placeholder => "Description of the post..."
+        .span6
+          .page-header
+            %h3 Location
+          %p Click on the map, or type a place name in the search box.
+          = f.input :address, input_html: {id: 'gmaps-input-address'}, 
+                              placeholder: 'Start typing a place name...',
+                              label: "Location"
+          #gmaps-error.alert.alert-error
+          #gmaps-canvas
+  
+      .row
+        .span12
+          .page-header
+            %h3 Picture
+      .row
+        .span6
+          - if @post.image?
+            = f.input :image, :label => "Choose a new photo:"
+            = f.input :delete_image, :as => :boolean, :label => "Delete existing photo"
+          - else
+            = f.input :image, :label => "Add a photo:"
+        .span6
+          - if @post.image?
+            .center
+              = image_tag @post.image.url(:large), class: 'photo'
+      = f.input :latitude,  :as => :hidden, :input_html => {:id => 'gmaps-output-latitude'}
+      = f.input :longitude, :as => :hidden, :input_html => {:id => 'gmaps-output-longitude'}
+    .form-actions
+      .span12
         = f.button :submit, "Submit", :class => 'btn btn-primary'
         or
         = link_to 'cancel', :back
-  .span6
-    %ul.thumbnails
-      %li.span6
-        -if @post.image?
-          = link_to (image_tag @post.image.url(:large)), '#', :class=>'thumbnail'
-    #gmaps-canvas{:style => 'width:100%;height:200px;'}
-    #gmaps-error

@@ -15,4 +15,5 @@
 //= require jquery-ui
 //= require twitter/bootstrap
 //= require bootstrap-datepicker
+//= require gmaps
 //= require_tree .

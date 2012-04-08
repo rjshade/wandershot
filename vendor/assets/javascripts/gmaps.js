@@ -36,7 +36,22 @@ function gmaps_init(){
     marker.setPosition(event.latLng)
     geocode_lookup( 'latLng', event.latLng  );
   });
+
+  $('#gmaps-error').hide();
+
+  // check if gmaps-output fields already have values
+  // if so, zoom and center on them
+  var lat = $('#gmaps-output-latitude').val();
+  var lng = $('#gmaps-output-longitude').val();
+  if( lat && lng ) {
+    request = {};
+    request['latLng'] = new google.maps.LatLng(lat,lng);
+    geocoder.geocode(request, function(results, status) {
+      update_map( results[0].geometry );
+    });
+  }
 }
+
 
 // move the marker to a new position, and center the map on it
 function update_map( geometry ) {
@@ -48,16 +63,10 @@ function update_map( geometry ) {
 function update_ui( address, latLng ) {
   $('#gmaps-input-address').autocomplete("close");
   $('#gmaps-input-address').val(address);
-  if($("#gmaps-output-latitude").is("input")) {
-    $('#gmaps-output-latitude').val(latLng.lat());
-  } else {
-    $('#gmaps-output-latitude').html(latLng.lat());
-  }
-  if($("#gmaps-output-longitude").is("input")) {
-    $('#gmaps-output-longitude').val(latLng.lng());
-  } else {
-    $('#gmaps-output-longitude').html(latLng.lng());
-  }
+  $('#gmaps-output-latitude').html(latLng.lat());
+  $('#gmaps-output-latitude').val(latLng.lat());
+  $('#gmaps-output-longitude').html(latLng.lng());
+  $('#gmaps-output-longitude').val(latLng.lng());
 }
 
 // Query the Google geocode object
@@ -77,6 +86,7 @@ function geocode_lookup( type, value, update ) {
 
   geocoder.geocode(request, function(results, status) {
     $('#gmaps-error').html('');
+    $('#gmaps-error').hide();
     if (status == google.maps.GeocoderStatus.OK) {
       // Google geocoding has succeeded!
       if (results[0]) {
@@ -89,6 +99,7 @@ function geocode_lookup( type, value, update ) {
       } else {
         // Geocoder status ok but no results!?
         $('#gmaps-error').html("Sorry, something went wrong. Try again!");
+        $('#gmaps-error').show();
       }
     } else {
       // Google Geocoding has failed. Two common reasons:
@@ -98,10 +109,12 @@ function geocode_lookup( type, value, update ) {
       if( type == 'address' ) {
         // User has typed in an address which we can't geocode to a location
         $('#gmaps-error').html("Sorry! We couldn't find " + value + ". Try a different search term, or click the map." );
+        $('#gmaps-error').show();
       } else {
         // User has clicked or dragged marker to somewhere that Google can't do a reverse lookup for
         // In this case we display a warning, clear the address box, but fill in LatLng
         $('#gmaps-error').html("Woah... that's pretty remote! You're going to have to manually enter a place name." );
+        $('#gmaps-error').show();
         update_ui('', value)
       }
     };

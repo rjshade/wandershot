@@ -4,6 +4,8 @@ class Post
   include Mongoid::Timestamps
   include Mongoid::Paperclip
 
+  attr_accessor :delete_image
+  before_validation { image.clear if delete_image == '1' and !image.dirty? }
   has_mongoid_attached_file :image, {
                             :styles => {
                               :original => ['1920x1680>', :jpg],
@@ -38,17 +40,19 @@ class Post
   end
 
   def get_location
-    self.address if self.address
+    if !self.address.empty?
+      self.address 
+    else #if !self.latitude.empty? && !self.longitude.empty?
+      "#{self.latitude}, #{self.longitude}"
+    end
   end
 
   def self.with_images
     all.find_all{|post| post.image?}
   end
 
-  def static_map
-    if self.address
-      "http://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=14&size=300x200&maptype=roadmap&sensor=false".html_safe
-    end
+  def static_map( width = 300, height = 200, style = "terrain" )
+    "http://maps.googleapis.com/maps/api/staticmap?center=#{self.latitude},#{self.longitude}&zoom=14&size=#{width}x#{height}&maptype=#{style}&sensor=false".html_safe
   end
 
   def next

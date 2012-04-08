@@ -1,11 +1,11 @@
 .post-teaser
   .image
-    = (link_to (image_tag post.image(:small)), story_post_path(@story,post))if post.image?
+    = (link_to (image_tag post.image(:small)), story_post_path(@story,post)) if post.image?
   .content
     .page-header.title
-      %h3.date= post.created_at.strftime('%B %e %Y')
+      %h3.date= post.get_date
       %h2.text= link_to post.title, story_post_path(@story, post)
-      %h3.location= post.get_location ? post.get_location : '&nbsp;'
+      %h3.location= post.get_location
     .body
       .text
         = truncate_html(md post.text)

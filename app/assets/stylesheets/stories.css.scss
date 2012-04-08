@@ -38,6 +38,10 @@
       }
     }
   }
+
+  #gmaps-story-view {
+    @include shadows;
+  }
 }
 
 #popular-stories {
@@ -46,5 +50,30 @@
     img { @include image-style; }
     margin: 10px;
     float: left;
+  }
+}
+
+.edit {
+  .post-brief {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    @include image-style;
+    height: 70px;
+    overflow: hidden;
+    img {
+      float: left;
+      height: 50px;
+      @include image-style;
+    }
+    .edit { 
+      float: right;
+    }
+    .date {
+      color: #999;
+    }
+    .content {
+      float: left;
+      margin-left: 10px;
+    }
   }
 }

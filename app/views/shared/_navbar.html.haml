@@ -14,7 +14,9 @@
           %li= link_to "Popular", stories_path
         %ul.nav.pull-right
           - if user_signed_in?
-            %li= link_to(current_user.name, current_user)
+            %li= link_to(current_user.name, edit_user_registration_path)
+            %li= link_to('My stories', current_user)
+            %li= link_to('New story', new_story_path)
             %li= link_to('Logout', destroy_user_session_path, :method=>'delete')
           - else
             %li= render :partial => 'users/login_link',  :locals => { :content => "Login" }

@@ -10,7 +10,7 @@
       - if @post
         .main-image
           .center
-            = link_to (image_tag @post.image.url(:large)), story_path(@post.story)
+            = link_to (image_tag @post.image.url(:large)), story_post_path(@post.story,@post)
     .span4
       .page-header
         %h3

@@ -1,13 +1,23 @@
-.page-header
-  %h1 Editing #{@story.title}
+.edit
+  .row
+    .span6
+      .page-header
+        %h1 Editing #{@story.title}
+      = render 'form'
+    .span6
+      .page-header
+        %h1 Posts in this story
 
-.row
-  .span4
-    = render 'form'
-  .span8
-    %ul.thumbnails
-      - @story.posts_with_images.first(12).each do |post|
-        - if post
-          %li.span2
-            = link_to (image_tag post.image.url(:medium)), edit_story_post_path(@story,post), :class => 'thumbnail'
+      .center
+        = link_to 'Add post', new_story_post_path( @story ),
+                  :class => 'btn btn-mini',
+                  :id => 'new-post'
+      - @story.posts.each do |post|
+        .post-brief
+          .edit= link_to 'Edit', edit_story_post_path( @story, post ), class: 'btn btn-mini'
+          - if post.image?
+            = link_to (image_tag post.image.url(:small)), edit_story_post_path(@story,post)
+          .content
+            %h3.date= post.get_date
+            %h2.title= link_to truncate(post.title), edit_story_post_path( @story, post )
 
