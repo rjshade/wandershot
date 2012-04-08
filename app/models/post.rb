@@ -8,10 +8,10 @@ class Post
   before_validation { image.clear if delete_image == '1' and !image.dirty? }
   has_mongoid_attached_file :image, {
                             :styles => {
-                              :original => ['1920x1680>', :jpg],
                               :small    => ['200x200>',   :jpg],
-                              :medium   => ['400x400>',   :jpg],
-                              :large    => ['800x800>',   :jpg] }
+                              :medium   => ['800x800>',   :jpg],
+                              :large    => ['1000x1000>', :jpg],
+                              :original => ['1920x1680>', :jpg]}
                             }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
   field :date, :type => DateTime

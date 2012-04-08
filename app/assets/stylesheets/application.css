@@ -11,5 +11,6 @@
  *= require_self
  *= require jquery-ui/jquery-ui-1.8.16.custom
  *= require datepicker
+ *= require colorbox
  *= require_tree .
 */

@@ -16,4 +16,5 @@
 //= require twitter/bootstrap
 //= require bootstrap-datepicker
 //= require gmaps
+//= require jquery.colorbox
 //= require_tree .

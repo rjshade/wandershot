@@ -16,7 +16,10 @@
     .span8
       -if @post.image?
         .center.main-image
-          = image_tag @post.image.url(:large)
+          = link_to (image_tag @post.image.url(:medium)),
+                    @post.image.url(:original),
+                    class: 'lightbox',
+                    title: @post.title
   .row
     .span12
       = render :partial => 'comments/display_all_with_form', :locals => { :type => :post }
