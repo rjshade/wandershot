@@ -19,9 +19,9 @@ class User
   field :encrypted_password, :type => String, :null => false, :default => ""
 
   ## Confirmable
-  field :confirmed_at,         :type => DateTime
-  field :confirmation_sent_at, :type => DateTime
-  field :confirmation_token,   :type => String, :unique => true
+  field :confirmed_at,         :type => Time
+  field :confirmation_sent_at, :type => Time
+  field :confirmation_token,   :type => String
   field :unconfirmed_email,    :type => String
 
   ## Recoverable

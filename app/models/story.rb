@@ -14,6 +14,7 @@ class Story
   has_many :comments, :dependent => :destroy
 
   scope :latest, descending(:created_at)
+  scope :recent, lambda{|n| latest.limit(n)}
 
   def length_in_days
     if self.posts.size > 0

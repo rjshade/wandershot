@@ -25,11 +25,12 @@ class Post
   field :longitude, :type => String
 
   belongs_to :story
-  belongs_to :user
+  delegate :user, :to => :story
 
   has_many :comments, :dependent => :destroy
 
-  scope :by_date, ascending(:date)
+  scope :latest, descending(:date)
+  scope :recent, lambda{|n| latest.limit(n)}
 
   def get_date
     date = self.date ? self.date : created_at
@@ -51,14 +52,14 @@ class Post
   end
 
   def next
-    posts = self.story.posts.by_date.to_a
+    posts = self.story.posts.latest.to_a
     idx = posts.index(self)
     if idx < (posts.size - 1)
       posts[idx+1]
     end
   end
   def prev
-    posts = self.story.posts.by_date.to_a
+    posts = self.story.posts.latest.to_a
     idx = posts.index(self)
     if idx > 0
       posts[idx-1]

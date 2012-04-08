@@ -9,7 +9,7 @@ class StoriesController < ApplicationController
     @story = Story.find_by_slug(params[:id])
     if @story
       if @story.posts.size > 0 
-        @posts = @story.posts.by_date.reverse
+        @posts = @story.posts.latest.reverse
       else
         @posts = [];
       end

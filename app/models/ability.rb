@@ -8,8 +8,9 @@ class Ability
 
     if user.has_role? :admin
       can :manage, :all
+      can :access, :admin
     else
-      can :read, :all
+      #can :read, :all
       can :manage, Comment, :user_id => user.id
       can :manage, Post,    :user_id => user.id
       can :manage, Story,   :user_id => user.id
