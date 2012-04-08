@@ -18,6 +18,15 @@ Wandershot::Application.routes.draw do
 
   root :to => 'home#index'
 
+  resources :admin, :only => :index do
+    collection do
+      get 'users'
+      get 'posts'
+      get 'stories'
+      get 'comments'
+    end
+  end
+
   match 'about'   => 'pages#about'
   match 'contact' => 'pages#contact'
   match 'maps'    => 'pages#maps'

@@ -19,7 +19,6 @@ class PostsController < ApplicationController
   def create
     @story = current_user.stories.find_by_slug(params[:story_id])
     @post = @story.posts.build(params[:post])
-    @post.user = current_user
 
     if @post.save
       redirect_to [@story,@post], notice: 'Post was successfully created.'

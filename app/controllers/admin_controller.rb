@@ -1,5 +1,8 @@
 class AdminController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate
+
+  def index
+  end
 
   def stories
     @stories = Story.all
@@ -16,4 +19,9 @@ class AdminController < ApplicationController
   def comments
     @comments = Comment.all
   end
+
+  private
+    def authenticate
+      authorize! :access, :admin
+    end
 end
