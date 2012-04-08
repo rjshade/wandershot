@@ -1,10 +1,8 @@
 .profile
   .row
     .span2
-      %ul.thumbnails
-        %li.span2
-          .thumbnail
-            = image_tag @user.avatar(:medium)
+      .center
+        = image_tag @user.avatar(:thumb), class: 'avatar'
     .span10
       .page-header
         - if can? :manage, @user

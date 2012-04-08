@@ -1,8 +1,12 @@
+@import "shared/image_style";
 .profile {
   .edit {
     float: right;
   }
   .controls {
     padding: 20px;
+  }
+  img.avatar {
+    @include image-style;
   }
 }
