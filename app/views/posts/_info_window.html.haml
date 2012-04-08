@@ -1,0 +1,7 @@
+.info-window
+  %h3= link_to post.title, story_post_path(post.story,post)
+  = truncate_html (md post.text), length: 30
+  - if post.image
+    .center
+      = link_to (image_tag post.image(:small), style: 'max-width: 180px'),
+                story_post_path(post.story,post)

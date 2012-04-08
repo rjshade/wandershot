@@ -1,0 +1,8 @@
+- output = @story.posts_with_locations.map{|p| { 'address'   => p.address,
+                                                 'latitude'  => p.latitude,
+                                                 'longitude' => p.longitude,
+  'content'   => (render partial: 'posts/info_window', locals: { post: p }) }}
+
+- if output.size > 0
+  = content_tag 'div', nil, id: "gmaps-story-view",
+                            data: { locations: "#{ output.to_json }" }

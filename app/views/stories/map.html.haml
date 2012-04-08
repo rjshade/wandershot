@@ -1,0 +1,8 @@
+.story
+  .row
+    .span12
+      .page-header
+        %h1 Map of #{link_to @story.title, @story}
+
+      .large-map
+        = render partial: 'stories/map'

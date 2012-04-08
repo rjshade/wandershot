@@ -1,6 +1,7 @@
 var geocoder;
 var map;
 var marker;
+var infowindow;
 
 // initialise the google maps objects, and add listeners
 function gmaps_story_init(){
@@ -26,12 +27,23 @@ function gmaps_story_init(){
 
     marker = new google.maps.Marker({
       map: map,
+      content: curloc.content,
+      animation: google.maps.Animation.DROP,
       position: latlngloc})
 
     bounds.extend( latlngloc )
+
+    google.maps.event.addListener(marker, 'click', showPostInfo);
   }
 
+  infowindow = new google.maps.InfoWindow();
   map.fitBounds( bounds )
+
+  function showPostInfo(event) {
+    infowindow.setContent(this.content);
+    infowindow.setPosition(event.latLng);
+    infowindow.open(map);
+  }
 }
 
 $(document).ready(function() { 

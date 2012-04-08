@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index,:show,:popular]
+  before_filter :authenticate_user!, :except => [:index,:show,:popular,:map]
 
   def index
     @stories = Story.latest.limit(3)
@@ -30,6 +30,13 @@ class StoriesController < ApplicationController
       redirect_to @story, notice: 'Story was successfully created. Click "Add Post" to get started...'
     else
       render action: "new"
+    end
+  end
+
+  def map
+    @story = Story.find_by_slug(params[:id])
+    if !@story
+      redirect_to stories_path, notice: "No story with the title #{params[:id].humanize.titleize}!"
     end
   end
 

@@ -5,7 +5,7 @@
     .page-header.title
       %h3.date= post.get_date
       %h2.text= link_to post.title, story_post_path(@story, post)
-      %h3.location= post.get_location
+      %h3.location= link_to post.get_location, map_story_path(@story)
     .body
       .text
         = truncate_html(md post.text)

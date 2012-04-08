@@ -2,6 +2,10 @@ Wandershot::Application.routes.draw do
   resources :stories do
     resources :posts # /stories/abc/posts/xyz
 
+    member do
+      get 'map' # /stories/abc/map
+    end
+
     collection do
       get 'popular'  # /stories/popular
     end

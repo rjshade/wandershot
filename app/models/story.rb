@@ -33,7 +33,7 @@ class Story
   end
 
   def posts_with_locations
-    self.posts.find_all{|post| (post.latitude? && post.longitude?)}
+    self.posts.find_all{|post| post.latitude && post.longitude}
   end
 
   def static_map( width = 512, height = 512, type = "terrain" )

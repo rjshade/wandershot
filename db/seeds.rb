@@ -5,6 +5,7 @@ puts 'SETTING UP DEFAULT USER LOGIN'
 
 10.times do |i|
   user = User.create! :name => "#{i.to_s.humanize.titleize} User", :email => "user#{i}@example.com", :password => 'please', :password_confirmation => 'please'
+  user.confirm!
   puts 'New user created: ' << user.name
 end
 
@@ -23,8 +24,8 @@ Integer varius aliquet vulputate. Fusce id purus felis, vitae commodo lacus. Sus
       
     if rand(100) > 10
       post.address = "Some sort of location, USA"
-      post.latitude = (rand() * 500)
-      post.longitude = (rand() * 500)
+      post.latitude = (rand() * 180 - 90)
+      post.longitude = (rand() * 360 - 180)
     end
     if rand(100) > 10
       post.image = File.open("#{Rails.root}/app/assets/images/stock/stock_#{(0..12).to_a.shuffle.first}.jpg")

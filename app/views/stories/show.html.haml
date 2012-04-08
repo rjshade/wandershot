@@ -9,13 +9,10 @@
     .span4
       = md @story.summary
     .span8
-      - output = @story.posts_with_locations.map{|p| { 'address'   => p.address,
-                                                       'latitude'  => p.latitude,
-                                                       'longitude' => p.longitude } }
-      - if output.size > 0
-        = content_tag 'div', nil, id: "gmaps-story-view",
-                                  style: "width:100%;height:300px;",
-                                  data: { locations: "#{ output.to_json }" }
+      .small-map
+        = render partial: 'stories/map'
+      .center.large-map-link
+        = link_to 'view large map', (map_story_path @story)
   .row
     .span12
       .post-teasers

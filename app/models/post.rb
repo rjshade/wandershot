@@ -40,10 +40,10 @@ class Post
   end
 
   def get_location
-    if self.address.nil?
-      "#{self.latitude}, #{self.longitude}"
-    else
+    if self.address
       self.address 
+    elsif (self.latitude && self.longitude)
+      "#{self.latitude}, #{self.longitude}"
     end
   end
 
