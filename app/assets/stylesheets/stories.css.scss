@@ -19,6 +19,30 @@
   }
 }
 
+.popular {
+  img {
+    margin: 5px;
+    @include image-style;
+  }
+
+  .imgs {
+    float: left;
+
+    &.medium {
+      img {
+        width:  445px;
+        height: 433px;
+      }
+    }
+    &.small {
+      img {
+        width:  210px;
+        height: 205px;
+      }
+    }
+  }
+}
+
 .story {
   &.teaser {
     @include box-style;

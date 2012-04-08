@@ -1,4 +1,31 @@
-#popular-stories
-  - @stories.each do |story|
-    .item
-      = image_tag story.posts_with_images.first.image([:small,:medium].shuffle.first)
+.row
+  .span12
+    .page-header
+      %h1 Popular stories
+
+- posts = []
+- @stories.each do |story|
+  - posts += story.posts_with_images
+
+- 10.times do |i|
+  .row
+    .span12
+      .popular
+        - layout = ['grid-left', 'grid-right', 'grid-full', 'two-full'].sample
+        - case layout
+        - when 'grid-left'
+          .imgs.small=   popular_column posts, :small
+          .imgs.small=   popular_column posts, :small
+          .imgs.medium=  popular_column posts, :medium
+        - when 'grid-left'
+          .imgs.medium=  popular_column posts, :medium
+          .imgs.small=   popular_column posts, :small
+          .imgs.small=   popular_column posts, :small
+        - when 'grid-full'
+          .imgs.small=   popular_column posts, :small
+          .imgs.small=   popular_column posts, :small
+          .imgs.small=   popular_column posts, :small
+          .imgs.small=   popular_column posts, :small
+        - when 'two-full'
+          .imgs.medium=  popular_column posts, :medium
+          .imgs.medium=  popular_column posts, :medium

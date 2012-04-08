@@ -9,9 +9,8 @@
  
       .nav-collapse
         %ul.nav
-          %li= link_to "What is this?", '/about'
           %li= link_to "Browse", stories_path
-          %li= link_to "Popular", stories_path
+          %li= link_to "Popular", popular_stories_path
         %ul.nav.pull-right
           - if user_signed_in?
             %li= link_to(current_user.name, edit_user_registration_path)
