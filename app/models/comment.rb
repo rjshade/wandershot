@@ -5,7 +5,7 @@ class Comment
   field :text, :type => String
   validates_presence_of :text
 
-  scope :newest_first, descending(:created_at)
+  scope :latest, ascending(:created_at)
 
   belongs_to :post
   belongs_to :story

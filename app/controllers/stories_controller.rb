@@ -9,7 +9,7 @@ class StoriesController < ApplicationController
     @story = Story.find_by_slug(params[:id])
     if @story
       @posts = @story.posts.latest
-      @comments = @story.comments.newest_first
+      @comments = @story.comments.latest
     else
       redirect_to stories_path, notice: "No story with the title #{params[:id].humanize.titleize}!"
     end

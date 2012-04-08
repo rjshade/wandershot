@@ -3,7 +3,8 @@ $(document).ready(function(){
     $(this).closest('.comment').fadeOut('fast')
   });
   $("#new_comment").bind('ajax:success', function(event, data, status, xhr) {
-    $(xhr.responseText).hide().prependTo("#comment-block").fadeIn('fast');
+    $(xhr.responseText).hide().appendTo("#comment-block").fadeIn('fast');
+    $('#comment_text').attr('value', ''); // clear input box 
   });
 
   // controls are initially hidden with opacity 0

@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def show
     @story = Story.find_by_slug(params[:story_id])
     @post  = @story.posts.find_by_slug(params[:id])
-    @comments = @post.comments.newest_first
+    @comments = @post.comments.latest
   end
 
   def new
