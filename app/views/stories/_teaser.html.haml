@@ -1,6 +1,6 @@
 - if story
   .row
-    .span12
+    .span6
       .story.teaser
         .text
           = render :partial => 'stories/title', :locals => { :story => story }
@@ -8,6 +8,8 @@
           %br
           = link_to 'View story &raquo;'.html_safe, story_path(story), class: 'read-more'
           
+    .span6
+      .story.teaser
         .images.center
           - posts = story.posts_with_images.shuffle
           - posts[0..6].each do |post|

@@ -1,4 +1,5 @@
 .navigation
+  %hr
   .prev
     - if prev_post = @post.prev
       = link_to '&larr; previous'.html_safe, story_post_path(@story,prev_post)
@@ -11,3 +12,5 @@
       = link_to 'next &rarr;'.html_safe, story_post_path(@story,next_post)
     - else
       .disabled next &rarr;
+  %br
+  %hr

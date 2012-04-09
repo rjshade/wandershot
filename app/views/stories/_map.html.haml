@@ -6,3 +6,7 @@
 - if output.size > 0
   = content_tag 'div', nil, id: "gmaps-story-view",
                             data: { locations: "#{ output.to_json }" }
+
+- if (defined? small) and (output.size > 0)
+  .center.large-map-link
+    = link_to 'view large map', (map_story_path @story)

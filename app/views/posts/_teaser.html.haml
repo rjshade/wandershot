@@ -1,13 +1,15 @@
 .post-teaser
-  .image
-    = (link_to (image_tag post.image(:small)), story_post_path(@story,post)) if post.image?
-  .content
-    .page-header.title
-      %h3.date= post.get_date
-      %h2.text= link_to post.title, story_post_path(@story, post)
-      %h3.location= link_to post.get_location, map_story_path(@story)
-    .body
-      .text
-        = truncate_html(md post.text)
-        %br
-        = link_to 'Read more &raquo;'.html_safe, story_post_path(@story,post), class: 'read-more'
+  .row
+    .span4
+      .page-header.title
+        %h3.date= post.get_date
+        %h2.text= link_to post.title, story_post_path(@story, post)
+        %h3.location= link_to post.get_location, map_story_path(@story)
+      .body
+        .text
+          = truncate_html(md post.text)
+        .read-more
+          = link_to 'Read more &raquo;'.html_safe, story_post_path(@story,post)
+    .span4.center
+      = (link_to (image_tag post.image(:medium)),
+                 story_post_path(@story,post)) if post.image?

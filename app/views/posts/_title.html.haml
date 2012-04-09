@@ -1,4 +1,4 @@
 .page-header.title
-  %h2.date= @post.get_date
-  %h1.text= link_to @post.title, story_post_path(@story, @post)
-  %h2.location= link_to @post.get_location, map_story_path(@story)
+   %h3.date= @post.get_date
+   %h3.text= link_to @post.title, story_post_path(@story, @post)
+   %h3.location= link_to @post.get_location, map_story_path(@story)

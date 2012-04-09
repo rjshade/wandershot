@@ -4,9 +4,9 @@
 .post {
   .navigation {
     font-size: 0.9em;
-    .prev { width: 60px; float: left; }
-    .next { width: 60px; float: right; }
-    .middle {padding-left: 10px; padding-right: 10px; width: 160px; text-align: center; float: left; }
+    .prev { width: 20%; float: left; }
+    .next { width: 20%; float: right; }
+    .middle { width: 60%; text-align: center; float: left; }
     .disabled{ color: #ccc; }
 
     overflow: hidden;
@@ -16,7 +16,7 @@
 
   .main-image {
     img{
-      max-width: 600px;
+      max-width: 95%;
       max-height: 500px;
       margin-left:auto;
       margin-right:auto;
@@ -40,28 +40,15 @@
 .post-teasers {
   margin-top: 20px;
   .post-teaser {
-    @include image-style;
-
-    .content {
-      width: 680px;
-    }
-    .image { 
-      width: 212px;
-      img {
-        float: right;
-        @include image-style;
-        max-height: 180px;
-      }
-      float:right;
+    img {
+      max-height: 250px;
+      max-width: 95%;
+      @include image-style;
     }
 
-    height: 180px;
     overflow: hidden;
 
-    padding: 10px;
-    padding-bottom: 30px;
-    margin-top: 10px;
-    margin-bottom: 40px;
+    padding-bottom: 10px;
   }
 }
 
@@ -82,13 +69,16 @@
   }
 }
 
-a.read-more {
-  padding: 10px;
-  border: 1px solid #ccc;
-  @include rounded-borders( 50px );
-  &:hover {
-    background: #efefef;
-    text-decoration: none;
+.read-more {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  a {
+    padding: 10px;
+    border: 1px solid #ccc;
+    @include rounded-borders( 50px );
+    &:hover {
+      background: #efefef;
+      text-decoration: none;
+    }
   }
 }
-

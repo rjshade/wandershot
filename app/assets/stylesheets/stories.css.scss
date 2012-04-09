@@ -45,8 +45,8 @@
 
 .story {
   &.teaser {
-    @include box-style;
-    padding: 10px;
+    /*@include box-style;*/
+    /*padding: 10px;*/
     padding-bottom: 30px;
     margin-top: 10px;
     margin-bottom: 40px;
@@ -75,13 +75,30 @@
   .small-map {
     #gmaps-story-view {
       width: 100%;
-      height: 300px;
+      height: 400px;
     }
   }
 
-
   .large-map-link {
     font-size: 0.9em;
+  }
+
+  .map-placeholder {
+    @include image-style;
+    height: 100px;
+    color: #ccc;
+    p {
+      padding-top: 40px;
+    }
+  }
+
+  .post-placeholder {
+    @include image-style;
+    height: 200px;
+    color: #ccc;
+    p {
+      padding-top: 70px;
+    }
   }
 }
 

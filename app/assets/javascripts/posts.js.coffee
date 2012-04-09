@@ -1,6 +1,6 @@
 jQuery ->
   $('a.lightbox').colorbox( {
     transition: 'fade',
-    maxHeight: '80%',
-    maxWidth:  '80%'
+    maxHeight: '95%',
+    maxWidth: '95%'
   });

@@ -1,25 +1,23 @@
 .post
-  .row
+  .row.clutter
     .span12
       = render 'controls'
-  .row
+  .row.clutter
     .span12
-      = render 'title'
   .row
     .span4
-      .content
+      = render 'title'
+      .content.post-body
         = md @post.text
 
-      %hr
       = render 'navigation'
 
     .span8
       -if @post.image?
         .center.main-image
-          = link_to (image_tag @post.image.url(:medium)),
+          = link_to (image_tag @post.image.url(:large)),
                     @post.image.url(:original),
-                    class: 'lightbox',
-                    title: @post.title
+                    class: 'lightbox'
   .row
     .span12
       = render :partial => 'comments/display_all_with_form', :locals => { :type => :post }
