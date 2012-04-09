@@ -1,9 +1,10 @@
 jQuery ->
   $(document).ready( -> fadeOut('.clutter'))
+  $(document).ready( -> fadeOut('.minor-clutter'))
  
-  fadeOut = (element) ->
+  fadeOut = (element, opacity = 0.0) ->
     $(element).addClass('toFadeOut')
-    hover_intent = setTimeout( (-> $(element+'.toFadeOut').fadeTo('slow',0.0);) , 500 );
+    hover_intent = setTimeout( (-> $(element+'.toFadeOut').fadeTo('slow', opacity);) , 1500 );
 
   fadeIn = (element) ->
     try
@@ -13,5 +14,9 @@ jQuery ->
 
   $('.clutter').hover( 
     -> fadeIn('.clutter')
-    -> fadeOut('.clutter')
+    -> fadeOut('.clutter', 0.0)
+  )
+  $('.post').hover(
+    -> fadeIn('.minor-clutter')
+    -> fadeOut('.minor-clutter')
   )
