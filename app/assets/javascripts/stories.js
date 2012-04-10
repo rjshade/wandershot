@@ -56,6 +56,7 @@ function gmaps_story_init(){
       $("#post-teaser-" + m).removeClass("selected")
     }
     $("#post-teaser-" + this.post_id).addClass("selected");
+    $.scrollTo("#post-teaser-" + this.post_id, {duration:1000, over: -0.5})
   }
 
   function highlightPost(event) {
