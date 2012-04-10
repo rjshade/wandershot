@@ -1,13 +1,13 @@
-.post-teaser
+.post.teaser
   .row
-    .span4
+    .span8
       .page-header.title
         %h3.date= post.get_date
         %h2.text= link_to post.title, story_post_path(@story, post)
         %h3.location= link_to post.get_location, map_story_path(@story)
       .body
         .text
-          = truncate_html(md post.text)
+          = truncate_html((md post.text), length: 200)
         .read-more
           = link_to 'Read more &raquo;'.html_safe, story_post_path(@story,post)
     .span4.center

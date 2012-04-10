@@ -8,9 +8,11 @@
   .row
     .span4
       = md @story.summary
+    .span8
       .small-map
         = render partial: 'stories/map', locals: { small: true }
-    .span8
+  .row
+    .span12
       .post-teasers
         - if @posts.empty?
           .post-placeholder

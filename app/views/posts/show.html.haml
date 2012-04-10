@@ -7,8 +7,9 @@
   .row
     .span4
       = render 'title'
-      .content.post-body
-        = md @post.text
+      .body
+        .text
+          = md @post.text
 
       .navigation.minor-clutter
         = render 'navigation'

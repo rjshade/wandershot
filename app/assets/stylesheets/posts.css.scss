@@ -35,11 +35,31 @@
   .controls {
     padding-bottom: 10px;
   }
+  .body {
+    .text {
+      h1,h2,h3,h4,h5,h6{ border-bottom: 1px solid #efefef; padding-bottom: 5px; padding-top: 5px; }
+      h1{ font-size: 1.2em; }
+      h2{ font-size: 1.2em; }
+      h3{ font-size: 1.1em; }
+      h4{ font-size: 1.1em; }
+      h5{ font-size: 1.1em; }
+
+      hr{ 
+        height: 1px;
+        margin: 24px 0;
+        background-image: -webkit-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+        background-image: -moz-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+        background-image: -ms-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+        background-image: -o-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+        border: 0;
+      }
+    }
+  }
 }
 
 .post-teasers {
   margin-top: 20px;
-  .post-teaser {
+  .post.teaser {
     img {
       max-height: 250px;
       max-width: 95%;
