@@ -96,4 +96,9 @@ form {
   .markdown-examples {
     display: none;
   }
+  .markdown-examples-toggle {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

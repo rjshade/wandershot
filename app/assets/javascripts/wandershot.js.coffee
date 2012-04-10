@@ -1,16 +1,15 @@
 jQuery ->
-  $(document).ready( 
-    -> fadeOut('.clutter'),
-    -> fadeOut('.minor-clutter')
-
-    $('.markdown-instructions').bind 'click', -> 
+  $(document).ready( -> fadeOut('.clutter') )
+  $(document).ready( -> fadeOut('.minor-clutter') )
+  $(document).ready(
+    $('.markdown-examples-toggle').attr('href', null)
+    $('.markdown-examples-toggle').bind 'click', -> 
       $('.markdown-examples').toggle('fast')
   )
 
- 
-  fadeOut = (element, opacity = 0.0) ->
+  fadeOut = (element, opacity = 0.0, delay = 4000) ->
     $(element).addClass('toFadeOut')
-    hover_intent = setTimeout( (-> $(element+'.toFadeOut').fadeTo('slow', opacity);) , 3000 );
+    hover_intent = setTimeout( (-> $(element+'.toFadeOut').fadeTo('slow', opacity);), delay );
 
   fadeIn = (element) ->
     try
