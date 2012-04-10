@@ -1,3 +1,59 @@
-.instructions
+.markdown-instructions
   %p
-    You can format text using #{link_to 'Markdown', 'http://daringfireball.net/projects/markdown/syntax'}
+    You can format text using #{link_to 'Markdown'.html_safe, '#', class: 'examples-toggle'}
+
+  .markdown-examples
+    %table.table.table-striped
+      %tr
+        %th Syntax
+        %th Result
+      %tr
+        %td **bold text**
+        %td
+          %strong bold text
+
+      %tr
+        %td _italic text_
+        %td
+          %em italic text
+      %tr
+        %td
+          * bullet item0
+          %br
+          * bullet item1
+          %br
+          * bullet item2
+        %td
+          %ul
+            %li bullet item0
+            %li bullet item1
+            %li bullet item2
+      %tr
+        %td
+          [external link](http://www.google.com/)
+        %td
+          = link_to "external link", 'http://www.google.com/'
+      %tr
+        %td
+          = "# Heading"
+        %td
+          %h1 Heading
+      %tr
+        %td
+          = "## Secondary heading"
+        %td
+          %h2 Secondary heading
+      %tr
+        %td
+          = "> multi"
+          %br
+          = "> line"
+          %br
+          = "> quote"
+        %td
+          %blockquote
+            multi
+            %br
+            line
+            %br
+            quote

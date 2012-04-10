@@ -1,6 +1,12 @@
 jQuery ->
-  $(document).ready( -> fadeOut('.clutter'))
-  $(document).ready( -> fadeOut('.minor-clutter'))
+  $(document).ready( 
+    -> fadeOut('.clutter'),
+    -> fadeOut('.minor-clutter')
+
+    $('.markdown-instructions').bind 'click', -> 
+      $('.markdown-examples').toggle('fast')
+  )
+
  
   fadeOut = (element, opacity = 0.0) ->
     $(element).addClass('toFadeOut')
