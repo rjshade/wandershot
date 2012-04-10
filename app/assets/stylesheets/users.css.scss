@@ -6,7 +6,16 @@
   .controls {
     padding: 20px;
   }
-  img.avatar {
-    @include image-style;
+  .avatar {
+    float: left;
+    max-width: 96px;
+    margin-right: 10px;
+    img.avatar {
+      @include image-style;
+    }
+  }
+
+  .text {
+    margin-left: 120px;
   }
 }

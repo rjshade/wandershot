@@ -1,9 +1,8 @@
-.profile
-  .row
-    .span2
-      .center
-        = image_tag @user.avatar(:thumb), class: 'avatar'
-    .span10
+.row.profile
+  .span12
+    .avatar
+      = image_tag @user.avatar(:thumb), class: 'avatar'
+    .text
       .page-header
         - if can? :manage, @user
           .edit
@@ -12,16 +11,16 @@
         %h1= @user.name
         %h3 Member since #{@user.created_at.strftime("%d %B %Y")}
 
-  - if current_user && current_user == @user && (can? :create, Story)
-    .row
-      .span12
-        .controls
-          .center
-            = link_to 'New story', new_story_path( @story ),
-                      :class => 'btn btn-large'
-        
+- if current_user && current_user == @user && (can? :create, Story)
   .row
     .span12
-      - if @user.stories.size > 0
-        - @user.stories.each do |story|
-          =render :partial => 'stories/teaser', :locals => {:story => story}
+      .controls
+        .center
+          = link_to 'New story', new_story_path( @story ),
+                    :class => 'btn btn-large'
+      
+.row
+  .span12
+    - if @user.stories.size > 0
+      - @user.stories.each do |story|
+        =render :partial => 'stories/teaser', :locals => {:story => story}
