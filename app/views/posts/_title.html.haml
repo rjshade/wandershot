@@ -1,5 +1,5 @@
 .page-header.title
-  - if !post.get_location.empty?
+  - if !post.get_location.nil?
     .topline
       %h1.text= link_to post.title, story_post_path(story, post)
     .bottomline
