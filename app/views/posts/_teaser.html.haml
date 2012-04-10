@@ -1,12 +1,12 @@
 .post.teaser
   .row
-    .span8
+    .span4
       = render partial: 'posts/title', locals: { post: post, story: @story }
       .body
         .text
           = truncate_html((md post.text), length: 200)
-        .read-more
-          = link_to 'Read more &raquo;'.html_safe, story_post_path(@story,post)
-    .span4.center
+    .span2.center
       = (link_to (image_tag post.image(:medium)),
                  story_post_path(@story,post)) if post.image?
+      .read-more
+        = link_to 'Read more &raquo;'.html_safe, story_post_path(@story,post)

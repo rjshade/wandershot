@@ -64,8 +64,8 @@
   margin-top: 20px;
   .post.teaser {
     img {
-      max-height: 250px;
-      max-width: 95%;
+      max-height: 100px;
+      max-width: 90%;
       @include image-style;
     }
 

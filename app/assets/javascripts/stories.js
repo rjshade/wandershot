@@ -44,6 +44,12 @@ function gmaps_story_init(){
     infowindow.setPosition(event.latLng);
     infowindow.open(map);
   }
+
+  if( $(document).width() >= 800 ) {
+    var elem = $('#gmaps-story-view')
+    var top = elem.offset().top - parseFloat(elem.css('marginTop').replace(/auto/,0));
+    $('#gmaps-story-view').css('height', $(window).height() - top - 40);
+  }
 }
 
 $(document).ready(function() { 

@@ -6,13 +6,8 @@
     .span12
       = render partial: 'title', locals: { story: @story }
   .row
-    .span4
+    .span6
       = md @story.summary
-    .span8
-      .small-map
-        = render partial: 'stories/map', locals: { small: true }
-  .row
-    .span12
       .post-teasers
         - if @posts.empty?
           .post-placeholder
@@ -25,6 +20,9 @@
           - @posts.each do |post|
             = render partial: 'posts/teaser', locals: { post: post }
             %hr.soften
+    .span6.attach.small-map
+      = render partial: 'stories/map', locals: { small: true }
   .row
-    .span12
+    .span6
       = render partial: 'comments/display_all_with_form', locals: { type: :story }
+
