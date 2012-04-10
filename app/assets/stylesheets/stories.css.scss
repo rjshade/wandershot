@@ -1,25 +1,25 @@
 @import "shared/image_style";
 @import "shared/box_style";
-
+@import "shared/colors";
 
 // Used for both stories and posts
 .title {
   .title-text, .title-text a {
-    color: #555;
+    color: $secondaryColor;
     font-size: 18px;
   }
   .author, .author a {
-    color: #555;
+    color: $secondaryColor;
     font-size: 16px;
     font-weight: 100;
   }
   .location, .location a {
-    color: #555;
+    color: $secondaryColor;
     font-size: 16px;
     font-weight: 100;
   }
   .date {
-    color: #555;
+    color: $secondaryColor;
     float:right;
     font-size: 16px;
     font-weight: 100;
@@ -109,6 +109,7 @@
   }
 }
 
+// styles to display brief posts in story edit view
 .edit {
   .post-brief {
     margin-top: 20px;
@@ -125,7 +126,7 @@
       float: right;
     }
     .date {
-      color: #999;
+      color: $secondaryColor;
     }
     .content {
       float: left;
