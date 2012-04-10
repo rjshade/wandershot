@@ -13,17 +13,14 @@
       float: left;
     }
 
-    form {
+    .form{
       margin-left: 74px;
       textarea {
         padding: 10px;
-        margin: 5px;
-        width: 100%;
+        width: 90%;
       }
-      button {
-        padding: 10px;
-        margin-top: 5px;
-        width: 100%;
+      .instructions {
+        padding-top: 5px;
       }
     }
   }

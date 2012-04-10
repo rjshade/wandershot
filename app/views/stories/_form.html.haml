@@ -1,3 +1,4 @@
+= render partial: 'shared/markdown_instructions'
 = simple_form_for(@story) do |f|
   = f.error_notification
   = f.input :title, :placeholder => 'Cycling across America'
@@ -5,6 +6,6 @@
   = f.input :summary, :label => 'Trip Summary', :as => :text, :placeholder => 'Summarise your trip...'
 
   .form-actions
-    = f.button :submit, "Submit", class: 'btn'
+    = f.button :submit, "Submit", class: 'btn btn-large'
     or
     = link_to 'cancel', :back

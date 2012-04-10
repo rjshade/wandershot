@@ -6,10 +6,11 @@
         .span6
           .page-header
             %h3 Details
+          = render partial: 'shared/markdown_instructions'
           = f.input :title, required: false
           = f.input :date, input_html: { id: 'datepicker' }
           <script>$('#datepicker').datepicker({format: 'dd/mm/yyyy'});</script>
-          %p The text can be formatted using Markdown:
+
           = f.input :text, :as => :text, :placeholder => "Description of the post..."
         .span6
           .page-header
@@ -40,6 +41,6 @@
       = f.input :longitude, :as => :hidden, :input_html => {:id => 'gmaps-output-longitude'}
     .form-actions
       .span12
-        = f.button :submit, "Submit", :class => 'btn'
+        = f.button :submit, "Submit post", :class => 'btn btn-large'
         or
         = link_to 'cancel', :back
