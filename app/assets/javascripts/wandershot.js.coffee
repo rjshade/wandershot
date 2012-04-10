@@ -1,4 +1,5 @@
 jQuery ->
+  $(document).ready( -> $('textarea').autoResize())
   $(document).ready( -> fadeOut('.clutter'))
   $(document).ready( -> fadeOut('.minor-clutter'))
  
