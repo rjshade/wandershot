@@ -17,4 +17,5 @@
 //= require bootstrap-datepicker
 //= require gmaps
 //= require jquery.colorbox
+//= require jquery.scrollTo-1.4.2
 //= require_tree .

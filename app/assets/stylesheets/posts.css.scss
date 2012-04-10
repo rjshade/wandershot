@@ -63,22 +63,38 @@
 .post-teasers {
   margin-top: 20px;
   .post.teaser {
-    img {
-      max-height: 100px;
-      max-width: 90%;
-      @include image-style;
-    }
-
     overflow: hidden;
 
     padding: 10px;
-    .text { 
-      float: left;
-      width: 80%;
-    }
-    .image { 
+    margin-bottom: 50px;
+    .sidebar {
       float: right;
-      width: 20%;
+      padding: 10px;
+      img {
+        max-height: 150px;
+        max-width:  200px;
+        @include image-style;
+      }
+    }
+    .read-more {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      a {
+        padding: 10px;
+        border: 1px solid #ccc;
+        @include rounded-borders( 50px );
+        &:hover {
+          background: #efefef;
+          text-decoration: none;
+        }
+      }
+    }
+
+    border: 1px solid #fff;
+    &.selected {
+      border: 1px solid #efefef;
+      @include rounded-borders( 3px );
+      @include shadows;
     }
   }
 }
@@ -100,16 +116,3 @@
   }
 }
 
-.read-more {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  a {
-    padding: 10px;
-    border: 1px solid #ccc;
-    @include rounded-borders( 50px );
-    &:hover {
-      background: #efefef;
-      text-decoration: none;
-    }
-  }
-}

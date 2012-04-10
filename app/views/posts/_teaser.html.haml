@@ -1,11 +1,10 @@
 .post.teaser{id: "post-teaser-#{post.id}"}
   .text
     = render partial: 'posts/title', locals: { post: post, story: @story }
+    .sidebar
+      = (link_to (image_tag post.image(:medium)),
+                 story_post_path(@story,post)) if post.image?
     .body
-      .text
-        = truncate_html((md post.text), length: 200)
-  .image.center
-    = (link_to (image_tag post.image(:medium)),
-               story_post_path(@story,post)) if post.image?
-    .read-more
-      = link_to 'Read more &raquo;'.html_safe, story_post_path(@story,post)
+      = truncate_html((md post.text), length: 200)
+      .read-more
+        = link_to 'Read more &raquo;'.html_safe, story_post_path(@story,post)

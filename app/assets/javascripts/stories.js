@@ -1,7 +1,7 @@
 var geocoder;
 var map;
-var marker;
 var infowindow;
+var markers = {};
 
 // initialise the google maps objects, and add listeners
 function gmaps_story_init(){
@@ -25,34 +25,51 @@ function gmaps_story_init(){
     curloc = locations[loc];
     latlngloc = new google.maps.LatLng( curloc.latitude, curloc.longitude )
 
-    marker = new google.maps.Marker({
+    markers[curloc.post_id] = ( new google.maps.Marker({
       map: map,
       content: curloc.content,
       animation: google.maps.Animation.DROP,
       post_id: curloc.post_id,
-      position: latlngloc})
+      position: latlngloc}))
 
     bounds.extend( latlngloc )
 
-    google.maps.event.addListener(marker, 'click', showPostInfo);
-    google.maps.event.addListener(marker, 'mouseover', highlightTeaser);
+    google.maps.event.addListener(markers[curloc.post_id], 'click',     selectPost);
+    google.maps.event.addListener(markers[curloc.post_id], 'mouseover', highlightPost);
+    google.maps.event.addListener(markers[curloc.post_id], 'mouseout',  unhighlightPost);
   }
 
   infowindow = new google.maps.InfoWindow();
   map.fitBounds( bounds )
 
-  function highlightTeaser(event) {
-    $('#post-teaser-' + this.post_id).effect("highlight", {color: '#ccc'}, 500);
-  }
-
-  function showPostInfo(event) {
+  var selected_post_id = ''
+  function selectPost(event) {
     infowindow.close();
     infowindow.setContent(this.content);
     infowindow.setPosition(event.latLng);
     infowindow.open(map);
-    //$("#post-teaser-" + this.post_id).toggleClass("selected");
+
+    selected_post_id = this.post_id;
+
+    // remove selected class from all other markers
+    for( var m in markers ) {
+      $("#post-teaser-" + m).removeClass("selected")
+    }
+    $("#post-teaser-" + this.post_id).addClass("selected");
   }
 
+  function highlightPost(event) {
+    if( this.post_id != selected_post_id ) {
+      $("#post-teaser-" + this.post_id).addClass("selected");
+    }
+  }
+
+  function unhighlightPost(event) {
+    if( this.post_id != selected_post_id ) {
+      $("#post-teaser-" + this.post_id).removeClass("selected");
+    }
+  }
+  
   if( $(document).width() >= 800 ) {
     var elem = $('#gmaps-story-view')
     var top = elem.offset().top - parseFloat(elem.css('marginTop').replace(/auto/,0));
