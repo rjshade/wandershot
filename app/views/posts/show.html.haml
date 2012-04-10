@@ -6,7 +6,7 @@
     .span12
   .row
     .span4
-      = render 'title'
+      = render partial: 'title', locals: { post: @post, story: @post.story }
       .body
         .text
           = md @post.text
@@ -21,5 +21,5 @@
                     @post.image.url(:original),
                     class: 'lightbox'
   .row.minor-clutter
-    .span12
+    .span4
       = render :partial => 'comments/display_all_with_form', :locals => { :type => :post }

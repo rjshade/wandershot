@@ -6,16 +6,29 @@
 .title {
   .text, .text a {
     color: #555;
+    font-size: 1.2em;
   }
   .author, .author a {
-    color: #999;
+    color: #555;
+    font-size: 1.1em;
+    line-height: 1;
+    vertical-align: bottom;
   }
   .location, .location a {
-    color: #999;
+    color: #555;
+    font-size: 16px;
+    line-height: 1;
+    vertical-align: bottom;
   }
   .date {
-    color: #999;
+    color: #555;
     float:right;
+    font-size: 16px;
+    line-height: 1;
+    vertical-align: bottom;
+  }
+  .bottomline {
+    padding-top: 5px;
   }
 }
 
@@ -45,8 +58,6 @@
 
 .story {
   &.teaser {
-    /*@include box-style;*/
-    /*padding: 10px;*/
     padding-bottom: 30px;
     margin-top: 10px;
     margin-bottom: 40px;

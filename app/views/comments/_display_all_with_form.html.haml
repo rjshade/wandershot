@@ -9,8 +9,10 @@
   .new-comment-form
     - if current_user
       = form_for Comment.new, :html => {:'data-type' => 'html', :style => 'margin-bottom: 0px'}, :remote => true do |f|
-        = f.text_area :text, :style => "width: 100%; height: 100px", :placeholder => "Comment on this #{type.to_s}..."
+        = image_tag current_user.avatar(:small)
+        = f.text_area :text, :style => "height: 100px", :placeholder => "Comment on this #{type.to_s}..."
         = hidden_field type, :id
+        %br
         = f.button :submit, :class => 'btn btn-mini'
     - else
       = render :partial => 'users/signup_link',  :locals => { :content => "Sign up" }

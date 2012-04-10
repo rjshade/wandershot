@@ -1,10 +1,7 @@
 .post.teaser
   .row
     .span8
-      .page-header.title
-        %h3.date= post.get_date
-        %h2.text= link_to post.title, story_post_path(@story, post)
-        %h3.location= link_to post.get_location, map_story_path(@story)
+      = render partial: 'posts/title', locals: { post: post, story: @story }
       .body
         .text
           = truncate_html((md post.text), length: 200)
