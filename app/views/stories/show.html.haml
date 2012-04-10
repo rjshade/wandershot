@@ -20,9 +20,6 @@
           - @posts.each do |post|
             = render partial: 'posts/teaser', locals: { post: post }
             %hr.soften
+      = render partial: 'comments/display_all_with_form', locals: { type: :story }
     .span6.attach.small-map
       = render partial: 'stories/map', locals: { small: true }
-  .row
-    .span6
-      = render partial: 'comments/display_all_with_form', locals: { type: :story }
-
