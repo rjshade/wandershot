@@ -4,7 +4,7 @@ jQuery ->
  
   fadeOut = (element, opacity = 0.0) ->
     $(element).addClass('toFadeOut')
-    hover_intent = setTimeout( (-> $(element+'.toFadeOut').fadeTo('slow', opacity);) , 1500 );
+    hover_intent = setTimeout( (-> $(element+'.toFadeOut').fadeTo('slow', opacity);) , 3000 );
 
   fadeIn = (element) ->
     try
