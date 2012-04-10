@@ -70,7 +70,16 @@
     }
 
     overflow: hidden;
-    padding-bottom: 10px;
+
+    padding: 10px;
+    .text { 
+      float: left;
+      width: 80%;
+    }
+    .image { 
+      float: right;
+      width: 20%;
+    }
   }
 }
 

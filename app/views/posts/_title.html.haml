@@ -1,12 +1,11 @@
 .page-header.title
-  - if !post.get_location.nil?
+  - if post.has_location?
     .topline
-      %h1.text= link_to post.title, story_post_path(story, post)
+      %h1.title-text= link_to post.title, story_post_path(story, post)
     .bottomline
-      %h2.date= post.get_date
-      %h2.location= link_to (truncate(post.get_location, length: 40)), map_story_path(story)
+      %span.date= post.get_date
+      %span.location= link_to (truncate(post.get_location, length: 40)), map_story_path(story)
   - else
-    .topline
-      %h2.date= post.get_date
-      %h1.text= link_to post.title, story_post_path(story, post)
-
+    .bottomline
+      %span.title-text= link_to post.title, story_post_path(story, post)
+      %span.date= post.get_date

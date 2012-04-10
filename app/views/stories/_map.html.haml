@@ -1,6 +1,7 @@
 - output = @story.posts_with_locations.map{|p| { 'address'   => p.address,
                                                  'latitude'  => p.latitude,
                                                  'longitude' => p.longitude,
+                                                 'post_id'   => p.id,
   'content'   => (render partial: 'posts/info_window', locals: { post: p }) }}
 
 - if output.size > 0

@@ -41,6 +41,10 @@ class Post
     date.strftime('%B %e %Y')
   end
 
+  def has_location?
+    !(self.address.nil? || self.address.empty?)
+  end
+
   def get_location
     if self.address
       self.address 

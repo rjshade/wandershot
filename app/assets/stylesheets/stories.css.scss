@@ -4,28 +4,25 @@
 
 // Used for both stories and posts
 .title {
-  .text, .text a {
+  .title-text, .title-text a {
     color: #555;
-    font-size: 1.2em;
+    font-size: 18px;
   }
   .author, .author a {
     color: #555;
-    font-size: 1.1em;
-    line-height: 1;
-    vertical-align: bottom;
+    font-size: 16px;
+    font-weight: 100;
   }
   .location, .location a {
     color: #555;
     font-size: 16px;
-    line-height: 1;
-    vertical-align: bottom;
+    font-weight: 100;
   }
   .date {
     color: #555;
     float:right;
     font-size: 16px;
-    line-height: 1;
-    vertical-align: bottom;
+    font-weight: 100;
   }
   .bottomline {
     padding-top: 5px;

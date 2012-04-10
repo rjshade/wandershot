@@ -29,20 +29,28 @@ function gmaps_story_init(){
       map: map,
       content: curloc.content,
       animation: google.maps.Animation.DROP,
+      post_id: curloc.post_id,
       position: latlngloc})
 
     bounds.extend( latlngloc )
 
     google.maps.event.addListener(marker, 'click', showPostInfo);
+    google.maps.event.addListener(marker, 'mouseover', highlightTeaser);
   }
 
   infowindow = new google.maps.InfoWindow();
   map.fitBounds( bounds )
 
+  function highlightTeaser(event) {
+    $('#post-teaser-' + this.post_id).effect("highlight", {color: '#ccc'}, 500);
+  }
+
   function showPostInfo(event) {
+    infowindow.close();
     infowindow.setContent(this.content);
     infowindow.setPosition(event.latLng);
     infowindow.open(map);
+    //$("#post-teaser-" + this.post_id).toggleClass("selected");
   }
 
   if( $(document).width() >= 800 ) {
