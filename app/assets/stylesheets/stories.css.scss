@@ -33,22 +33,12 @@
   img {
     margin: 5px;
     @include image-style;
+    width: 100%;
   }
 
-  .imgs {
-    float: left;
-
-    &.medium {
-      img {
-        width:  445px;
-        height: 433px;
-      }
-    }
-    &.small {
-      img {
-        width:  210px;
-        height: 205px;
-      }
+  .imgs.medium {
+    img {
+      max-height: 560px;
     }
   }
 }

@@ -11,8 +11,8 @@ class Post
                               :small        => ['200x200>',   :jpg],
                               :medium       => ['800x800>',   :jpg],
                               :large        => ['1000x1000>', :jpg],
-                              :small_crop   => ['250x250#',   :jpg],
-                              :medium_crop  => ['450x450#',   :jpg],
+                              :small_crop   => ['350x350#',   :jpg],
+                              :medium_crop  => ['650x650#',   :jpg],
                               :original     => ['1920x1680>', :jpg]}
                             }.merge(PAPERCLIP_STORAGE_OPTIONS)
 

@@ -9,23 +9,34 @@
 
 - 10.times do |i|
   .row
-    .span12
-      .popular
-        - layout = ['grid-left', 'grid-right', 'grid-full', 'two-full'].sample
-        - case layout
-        - when 'grid-left'
+    .popular
+      - layout = ['grid-left', 'grid-right', 'grid-full', 'two-full'].sample
+      - case layout
+      - when 'grid-left'
+        .span3
           .imgs.small=   popular_column posts, :small
+        .span3
           .imgs.small=   popular_column posts, :small
+        .span6
           .imgs.medium=  popular_column posts, :medium
-        - when 'grid-left'
+      - when 'grid-left'
+        .span6
           .imgs.medium=  popular_column posts, :medium
+        .span3
           .imgs.small=   popular_column posts, :small
+        .span3
           .imgs.small=   popular_column posts, :small
-        - when 'grid-full'
+      - when 'grid-full'
+        .span3
           .imgs.small=   popular_column posts, :small
+        .span3
           .imgs.small=   popular_column posts, :small
+        .span3
           .imgs.small=   popular_column posts, :small
+        .span3
           .imgs.small=   popular_column posts, :small
-        - when 'two-full'
+      - when 'two-full'
+        .span6
           .imgs.medium=  popular_column posts, :medium
+        .span6
           .imgs.medium=  popular_column posts, :medium
