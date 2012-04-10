@@ -14,7 +14,7 @@
           = f.input :password
           = f.input :password_confirmation
       .modal-footer
-        = f.button :submit, "Create account", :class => 'btn btn-primary', :id => 'signup-modal-submit'
+        = f.button :submit, "Create account", class: 'btn', id: 'signup-modal-submit'
         or
         = link_to 'cancel', nil, :"data-dismiss" => 'modal'
   
@@ -30,6 +30,6 @@
         = f.input :remember_me, :as => :boolean
   
       .modal-footer
-        = f.button :submit, "Sign in", :class => 'btn btn-primary'
+        = f.button :submit, "Sign in", class: 'btn'
         or
         = link_to 'cancel', nil, :"data-dismiss" => 'modal'

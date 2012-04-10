@@ -2,8 +2,30 @@
 .comments {
   margin-top: 20px;
   margin-bottom: 20px;
+
   .new-comment-form {
     padding-bottom: 10px;
+
+    img {
+      width: 48px;
+      margin-right: 10px;
+      @include image-style;
+      float: left;
+    }
+
+    form {
+      margin-left: 74px;
+      textarea {
+        padding: 10px;
+        margin: 5px;
+        width: 100%;
+      }
+      button {
+        padding: 10px;
+        margin-top: 5px;
+        width: 100%;
+      }
+    }
   }
 
   .comment {

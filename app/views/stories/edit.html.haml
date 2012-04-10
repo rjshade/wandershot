@@ -10,7 +10,7 @@
 
       .center
         = link_to 'Add post', new_story_post_path( @story ),
-                  :class => 'btn btn-large btn-primary',
+                  :class => 'btn btn-large',
                   :id => 'new-post'
       - @story.posts.each do |post|
         .post-brief

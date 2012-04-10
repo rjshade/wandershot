@@ -14,7 +14,7 @@
             .center
               %p
                 = link_to 'Add a post to this story', new_story_post_path( @story ),
-                          :class => 'btn btn-large btn-primary',
+                          :class => 'btn btn-large',
                           :id => 'new-post'
         - else
           - @posts.each do |post|
