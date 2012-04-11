@@ -19,6 +19,9 @@
           = f.input :address, input_html: {id: 'gmaps-input-address'}, 
                               placeholder: 'Start typing a place name...',
                               label: "Location"
+          %p Latitude and longitude are determined when a valid place name is entered, or the map is clicked
+          = f.input :latitude,  :disabled => true, :input_html => {:id => 'gmaps-output-latitude'}
+          = f.input :longitude, :disabled => true, :input_html => {:id => 'gmaps-output-longitude'}
           #gmaps-error.alert.alert-error
           #gmaps-canvas
   
@@ -37,8 +40,6 @@
           - if @post.image?
             .center
               = image_tag @post.image.url(:large), class: 'photo'
-      = f.input :latitude,  :as => :hidden, :input_html => {:id => 'gmaps-output-latitude'}
-      = f.input :longitude, :as => :hidden, :input_html => {:id => 'gmaps-output-longitude'}
     .form-actions
       .span12
         = f.button :submit, "Submit post", :class => 'btn btn-large'

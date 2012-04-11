@@ -1,7 +1,7 @@
-- output = @story.posts_with_locations.map{|p| { 'address'   => p.address,
-                                                 'latitude'  => p.latitude,
-                                                 'longitude' => p.longitude,
-                                                 'post_id'   => p.id,
+- output = @story.posts.latest.map{|p| { 'address'   => p.address,
+                                         'latitude'  => p.latitude,
+                                         'longitude' => p.longitude,
+                                         'post_id'   => p.id,
   'post_link' => (link_to (truncate(p.title) + " &raquo;".html_safe).html_safe, story_post_path(p.story,p)),
   'content'   => (render partial: 'posts/info_window', locals: { post: p }) }}
 

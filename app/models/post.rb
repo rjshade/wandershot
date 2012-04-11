@@ -22,6 +22,12 @@ class Post
   slug :title, :scope => :story
   validates :title, presence: true, allow_blank: false, allow_nil: false
 
+  validates_presence_of :address, message: "where did this happen?"
+  validates_presence_of :date, message: "when did this happen?"
+  validates_presence_of :text
+  validates_presence_of :latitude,  message: "click on the map"
+  validates_presence_of :longitude, message: "click on the map"
+
   field :text, :type => String
 
   field :address, :type => String

@@ -12,12 +12,12 @@ class PostsController < ApplicationController
   end
 
   def new
-    @story = current_user.stories.find_by_slug(params[:story_id])
+    @story = Story.find_by_slug(params[:story_id])
     @post = @story.posts.build
   end
 
   def create
-    @story = current_user.stories.find_by_slug(params[:story_id])
+    @story = Story.find_by_slug(params[:story_id])
     @post = @story.posts.build(params[:post])
 
     if @post.save
@@ -28,12 +28,12 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @story = current_user.stories.find_by_slug(params[:story_id])
+    @story = Story.find_by_slug(params[:story_id])
     @post = @story.posts.find_by_slug(params[:id])
   end
 
   def update
-    @story = current_user.stories.find_by_slug(params[:story_id])
+    @story = Story.find_by_slug(params[:story_id])
     @post = @story.posts.find_by_slug(params[:id])
 
     if @post.update_attributes(params[:post])
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @story = current_user.stories.find_by_slug(params[:story_id])
+    @story = Story.find_by_slug(params[:story_id])
     @post  = @story.posts.find_by_slug(params[:id])
 
     if @post.destroy
