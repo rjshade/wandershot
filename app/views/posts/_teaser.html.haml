@@ -6,5 +6,5 @@
                  story_post_path(@story,post)) if post.image?
     .body
       = truncate_html((md post.text), length: 200)
-      .read-more
+      .read-more.center
         = link_to 'Read more &raquo;'.html_safe, story_post_path(@story,post)

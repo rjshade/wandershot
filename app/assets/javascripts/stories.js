@@ -4,10 +4,11 @@ var infowindow;
 var markers = {};
 var markersHighlight = {};
 var circles = {};
+var selected_id = -1;
+var largeMap = false; // are we on large map page, or story page?
 
 // initialise the google maps objects, and add listeners
 function gmaps_story_init(){
-
   // center of the universe
   var latlng = new google.maps.LatLng(51.751724,-1.255284);
 
@@ -44,7 +45,6 @@ function gmaps_story_init(){
     markers[curloc.post_id] = ( new google.maps.Marker({
       map: map,
       content: curloc.content,
-      animation: google.maps.Animation.DROP,
       post_id: curloc.post_id,
       position: latlngloc,
       icon: pinImage,
@@ -68,33 +68,59 @@ function gmaps_story_init(){
     google.maps.event.addListener(markers[curloc.post_id], 'click',     markerClickHandler);
     google.maps.event.addListener(markers[curloc.post_id], 'mouseover', highlightPost);
     google.maps.event.addListener(markers[curloc.post_id], 'mouseout',  unhighlightPost);
+    google.maps.event.addListener(map, 'click',  function() { infowindow.close() });
   }
 
-  infowindow = new google.maps.InfoWindow();
-  map.fitBounds( bounds )
+  infowindow = new google.maps.InfoWindow()
+  map.fitBounds( bounds );
+
+
 
   var originalZoom = map.getZoom();
 
   var selected_post_id = ''
 
-    function markerClickHandler( event ) {
-      selectPost( this.post_id );
-    }
+  function markerClickHandler( event ) {
+    selectPost( this.post_id );
+  }
+
   function selectPost( post_id ) {
     marker = markers[post_id];
 
-    infowindow.close();
-    infowindow.setContent(marker.content);
-    infowindow.setPosition(marker.getPosition());
-    infowindow.open(map);
+    // on the large map page we want to display info windows
+    // whereas on the story page we scroll to and highlight
+    // the post teaser
+    if( largeMap ) {
+      infowindow.close();
+      infowindow.setContent(marker.content);
+      infowindow.setPosition(marker.getPosition());
+      infowindow.open(map);
+    } else {
+      // remove selected class from all post teasers
+      for( var m in markers ) {
+        $('.post.teaser').removeClass("selected")
+      }
+      // but apply it to the current one
+      $('.post.teaser#post-id-' + post_id).addClass("selected");
 
-    // remove selected class from all other markers
-    for( var m in markers ) {
-      $('.post.teaser').removeClass("selected")
+      // and scroll the page to the appropriate teaser
+      $.scrollTo(".post.teaser#post-id-" + post_id, {duration:1000, over: -0.5})
     }
-    $('.post.teaser#post-id-' + post_id).addClass("selected");
-    $.scrollTo(".post.teaser#post-id-" + post_id, {duration:1000, over: -0.5})
+
     zoomMapTo( marker );
+
+    // set all other markers to be not highlighted
+    for( marker in markers ) {
+      markers[marker].setVisible(true);
+      markersHighlight[marker].setVisible(false);
+    }
+
+    // and this marker to be highlighted
+    markers[post_id].setVisible(false)
+    markersHighlight[post_id].setVisible(true)
+
+    // remember which marker/post is selected
+    selected_id = post_id;
   }
 
   // hovering over the google maps marker should give the same effect
@@ -113,15 +139,18 @@ function gmaps_story_init(){
 
   function postHoverHandler(event) {
     // toggle visibility of map marker highlight
-    highlightMarker( $(this).data('post-id') );
+    toggleMarkerHighlight( $(this).data('post-id') );
   }
 
-  function highlightMarker( marker_id ) {
-    marker = markers[marker_id]
-    markerHighlight = markersHighlight[marker_id]
+  function toggleMarkerHighlight( marker_id ) {
+    // don't want to toggle highlighting of selected marker
+    if( marker_id != selected_id ) {
+      marker = markers[marker_id]
+      markerHighlight = markersHighlight[marker_id]
       
-    marker.setVisible( !marker.getVisible() );
-    markerHighlight.setVisible( !markerHighlight.getVisible() );
+      marker.setVisible( !marker.getVisible() );
+      markerHighlight.setVisible( !markerHighlight.getVisible() );
+    }
   }
 
   function postClickHandler(event) {
@@ -146,6 +175,7 @@ function gmaps_story_init(){
 
 $(document).ready(function() { 
   if( $('#gmaps-story-view').length  ) {
+    largeMap = $('.large-map').length;
     gmaps_story_init();
   }; 
 });

@@ -142,4 +142,20 @@
     max-height: 100px;
     @include image-style;
   }
+  h3 {
+    padding-bottom: 5px;
+  }
+  .read-more {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    a {
+      padding: 10px;
+      border: 1px solid #ccc;
+      @include rounded-borders( 50px );
+      &:hover {
+        background: #efefef;
+        text-decoration: none;
+      }
+    }
+  }
 }
