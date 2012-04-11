@@ -4,7 +4,7 @@ var infowindow;
 var markers = {};
 var markersHighlight = {};
 var circles = {};
-var selected_id = -1;
+var selected_id = null;
 var largeMap = false; // are we on large map page, or story page?
 
 // initialise the google maps objects, and add listeners
@@ -42,6 +42,11 @@ function gmaps_story_init(){
   var pathCoordinates = [];
   var prev_post_id = null;
   var next_post_id = null;
+  var first_post_id = null;
+
+  if( locations.length ){ first_post_id = locations[0].post_id };
+
+
   //for( loc in locations ) {
   for( var i = 0; i < locations.length; i++ ) {
     curloc = locations[i];
@@ -135,10 +140,10 @@ function gmaps_story_init(){
         $('.post.teaser').removeClass("selected")
       }
       // but apply it to the current one
-      $('.post.teaser#post-id-' + post_id).addClass("selected");
+      $('.post.teaser#post-id-' + post_id).addClass('selected');
 
       // and scroll the page to the appropriate teaser
-      $.scrollTo(".post.teaser#post-id-" + post_id, {duration:1000, over: -0.5})
+      $.scrollTo(".post.teaser#post-id-" + post_id, {duration:750, over: -0.5})
     }
 
     zoomMapTo( selectedMarker );
@@ -182,9 +187,14 @@ function gmaps_story_init(){
   }
  
   function selectNextMarker(event) {
-    marker = markers[selected_id]; 
-    if( marker.next_post_id != null ) {
-      selectPost( marker.next_post_id );
+    if( selected_id === null ) {
+      // select the first marker
+      selectPost( first_post_id );
+    } else {
+      marker = markers[selected_id]; 
+      if( marker.next_post_id != null ) {
+        selectPost( marker.next_post_id );
+      }
     }
   }
 
@@ -236,6 +246,15 @@ function gmaps_story_init(){
     var top = elem.offset().top - parseFloat(elem.css('marginTop').replace(/auto/,0));
     $('#gmaps-story-view').css('height', $(window).height() - top - 200);
   }
+
+  $(document).keydown(function (evt) {
+    if( evt.keyCode === 39 || evt.keyCode === 40 ) {
+      selectNextMarker();
+    }
+    if( evt.keyCode === 37 || evt.keyCode === 38 ) {
+      selectPrevMarker();
+    }
+  });
 }
 
 $(document).ready(function() { 

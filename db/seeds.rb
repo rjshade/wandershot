@@ -20,12 +20,12 @@ Integer varius aliquet vulputate. Fusce id purus felis, vitae commodo lacus. Sus
   story = User.all.to_a.shuffle.first.stories.create! title: "Exciting story #{s}", summary: summary, created_at: start_date
 
   (rand(10)+1).times do |i|
-    post = story.posts.create! title: "Entry number #{i}", text: summary, created_at: start_date + i.days
+    post = story.posts.create! title: "Entry number #{i}", text: summary, date: start_date + i.days
       
     if rand(100) > 10
       post.address = "Some sort of location, USA"
-      post.latitude = (rand() * 180 - 90)
-      post.longitude = (rand() * 360 - 180)
+      post.latitude = (rand() * 90 - 45)
+      post.longitude = (rand() * 180 - 90)
     end
     if rand(100) > 10
       post.image = File.open("#{Rails.root}/app/assets/images/stock/stock_#{(0..12).to_a.shuffle.first}.jpg")

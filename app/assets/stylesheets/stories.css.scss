@@ -100,11 +100,11 @@
     .prev,.next {
       a {
         padding: 10px;
-        border: 1px solid #ccc;
-        @include rounded-borders( 50px );
+        /*border: 1px solid #ccc;*/
+        /*@include rounded-borders( 50px );*/
         &:hover {
           cursor: pointer;
-          background: #efefef;
+          /*background: #efefef;*/
           text-decoration: none;
         }
       }

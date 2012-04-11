@@ -85,14 +85,8 @@
       margin-top: 20px;
       margin-bottom: 20px;
       a {
-        font-size: 1.2em;
-        padding: 10px;
-        border: 1px solid #ccc;
-        @include rounded-borders( 50px );
-        &:hover {
-          background: #efefef;
-          text-decoration: none;
-        }
+        padding-top: 10px;
+        padding-bottom: 10px;
       }
     }
 
@@ -101,17 +95,13 @@
     @include shadows(#ccc,1px);
     &.hovering, &:hover {
       border: 1px solid $borderColor;
-      @include shadows(#555,5px);
+      @include shadows(#efefef,5px);
       cursor: pointer;
     }
     &.selected {
       border: 1px solid $borderColor;
       @include rounded-borders( 3px );
-      @include shadows(#555, 5px);
-
-      .read-more {
-        font-weight: 400;
-      }
+      @include shadows(#efefef, 5px);
     }
   }
 }
