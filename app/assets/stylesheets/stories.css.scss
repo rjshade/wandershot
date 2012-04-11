@@ -90,6 +90,43 @@
     }
   }
 
+  .map-controls {
+    display: none;
+    padding-top: 30px;
+    .prev,.next,.middle {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .prev,.next {
+      a {
+        padding: 10px;
+        border: 1px solid #ccc;
+        @include rounded-borders( 50px );
+        &:hover {
+          cursor: pointer;
+          background: #efefef;
+          text-decoration: none;
+        }
+      }
+
+      &.disabled {
+        a {
+          color: #ccc;
+          &:hover {
+            background: #fff;
+          }
+        }
+      }
+    }
+
+    .middle {
+      a {
+        font-size: 18px;
+        color: $textColor;
+      }
+    }
+  }
+
   .post-placeholder {
     @include image-style;
     height: 200px;

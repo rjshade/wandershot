@@ -40,27 +40,45 @@ function gmaps_story_init(){
 
   var locations = $('#gmaps-story-view').data('locations');
   var pathCoordinates = [];
-  for( loc in locations ) {
-    curloc = locations[loc];
+  var prev_post_id = null;
+  var next_post_id = null;
+  //for( loc in locations ) {
+  for( var i = 0; i < locations.length; i++ ) {
+    curloc = locations[i];
+
+    // if we're in the middle of a list of locations then we want to record
+    // prev/next post_ids so we can navigate through them. We need to do this
+    // as we're storing markers etc. in hash maps keyed by post_id,
+    // so we can't find prev/next by array indices
+    if( i > 0 ){ prev_post_id = cur_post_id; }
+    cur_post_id = curloc.post_id;
+    if( i < (locations.length - 1) ) {
+      next_post_id = locations[i+1].post_id;
+    } else {
+      next_post_id = null;
+    }
+
     latlngloc = new google.maps.LatLng( curloc.latitude, curloc.longitude )
-    markers[curloc.post_id] = ( new google.maps.Marker({
+    markers[cur_post_id] = ( new google.maps.Marker({
       map: map,
       content: curloc.content,
-      post_id: curloc.post_id,
+      post_link: curloc.post_link,
+      post_id: cur_post_id,
+      prev_post_id: prev_post_id,
+      next_post_id: next_post_id,
       position: latlngloc,
       icon: pinImage,
       shadow: pinShadow
     }))
 
-    markersHighlight[curloc.post_id] = ( new google.maps.Marker({
+    markersHighlight[cur_post_id] = ( new google.maps.Marker({
       map: map,
-      post_id: curloc.post_id,
+      post_id: cur_post_id,
       position: latlngloc,
       visible: false,
       icon: pinImageHighlight,
       shadow: pinShadow
     }))
-
 
     pathCoordinates.push( latlngloc );
 
@@ -87,7 +105,10 @@ function gmaps_story_init(){
   infowindow = new google.maps.InfoWindow()
   map.fitBounds( bounds );
 
-
+  $('.map-controls').find('.prev').children('a').attr( 'href', null )
+  $('.map-controls').find('.next').children('a').attr( 'href', null )
+  $('.map-controls').find('.prev').bind( 'click', selectPrevMarker )
+  $('.map-controls').find('.next').bind( 'click', selectNextMarker )
 
   var originalZoom = map.getZoom();
 
@@ -98,15 +119,15 @@ function gmaps_story_init(){
   }
 
   function selectPost( post_id ) {
-    marker = markers[post_id];
+    var selectedMarker = markers[post_id];
 
     // on the large map page we want to display info windows
     // whereas on the story page we scroll to and highlight
     // the post teaser
     if( largeMap ) {
       infowindow.close();
-      infowindow.setContent(marker.content);
-      infowindow.setPosition(marker.getPosition());
+      infowindow.setContent(selectedMarker.content);
+      infowindow.setPosition(selectedMarker.getPosition());
       infowindow.open(map);
     } else {
       // remove selected class from all post teasers
@@ -120,12 +141,12 @@ function gmaps_story_init(){
       $.scrollTo(".post.teaser#post-id-" + post_id, {duration:1000, over: -0.5})
     }
 
-    zoomMapTo( marker );
+    zoomMapTo( selectedMarker );
 
     // set all other markers to be not highlighted
-    for( marker in markers ) {
-      markers[marker].setVisible(true);
-      markersHighlight[marker].setVisible(false);
+    for( var m in markers ) {
+      markers[m].setVisible(true);
+      markersHighlight[m].setVisible(false);
     }
 
     // and this marker to be highlighted
@@ -134,6 +155,37 @@ function gmaps_story_init(){
 
     // remember which marker/post is selected
     selected_id = post_id;
+
+    // make prev/next controls visible
+    $('.map-controls').show();
+
+    $('.map-controls').find('.middle').html( selectedMarker.post_link )
+
+    // but disable controls appropriately
+    if( selectedMarker.prev_post_id != null ) {
+      $('.map-controls').find('.prev').removeClass('disabled');
+    } else {
+      $('.map-controls').find('.prev').addClass('disabled');
+    }
+    if( selectedMarker.next_post_id != null ) {
+      $('.map-controls').find('.next').removeClass('disabled');
+    } else {
+      $('.map-controls').find('.next').addClass('disabled');
+    }
+  }
+
+  function selectPrevMarker(event) {
+    marker = markers[selected_id]; 
+    if( marker.prev_post_id != null ) {
+      selectPost( marker.prev_post_id );
+    }
+  }
+ 
+  function selectNextMarker(event) {
+    marker = markers[selected_id]; 
+    if( marker.next_post_id != null ) {
+      selectPost( marker.next_post_id );
+    }
   }
 
   // hovering over the google maps marker should give the same effect
@@ -182,13 +234,14 @@ function gmaps_story_init(){
   if( $(document).width() >= 800 ) {
     var elem = $('#gmaps-story-view')
     var top = elem.offset().top - parseFloat(elem.css('marginTop').replace(/auto/,0));
-    $('#gmaps-story-view').css('height', $(window).height() - top - 60);
+    $('#gmaps-story-view').css('height', $(window).height() - top - 200);
   }
 }
 
 $(document).ready(function() { 
   if( $('#gmaps-story-view').length  ) {
     largeMap = $('.large-map').length;
+
     gmaps_story_init();
   }; 
 });
