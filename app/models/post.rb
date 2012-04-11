@@ -33,7 +33,7 @@ class Post
 
   has_many :comments, :dependent => :destroy
 
-  scope :latest, descending(:date)
+  scope :latest, ascending(:date)
   scope :recent, lambda{|n| latest.limit(n)}
 
   def get_date
