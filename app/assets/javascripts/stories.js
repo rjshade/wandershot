@@ -23,8 +23,8 @@ function gmaps_story_init(){
 
   bounds = new google.maps.LatLngBounds()
 
-  var pinColor = "00b454";
-  var pinColorHighlight = "ff3900";
+  var pinColor = "04bfbf";
+  var pinColorHighlight = "f7e967";
   var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
       new google.maps.Size(21, 34),
       new google.maps.Point(0,0),
@@ -39,6 +39,7 @@ function gmaps_story_init(){
       new google.maps.Point(12, 35));
 
   var locations = $('#gmaps-story-view').data('locations');
+  var pathCoordinates = [];
   for( loc in locations ) {
     curloc = locations[loc];
     latlngloc = new google.maps.LatLng( curloc.latitude, curloc.longitude )
@@ -60,6 +61,9 @@ function gmaps_story_init(){
       shadow: pinShadow
     }))
 
+
+    pathCoordinates.push( latlngloc );
+
     bounds.extend( latlngloc )
 
     $('.post.teaser#post-id-'+curloc.post_id).bind('click', postClickHandler)
@@ -71,6 +75,15 @@ function gmaps_story_init(){
     google.maps.event.addListener(map, 'click',  function() { infowindow.close() });
   }
 
+
+  var flightPath = new google.maps.Polyline({
+    path: pathCoordinates,
+    strokeColor: "#CAFCD8",
+    strokeOpacity: 0.6,
+    strokeWeight: 3
+  });
+
+  flightPath.setMap(map);
   infowindow = new google.maps.InfoWindow()
   map.fitBounds( bounds );
 

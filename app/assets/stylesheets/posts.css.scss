@@ -101,11 +101,13 @@
     @include shadows(#ccc,1px);
     &.hovering, &:hover {
       border: 1px solid $borderColor;
+      @include shadows(#555,5px);
+      cursor: pointer;
     }
     &.selected {
       border: 1px solid $borderColor;
       @include rounded-borders( 3px );
-      @include shadows(#555, 8px);
+      @include shadows(#555, 5px);
 
       .read-more {
         font-weight: 400;
