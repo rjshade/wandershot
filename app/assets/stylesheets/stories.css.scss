@@ -49,14 +49,9 @@
     margin-top: 10px;
     margin-bottom: 40px;
     .images {
-      padding-top: 30px;
-      .image{
-        padding-right: 10px;
-        img {
-          max-width: 105px;
-          max-height: 90px;
-          @include image-style;
-        }
+      img {
+        width: 100%;
+        @include image-style;
       }
     }
   }

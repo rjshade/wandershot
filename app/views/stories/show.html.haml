@@ -21,4 +21,4 @@
             = render partial: 'posts/teaser', locals: { post: post }
       = render partial: 'comments/display_all_with_form', locals: { type: :story }
     .span6.attach.small-map
-      = render partial: 'stories/map', locals: { small: true }
+      = render partial: 'stories/map', locals: { small: true, story: @story }

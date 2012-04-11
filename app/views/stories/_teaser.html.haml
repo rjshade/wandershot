@@ -1,15 +1,22 @@
 - if story
-  .row.story.teaser
-    .span6
-      .text
+  .story.teaser
+    .row
+      .span12
         = render :partial => 'stories/title', :locals => { :story => story }
-        = truncate_html( (md story.summary), :length => 200 )
-        %br
-        = link_to 'View story &raquo;'.html_safe, story_path(story), class: 'read-more'
-          
-    .span6
-      .images.center
-        - posts = story.posts_with_images.shuffle
-        - posts[0..6].each do |post|
-          %span.image
-            = link_to (image_tag post.image.url(:small)), story_post_path(story,post)
+    .row
+      .span4
+        .text
+          = truncate_html( (md story.summary), :length => 200 )
+          %br
+          = link_to 'View story &raquo;'.html_safe, story_path(story), class: 'read-more'
+            
+      .span4
+        .images
+          - posts = story.posts_with_images.shuffle
+          - posts[0..5].each do |post|
+            .span1
+              = link_to (image_tag post.image.url(:small_crop)), story_post_path(story,post)
+  
+      .span4
+        .large-map
+          = render partial: 'stories/map', locals: { story: story }

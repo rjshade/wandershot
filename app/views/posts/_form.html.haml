@@ -6,8 +6,9 @@
         .span6
           .page-header
             %h3 Details
+          %p You must fill in fields marked with *
           = render partial: 'shared/markdown_instructions'
-          = f.input :title, required: false
+          = f.input :title
           = f.input :date, input_html: { id: 'datepicker' }
           <script>$('#datepicker').datepicker({format: 'dd/mm/yyyy'});</script>
 

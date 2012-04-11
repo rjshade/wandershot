@@ -24,7 +24,6 @@ class Post
 
   validates_presence_of :address, message: "where did this happen?"
   validates_presence_of :date, message: "when did this happen?"
-  validates_presence_of :text
   validates_presence_of :latitude,  message: "click on the map"
   validates_presence_of :longitude, message: "click on the map"
 

@@ -9,7 +9,7 @@
   .new-comment-form
     - if current_user
       .avatar
-        = image_tag current_user.avatar(:small)
+        = image_tag current_user.avatar(:thumb)
       .form
         = form_for Comment.new, :html => {:'data-type' => 'html', :style => 'margin-bottom: 0px'}, :remote => true do |f|
           = f.text_area :text, :placeholder => "Comment on this #{type.to_s}..."
