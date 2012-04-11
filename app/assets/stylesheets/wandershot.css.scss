@@ -1,7 +1,10 @@
 @import "shared/colors";
 body {
-  padding-bottom: 50px;
+  padding-bottom: 60px;
   font-weight: 300;
+}
+
+.page-header {
 }
 
 .navbar-inner {
@@ -100,5 +103,11 @@ form {
     &:hover {
       cursor: pointer;
     }
+  }
+}
+
+footer {
+  .navbar {
+    border-top: 1px solid $borderColor;
   }
 }

@@ -96,10 +96,15 @@
     }
 
     border: 1px solid #fff;
+    @include rounded-borders( 3px );
+    @include shadows(#ccc,1px);
+    &.hovering, &:hover {
+      border: 1px solid $borderColor;
+    }
     &.selected {
       border: 1px solid $borderColor;
       @include rounded-borders( 3px );
-      @include shadows;
+      @include shadows(#efefef, 8px);
     }
   }
 }

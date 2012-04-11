@@ -1,4 +1,4 @@
-.post.teaser{id: "post-teaser-#{post.id}"}
+.post.teaser{id: "post-id-#{post.id}", :"data-post-id" => post.id}
   .text
     = render partial: 'posts/title', locals: { post: post, story: @story }
     .sidebar

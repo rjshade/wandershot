@@ -34,3 +34,12 @@ Integer varius aliquet vulputate. Fusce id purus felis, vitae commodo lacus. Sus
   end
   puts "Story #{s} created"
 end
+
+
+puts 'SETTING UP ROLES'
+role = Role.create! name: 'Admin'
+
+puts 'SETTING user0 AS ADMIN'
+user = User.where({name: "0 User"}).first
+user.roles << role
+user.save

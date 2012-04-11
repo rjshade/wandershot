@@ -32,6 +32,7 @@ Wandershot::Application.routes.draw do
   end
 
   match 'about'   => 'pages#about'
+  match 'privacy' => 'pages#privacy'
   match 'contact' => 'pages#contact'
   match 'maps'    => 'pages#maps'
   match 'posts'   => 'posts#index'

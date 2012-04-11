@@ -19,9 +19,21 @@
   %body
     = render partial: 'shared/navbar'
 
-    %header
-    .container
+    .container.content
       #userModal.modal.hide.fade
-      =render partial: "shared/flash_messages", locals: {flash: flash}
+      = render partial: "shared/flash_messages", locals: {flash: flash}
       = yield
     
+    %footer.clutter
+      .container
+        .row
+          .span12
+            .navbar.navbar-fixed-bottom
+              .navbar-inner
+                .container
+                  %ul.nav.pull-right
+                    %li= link_to wandershot_text, :root
+                    %li= link_to 'about', about_path
+                    %li= link_to 'contact', contact_path
+                    %li= link_to 'privacy', privacy_path
+                    %li= link_to 'join', new_user_registration_path
