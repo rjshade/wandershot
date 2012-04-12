@@ -56,6 +56,10 @@ class User
   # roles, e.g. Admin
   has_and_belongs_to_many :roles
 
+  def first_name
+    name.split(' ').first
+  end
+
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end

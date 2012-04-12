@@ -23,6 +23,15 @@ body {
       }
     }
   }
+
+  .dropdown.open .dropdown-toggle {
+    color: $linkColor;
+  }
+  .dropdown-menu a {
+    &:hover {
+      background: #efefef;
+    }
+  }
 }
 
 h1.frontpage {

@@ -26,15 +26,11 @@
         Create an account and you can start posting content immediately!
   
       %br
-      .center
-        - if current_user
-          %a{ :href => new_story_path, :class => 'btn btn-large' }
-            Start a new story...
-        - else
-          .center
-            = link_to 'Login with Facebook', '/auth/facebook', class: 'btn btn-large btn-facebook'
-            %br
-            %br
-            or
-            = render :partial => 'users/signup_link',
-                     :locals => { :content => "create a new account" }
+      - if !current_user
+        .center
+          = link_to 'Login with Facebook', '/auth/facebook', class: 'btn btn-large btn-facebook'
+          %br
+          %br
+          or
+          = render :partial => 'users/signup_link',
+                   :locals => { :content => "create a new account" }
