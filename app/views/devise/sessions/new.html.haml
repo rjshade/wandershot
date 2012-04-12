@@ -3,7 +3,7 @@
     .devise
       .page-header
         %h2 Sign in to #{wandershot_text}
-      = render partial: 'form', locals: { url: session_path(:user) }
+      = render partial: 'form', locals: { url: session_path(:user), showfb: true }
       
       %hr
       = render "links"
