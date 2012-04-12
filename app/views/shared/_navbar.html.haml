@@ -11,6 +11,7 @@
         %ul.nav
           %li= link_to "Browse stories", stories_path
           %li= link_to "Popular posts", popular_stories_path
+          %li= link_to "Members", users_path
         %ul.nav.pull-right
           - if user_signed_in?
             %li= link_to('<i class="icon-home"></i> My profile'.html_safe, current_user)

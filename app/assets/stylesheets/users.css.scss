@@ -23,17 +23,18 @@
   }
 }
 
+.users-index {
+  img.avatar{
+    margin-top: 40px;
+    width: 90%;
+    @include image-style;
+  }
+}
+
 a.btn-facebook{
   -moz-user-select: none;
-  /*border: 1px solid #082783;*/
-  /*box-shadow: 0 1px #4C6BC7 inset;*/
   color: white;
-  /*padding: 10px;*/
   padding-left: 45px;
-  /*text-decoration: none;*/
-  /*text-shadow: 0 -1px 0 #082783;*/
-  /*font-weight: 400;*/
-  /*font-size: 1.2em;*/
   background: url("/assets/auth/facebook_logo.png") no-repeat 15px center #2A49A5;;
   &:hover {
     background: url("/assets/auth/facebook_logo.png") no-repeat 15px center #ccc;;
@@ -44,23 +45,12 @@ a.btn-facebook{
   border: 1px solid #ccc;
   padding: 10px;
 
-  -moz-border-radius:    3px; /* Firefox */
-  -webkit-border-radius: 3px; /* Safari, Chrome */
-  border-radius:         3px; /* CSS3 */
-  -moz-box-shadow:     0px 0px 5px #efefef; /* Firefox */
-  -webkit-box-shadow:  0px 0px 5px #efefef; /* Safari, Chrome */
-  box-shadow:          0px 0px 5px #efefef; /* CSS3 */
-
-  &:hover {
-    -moz-box-shadow:     0px 0px 10px #efefef; /* Firefox */
-    -webkit-box-shadow:  0px 0px 10px #efefef; /* Safari, Chrome */
-    box-shadow:          0px 0px 10px #efefef; /* CSS3 */
-  }
+  @include shadows(#efefef,5px);
+  @include rounded-borders(3px);
 
   .form-actions {
     background: #fff;
   }
-
 
   .or {
     padding: 20px;
