@@ -4,8 +4,8 @@ Feature: Post
   In order to share my adventures with the world
 
   Background:
-    Given a logged in user
-    Given I have a story
+    Given I am a logged in user
+    And I have a story
 
   Scenario: Create a new post
     Given I am on the story page

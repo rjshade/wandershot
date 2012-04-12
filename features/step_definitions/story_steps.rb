@@ -6,11 +6,11 @@ Given /^I create a new story$/ do
 end
 
 Given /^I have a story$/ do
-  @story = Story.create!(:title => 'My first story', :summary => 'An exciting summary', :user => @user )
+  @story = FactoryGirl.build( :story, user: @user )
 end
 
 Given /^there is a story$/ do
-  @story = Story.create!(:title => 'My first story', :summary => 'An exciting summary', :user => @user )
+  @story = FactoryGirl.build( :story, user: @user )
 end
 
 Then /^there should be one story$/ do

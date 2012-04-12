@@ -2,6 +2,11 @@ Given /^I create a new post$/ do
   click_link ('new-post')
   fill_in('Title', :with => 'My first post title')
   fill_in('Text',  :with => 'Body text of post')
+  fill_in('Date',  :with => DateTime.now)
+  fill_in('Location',  :with => 'Some place')
+  fill_in('Latitude',  :with => '1234')
+  fill_in('Longitude', :with => '5678')
+
   click_button ('Submit')
 end
 
@@ -11,11 +16,11 @@ Then /^I should see the post$/ do
 end
 
 Given /^I have a post$/ do
-  @post = @story.posts.create!(:title => 'Post Title', :text => 'Post body text')
+  @post = FactoryGirl.build(:post, story: @story)
 end
 
 Given /^there is a post$/ do
-  @post = @story.posts.create!(:title => 'Post Title', :text => 'Post body text')
+  @post = FactoryGirl.build(:post, story: @story)
 end
 
 Given /^I am on the post page$/ do

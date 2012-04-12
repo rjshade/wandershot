@@ -1,14 +1,19 @@
 Given /^there is a user$/ do
-  @user = User.create!(:name => 'Test User', :email=>'test@user.com', :password => 'please')
+  @user = FactoryGirl.build( :user )
   @user.confirm!
 end
 
-Given /^a logged in user$/ do
-  @user = User.create!(:name => 'Test User', :email=>'test@user.com', :password => 'please')
+Given /^I am a logged in user$/ do
+  name = 'Test User'
+  email = 'test.user@example.com'
+  password = 'please'
+  @user = User.create(name: name, email: email, password: password, password_confirmation: password)
   @user.confirm!
+
   visit(new_user_session_path)
-  fill_in('Email', :with => @user.email)
-  fill_in('Password', :with => @user.password)
+  fill_in('Email',    :with => email)
+  fill_in('Password', :with => password)
+
   click_button('Sign in')
 end
 
