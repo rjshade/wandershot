@@ -25,3 +25,7 @@ jQuery ->
     -> fadeIn('.minor-clutter')
     -> fadeOut('.minor-clutter')
   )
+  $('.story').hover(
+    -> fadeIn('.minor-clutter')
+    -> fadeOut('.minor-clutter')
+  )

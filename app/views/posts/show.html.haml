@@ -20,6 +20,12 @@
           = link_to (image_tag @post.image.url(:large)),
                     @post.image.url(:original),
                     class: 'lightbox'
+      -else
+        - if (@post.user == current_user)
+          .placeholder.minor-clutter
+            .center
+              = link_to 'Add a photo', edit_story_post_path(@story,@post)
+
   .row.minor-clutter
     .span4
       = render :partial => 'comments/display_all_with_form', :locals => { :type => :post }

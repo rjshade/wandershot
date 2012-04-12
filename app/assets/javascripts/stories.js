@@ -123,7 +123,9 @@ function gmaps_story_init(){
     selectPost( this.post_id );
   }
 
-  function selectPost( post_id ) {
+  function selectPost( post_id, scrollTo ) {
+    scrollTo = typeof scrollTo !== 'undefined' ? scrollTo : true;
+
     var selectedMarker = markers[post_id];
 
     // on the large map page we want to display info windows
@@ -142,8 +144,10 @@ function gmaps_story_init(){
       // but apply it to the current one
       $('.post.teaser#post-id-' + post_id).addClass('selected');
 
-      // and scroll the page to the appropriate teaser
-      $.scrollTo(".post.teaser#post-id-" + post_id, {duration:750, over: -0.5})
+      if( scrollTo ) {
+        // and scroll the page to the appropriate teaser
+        $.scrollTo(".post.teaser#post-id-" + post_id, {duration:750, over: -0.5})
+      }
     }
 
     zoomMapTo( selectedMarker );
@@ -215,6 +219,7 @@ function gmaps_story_init(){
   function postHoverHandler(event) {
     // toggle visibility of map marker highlight
     toggleMarkerHighlight( $(this).data('post-id') );
+    selectPost( $(this).data('post-id'), false )
   }
 
   function toggleMarkerHighlight( marker_id ) {

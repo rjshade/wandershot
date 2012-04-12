@@ -7,4 +7,4 @@
     .body
       = truncate_html((md post.text), length: 200)
       .read-more
-        = link_to 'Read more &raquo;'.html_safe, story_post_path(@story,post)
+        %h3= link_to 'Read more &raquo;'.html_safe, story_post_path(@story,post)

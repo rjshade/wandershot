@@ -14,11 +14,22 @@
         %ul.nav.pull-right
           - if user_signed_in?
             %li= link_to('<i class="icon-home"></i> My profile'.html_safe, current_user)
-            %li= link_to('<i class="icon-plus"></i> New story'.html_safe, new_story_path)
             %ul.nav
               %li.dropdown
                 %a.dropdown-toggle{ :href => '#', :'data-toggle' => 'dropdown' }
-                  = current_user.name
+                  <i class="icon-plus"></i> Add story or post
+                %ul.dropdown-menu
+                  %li= link_to('<i class=" icon-th-list"></i> Start a new story'.html_safe, new_story_path)
+                  %li.divider
+                  %li.nav-header Add new post to
+                  - current_user.stories.each do |story|
+                    - if !(story.new_record?)
+                      %li= link_to( "<i class='icon-plus-sign'></i> #{truncate(story.title)}".html_safe, new_story_post_path(story))
+
+            %ul.nav
+              %li.dropdown
+                %a.dropdown-toggle{ :href => '#', :'data-toggle' => 'dropdown' }
+                  = "<i class='icon-user'></i> #{current_user.name}".html_safe
                 %ul.dropdown-menu
                   %li= link_to('Account', edit_user_registration_path)
                   %li= link_to('Logout', destroy_user_session_path, :method=>'delete')

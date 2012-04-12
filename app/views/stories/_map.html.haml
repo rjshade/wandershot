@@ -14,6 +14,9 @@
     = link_to 'view large map', (map_story_path story)
 .map-controls
   .row
+    - if !(defined? small)
+      .span3
+        &nbsp;
     .span1
       %span.prev= link_to '&larr; prev'.html_safe
     .span4.center

@@ -9,16 +9,15 @@
     .span6
       = md @story.summary
       .post-teasers
-        - if @posts.empty?
+        - @posts.each do |post|
+          = render partial: 'posts/teaser', locals: { post: post }
+        - if (@story.user == current_user)
           .post-placeholder
             .center
               %p
                 = link_to 'Add a post to this story', new_story_post_path( @story ),
                           :class => 'btn btn-large',
                           :id => 'new-post'
-        - else
-          - @posts.each do |post|
-            = render partial: 'posts/teaser', locals: { post: post }
       = render partial: 'comments/display_all_with_form', locals: { type: :story }
     .span6.attach.small-map
       = render partial: 'stories/map', locals: { small: true, story: @story }
