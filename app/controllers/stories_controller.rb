@@ -2,7 +2,7 @@ class StoriesController < ApplicationController
   before_filter :authenticate_user!, :except => [:index,:show,:popular,:map]
 
   def index
-    @stories = Story.latest.limit(3)
+    @stories = Story.latest.limit(8)
   end
 
   def show

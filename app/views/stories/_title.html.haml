@@ -1,4 +1,4 @@
 .page-header.title
   %h1.title-text= link_to story.title, story_path( story )
-  %h2.date= story.created_at.strftime("%B %e %Y")
+  %h2.date= story.get_date_range
   %h2.author= "by ".html_safe + link_to(story.user.name, story.user)

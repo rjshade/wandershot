@@ -1,22 +1,29 @@
 - if story
-  .story.teaser
-    .row
-      .span12
-        = render :partial => 'stories/title', :locals => { :story => story }
-    .row
-      .span4
+  .span6
+    .story.teaser{ :"data-link" => story_path(story) }
+      .topline
+        -#.view-story
+          -#%h4= link_to 'View story &raquo;'.html_safe, story_path(story)
         .text
-          = truncate_html( (md story.summary), :length => 200 )
-          %br
-          = link_to 'View story &raquo;'.html_safe, story_path(story), class: 'read-more'
-            
-      .span4
-        .images
-          - posts = story.posts_with_images.shuffle
-          - posts[0..5].each do |post|
-            .span1
-              = link_to (image_tag post.image.url(:small_crop)), story_post_path(story,post)
-  
-      .span4
-        .large-map
-          = render partial: 'stories/map', locals: { story: story }
+          %h2.title-text= link_to story.title, story_path( story )
+          %h4.author= "by ".html_safe + link_to(story.user.name, story.user)
+          %h4.numposts= story.posts.size.to_s + " posts"
+          %h4.date= story.get_date_range
+
+      %br
+
+      .images
+        - posts = story.posts_with_images.shuffle[0..4]
+        - posts.each do |post|
+          = link_to (image_tag post.image.url(:small_crop)), story_post_path(story,post)
+      -#.text
+        -#= truncate_html( (md story.summary), :length => 200 )
+        -#%br
+        -#= link_to 'View story &raquo;'.html_safe, story_path(story), class: 'read-more'
+        -#%br
+        -#= render partial: 'stories/map', locals: { story: story }
+ 
+    -#.span6.images
+      -#- post = story.posts_with_images.shuffle.first
+      -#- if post
+        -#= link_to (image_tag post.image.url(:medium_crop)), story_post_path(story,post)

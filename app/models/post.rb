@@ -43,7 +43,7 @@ class Post
 
   def get_date
     date = self.date ? self.date : created_at
-    date.strftime('%B %e %Y')
+    "#{date.day.ordinalize} #{date.strftime('%B %Y')}"
   end
 
   def has_location?

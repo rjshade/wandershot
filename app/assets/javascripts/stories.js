@@ -263,4 +263,9 @@ $(document).ready(function() {
 
     gmaps_story_init();
   }; 
+
+  // story teaser divs link to story
+  if( $('.story.teaser').length ) {
+    $('.story.teaser').bind( 'click', function(){window.location.href = $(this).data('link');} )
+  }
 });

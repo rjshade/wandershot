@@ -19,9 +19,10 @@
           = link_to 'Start a new story', new_story_path( @story ),
                     :class => 'btn btn-large'
       %hr
-      
+
 .row
   .span12
-    - if @user.stories.size > 0
-      - @user.stories.each do |story|
-        =render :partial => 'stories/teaser', :locals => {:story => story}
+    - @user.stories.in_groups_of(2).each do |stories|
+      .row
+        - stories.each do |story|
+          = render :partial => 'stories/teaser', :locals => { :story => story }

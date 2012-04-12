@@ -45,15 +45,61 @@
 
 .story {
   &.teaser {
-    padding-bottom: 30px;
-    margin-top: 10px;
-    margin-bottom: 40px;
+    padding: 10px;
+    min-height: 115px;
+    overflow: hidden;
+
+    .topline {
+      .text {
+      }
+
+      .view-story {
+        float: right;
+        width: 30%;
+        padding: 10px;
+        a {
+          padding: 10px;
+          text-align: middle;
+          font-size: 1em;
+          color: #efefef;
+          border: 1px solid #fff;
+          &:hover {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
     .images {
+      padding-top: 5px;
       img {
-        width: 100%;
+        margin-right: 10px;
+        width: 85px;
+        height: 85px;
         @include image-style;
       }
     }
+
+    a { color: $textColor; font-weight: 300; }
+    
+
+    border: 1px solid #efefef;
+    @include shadows(#efefef, 3px);
+    display: block;
+    &:hover {
+      border: 1px solid #ccc;
+      @include shadows(#ccc, 8px);
+      cursor: pointer;
+      .view-story {
+        a {
+          color: $linkColor;
+          border: 1px solid #efefef;
+          @include rounded-borders;
+        }
+      }
+    }
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   #gmaps-story-view {

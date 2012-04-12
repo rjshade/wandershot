@@ -24,6 +24,27 @@ class Story
     end
   end
 
+  def get_date_range
+    first = self.posts.latest.first
+    last = self.posts.latest.last
+
+    if first.nil?
+      return "#{created_at.day.ordinalize} #{created_at.strftime("%B %Y")}"
+    end
+
+    if first.date == last.date
+      return "#{first.get_date}"
+    elsif first.date.year == last.date.year
+      if first.date.month == last.date.month
+        return "#{first.date.day.ordinalize} to #{last.date.day.ordinalize} of #{first.date.strftime('%B')} #{first.date.year}"
+      else
+        return "#{first.date.day.ordinalize} #{first.date.strftime('%B')} to #{last.date.day.ordinalize} #{last.date.strftime('%B')} #{first.date.year}"
+      end
+    else
+      return "#{first.get_date} to #{last.get_date}"
+    end
+  end
+
   def self.with_images
     all.find_all{|story| !story.posts_with_images.empty?}
   end
