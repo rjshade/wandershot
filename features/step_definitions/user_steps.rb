@@ -3,6 +3,11 @@ Given /^there is a user$/ do
   @user.confirm!
 end
 
+Given /^I have an account$/ do
+  @user = FactoryGirl.build( :user )
+  @user.confirm!
+end
+
 Given /^I am a logged in user$/ do
   name = 'Test User'
   email = 'test.user@example.com'
@@ -22,18 +27,6 @@ Given /^I am logged in$/ do
   fill_in('Email', :with => @user.email)
   fill_in('Password', :with => @user.password)
   click_button('Sign in')
-end
-
-And /^I am on the home page$/ do
-  visit '/'
-end
-
-And /^I am on the account settings page$/ do
-  visit edit_user_registration_path
-end
-
-And /^I am on my profile page$/ do
-  visit user_path @user
 end
 
 Given /^I update my details$/ do

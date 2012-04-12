@@ -3,7 +3,3 @@ Given /^I am an admin$/ do
   @user.roles << r
   @user.save
 end
-
-When /^I visit the admin index page$/ do
-  visit admin_index_path
-end
