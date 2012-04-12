@@ -33,3 +33,4 @@
             Start a new story...
         - else
           = render :partial => 'users/signup_link', :locals => { :content => "Sign up now and get started!", :classes => "btn btn-large" }
+          = link_to 'Login with Facebook', '/auth/facebook', id: 'fb-connect'

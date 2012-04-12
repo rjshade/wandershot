@@ -19,8 +19,8 @@ Given /^my Facebook email is the same as my account email$/ do
 end
 
 When /^I merge my account$/ do
-  fill_in("user_email",    with: @user.email)
-  fill_in("user_password", with: @user.password)
+  fill_in("Email",    with: @user.email)
+  fill_in("Password", with: @user.password)
   click_button "Sign in"
 
   # should now be on account settings page

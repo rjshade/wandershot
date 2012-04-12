@@ -48,6 +48,7 @@ class User
 
   has_many :stories, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  has_many :authentications, :dependent => :destroy
 
   # roles, e.g. Admin
   has_and_belongs_to_many :roles

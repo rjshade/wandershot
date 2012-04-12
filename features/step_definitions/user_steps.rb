@@ -23,10 +23,7 @@ Given /^I am a logged in user$/ do
 end
 
 Given /^I am logged in$/ do
-  visit(new_user_session_path)
-  fill_in('Email', :with => @user.email)
-  fill_in('Password', :with => @user.password)
-  click_button('Sign in')
+  page.should have_content @user.name
 end
 
 Given /^I update my details$/ do

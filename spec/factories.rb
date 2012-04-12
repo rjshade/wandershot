@@ -25,4 +25,10 @@ FactoryGirl.define do
 
     date {DateTime.now}
   end
+
+  factory :authentication do
+    user
+    provider "facebook"
+    uid "1234"
+  end
 end

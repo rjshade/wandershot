@@ -18,6 +18,7 @@ gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'mongoid-paperclip', :require => "mongoid_paperclip"
 gem 'aws-sdk'                 # to talk to amazon s3
 gem 'aws-s3'                  # to talk to amazon s3
+gem 'omniauth-facebook'       # login with facebook
 
 group :development do
   gem 'guard-cucumber'
