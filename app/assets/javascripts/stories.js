@@ -115,7 +115,12 @@ function gmaps_story_init(){
   $('.map-controls').find('.prev').bind( 'click', selectPrevMarker )
   $('.map-controls').find('.next').bind( 'click', selectNextMarker )
 
+  // need to wait for map to settle down before calling getZoom()
   var originalZoom = map.getZoom();
+  var listener = google.maps.event.addListener(map, "idle", function() { 
+    originalZoom = map.getZoom();
+    google.maps.event.removeListener(listener); 
+  });
 
   var selected_post_id = ''
 
@@ -242,8 +247,8 @@ function gmaps_story_init(){
     map.panTo(marker.getPosition());
 
     // zoom in on marker
-    var newZoom = originalZoom + 1;
-    if( newZoom <= 16 ){ map.setZoom( newZoom ); }
+    //var newZoom = originalZoom + 1;
+    //if( newZoom <= 16 ){ map.setZoom( newZoom ); }
   }
 
   if( $(document).width() >= 800 ) {
