@@ -31,14 +31,14 @@
 
 .popular {
   img {
-    margin: 5px;
+    margin-top: 15px;
     @include image-style;
     width: 100%;
   }
 
   .imgs.medium {
     img {
-      max-height: 560px;
+      max-height: 565px;
     }
   }
 }
@@ -175,15 +175,6 @@
     p {
       padding-top: 70px;
     }
-  }
-}
-
-#popular-stories {
-  margin: 0 auto;
-  .item {
-    img { @include image-style; }
-    margin: 10px;
-    float: left;
   }
 }
 
