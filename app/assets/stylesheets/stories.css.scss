@@ -7,6 +7,7 @@
   .title-text, .title-text a {
     color: $textColorSecondary;
     font-size: 18px;
+    margin-bottom: 5px;
   }
   .author, .author a {
     color: $textColorSecondary;
@@ -168,6 +169,9 @@
     }
   }
 
+  .controls {
+    float: right; 
+  }
   .post-placeholder {
     @include image-style;
     height: 200px;

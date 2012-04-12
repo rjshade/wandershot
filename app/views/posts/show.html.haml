@@ -1,12 +1,9 @@
 .post
-  .row.clutter
-    .span12
-      = render 'controls'
-  .row.clutter
-    .span12
   .row
     .span4
-      = render partial: 'title', locals: { post: @post, story: @post.story }
+      .back.minor-clutter
+        = link_to "&laquo; back to #{@post.story.title}".html_safe, story_path(@post.story)
+      = render partial: 'posts/title', locals: { post: @post, story: @post.story }
       .body
         .text
           = md @post.text
