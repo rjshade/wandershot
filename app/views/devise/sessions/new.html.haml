@@ -4,8 +4,6 @@
       .page-header
         %h2 Sign in to #{wandershot_text}
       = render partial: 'form', locals: { url: session_path(:user) }
-
-      = link_to 'Connect to Facebook', '/auth/facebook', id:'fb-connect'
       
       %hr
       = render "links"

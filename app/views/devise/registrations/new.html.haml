@@ -4,6 +4,7 @@
       .page-header
         %h2 Create a #{wandershot_text} account
       
+ 
       = simple_form_for(@user) do |f|
         = f.error_notification
       
@@ -15,6 +16,8 @@
       
         .form-actions
           = f.button :submit, "Create account", :class => 'btn btn-large'
+          or
+          = link_to 'Connect to Facebook', '/auth/facebook', class: 'btn btn-large btn-facebook'
 
       %hr
       = render "links"

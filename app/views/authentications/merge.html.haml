@@ -8,14 +8,13 @@
   .span6
     .alert.alert-info
       %h1.alert-heading NO
-      Click a button below to create a new #{wandershot_text} account by linking to an external account.
+      Click the button below to create a new account by linking to your Facebook account.
 
 .row
   .span6
     = render partial: 'devise/sessions/form', locals: {url: new_session_path(:user)}
 
   .span6
-    = link_to (image_tag 'auth/facebook_64.png', alt: "Connect to Facebook"), auth_create_path
-    = link_to 'what', 'hello'
-    = link_to 'hello', {controller: 'authentications'}
-    = link_to "Articles", { :controller => "articles" }, :id => "news", :class => "article"
+    %br
+    .center
+      = link_to 'Connect to Facebook', auth_create_path, class: 'btn btn-large btn-facebook'

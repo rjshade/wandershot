@@ -1,6 +1,10 @@
+- showfb = ((defined? showfb) ? showfb : false)
 = simple_form_for(:user, :url => url) do |f|
   = f.input :email, :required => false, :autofocus => true 
   = f.input :password, :required => false
 
   .form-actions
     = f.button :submit, "Sign in", :class => 'btn btn-large'
+    - if showfb
+      or
+      = link_to 'login with Facebook', '/auth/facebook', class: 'btn btn-large btn-facebook'
