@@ -1,0 +1,7 @@
+.page-header
+  %h1 Stories
+
+- @stories.each do |story|
+  .story
+    = link_to story.title, story
+    = link_to '&times;'.html_safe, story, :confirm => "Are you sure?", :method => :delete

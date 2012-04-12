@@ -24,7 +24,7 @@ Wandershot::Application.routes.draw do
                                       :sign_up => 'signup' },
                      :controllers => { :sessions => 'sessions',
                                        :registrations => 'registrations' }
-  resources :users, :only => [:index,:show]
+  resources :users, :only => [:index,:show,:destroy]
 
   root :to => 'home#index'
 
