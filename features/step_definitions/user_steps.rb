@@ -23,7 +23,7 @@ Given /^I am a logged in user$/ do
 end
 
 Given /^I am logged in$/ do
-  page.should have_content @user.name
+  page.should have_content('You are now signed in')
 end
 
 Given /^I update my details$/ do

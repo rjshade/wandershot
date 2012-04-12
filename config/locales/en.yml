@@ -2,4 +2,8 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  signed_in: "You are now signed in."
+  auth_facebook_success: "You can now sign in using your Facebook account."
+  auth_facebook_linked: "Your account is now linked to your Facebook account."
+  auth_facebook_created: "We've linked your Facebook account!<br/>You are now signed in."
+  auth_facebook_destroy: "Your account is no longer linked to Facebook."

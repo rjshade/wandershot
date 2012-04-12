@@ -4,7 +4,7 @@ Feature: Story
   In order to share my adventures with the world
 
   Background:
-    Given a logged in user
+    Given I am a logged in user
 
   Scenario: Create a new story
     Given I create a new story

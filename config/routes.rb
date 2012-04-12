@@ -13,6 +13,7 @@ Wandershot::Application.routes.draw do
 
   resources :comments
 
+  resources :authentications, only: [:destroy]
   match '/auth/merge'              => 'authentications#merge'
   match '/auth/:provider/callback' => 'authentications#callback'
   match '/auth/create'             => 'authentications#create_new_account'

@@ -15,7 +15,30 @@
           = f.input :avatar
       
         %hr
-        = link_to 'Connect to Facebook', '/auth/facebook', id: 'fb-connect'
+        = field_set_tag "Authentications" do
+          - authentications = current_user.authentications
+          - unless authentications.empty?
+            %br
+            %p You can sign in to #{wandershot_text} using:
+
+            .authentications
+              - authentications.each do |authentication|
+                .authentication
+                  =image_tag "auth/#{authentication.provider}_64.png"
+                  .provider
+                    = authentication.provider.titleize
+                  .delete
+                    = link_to "&times;".html_safe, authentication,
+                              confirm: 'Are you sure you want to remove this authentication option?',
+                              method: :delete, 
+                              class: "remove"
+            .clearfix
+          - else
+            %br
+            %p Link your #{wandershot_text} account to:
+
+            .auth-providers
+              = link_to ((image_tag 'auth/facebook_64.png', alt: "Sign in with Facebook") + " Facebook"), '/auth/facebook', id: 'fb-connect', class: 'auth-provider'
         %hr
         = f.input :current_password, :hint => "needed to make changes", :required => true
         .form-actions

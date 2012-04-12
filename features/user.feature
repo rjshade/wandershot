@@ -4,7 +4,7 @@ Feature: Account settings
   As a signed in user
 
   Scenario:
-    Given a logged in user
+    Given I am a logged in user
     And I am on the account settings page
     And I update my details
     Then I should see the new details
