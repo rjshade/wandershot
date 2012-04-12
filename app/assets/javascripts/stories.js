@@ -125,10 +125,10 @@ function gmaps_story_init(){
   var selected_post_id = ''
 
   function markerClickHandler( event ) {
-    selectPost( this.post_id );
+    selectPost( this.post_id, true, true );
   }
 
-  function selectPost( post_id, scrollTo ) {
+  function selectPost( post_id, scrollTo, zoomTo ) {
     scrollTo = typeof scrollTo !== 'undefined' ? scrollTo : true;
 
     var selectedMarker = markers[post_id];
@@ -155,7 +155,7 @@ function gmaps_story_init(){
       }
     }
 
-    zoomMapTo( selectedMarker );
+    zoomMapTo( selectedMarker, zoomTo );
 
     // set all other markers to be not highlighted
     for( var m in markers ) {
@@ -239,16 +239,18 @@ function gmaps_story_init(){
   }
 
   function postClickHandler(event) {
-    selectPost( $(this).data('post-id') )
+    selectPost( $(this).data('post-id'), true, true )
   }
 
-  function zoomMapTo( marker ) {
+  function zoomMapTo( marker, zoomIn ) {
     // move map to marker
     map.panTo(marker.getPosition());
 
     // zoom in on marker
-    //var newZoom = originalZoom + 1;
-    //if( newZoom <= 16 ){ map.setZoom( newZoom ); }
+    if( zoomIn ) {
+      var newZoom = originalZoom + 1;
+      if( newZoom <= 16 ){ map.setZoom( newZoom ); }
+    }
   }
 
   if( $(document).width() >= 800 ) {
