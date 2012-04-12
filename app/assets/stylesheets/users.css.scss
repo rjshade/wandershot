@@ -68,6 +68,12 @@ a.btn-facebook{
     font-weight: 300;
   }
 
+  .avatar {
+    img {
+      @include image-style;
+    }
+  }
+
   .authentications {
     .authentication {
       float: left;

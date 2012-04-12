@@ -33,11 +33,10 @@ class AuthenticationsController < ApplicationController
       pwd = (0...16).map{ ('a'..'z').to_a[rand(26)] }.join
       user = User.new(:name => omniauth['info']['name'], :email => omniauth['info']['email'], :password => pwd, :password_confirmation =>pwd)  
       user.omniauth_signup = true
+      user.skip_confirmation!
       user.save
 
-
       user.authentications.create!(provider: omniauth['provider'], uid: omniauth['uid'])  
-      user.confirm!
 
       #UserMailer.welcome_email(user).deliver!
 

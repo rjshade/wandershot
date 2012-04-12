@@ -13,6 +13,8 @@
           - if !(current_user.omniauth_signup)
             = f.input :password, :autocomplete => "off", :hint => "leave blank if you don't want to change it", :required => false
             = f.input :password_confirmation, :required => false
+          .controls.avatar
+            = image_tag current_user.avatar(:thumb)
           = f.input :avatar
         - if !(current_user.omniauth_signup)
           %hr
