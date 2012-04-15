@@ -11,6 +11,9 @@
       .navigation.minor-clutter
         = render 'navigation'
 
+      .minor-clutter
+        = render :partial => 'comments/display_all_with_form', :locals => { :type => :post }
+
     .span8.main-image.attach
       -if @post.image?
         .center
@@ -22,7 +25,3 @@
           .placeholder.minor-clutter
             .center
               = link_to 'Add a photo', edit_story_post_path(@story,@post)
-
-  .row.minor-clutter
-    .span4
-      = render :partial => 'comments/display_all_with_form', :locals => { :type => :post }
