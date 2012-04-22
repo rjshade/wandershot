@@ -1,5 +1,5 @@
 .page-header.title
   = render 'stories/controls'
-  %h1.title-text= link_to story.title, story_path( story )
-  %h2.date= story.get_date_range
-  %h2.author= "by ".html_safe + link_to(story.user.name, story.user)
+  %h3.title-text= link_to story.title, story_path( story )
+  %h4.date= story.get_date_range
+  %h4.author= "by ".html_safe + link_to(story.user.name, story.user)

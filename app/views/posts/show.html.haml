@@ -1,6 +1,6 @@
 .post
   .row
-    .span4
+    .span3
       .back.minor-clutter
         = link_to "&laquo; back to #{@post.story.title}".html_safe, story_path(@post.story)
       = render partial: 'posts/title', locals: { post: @post, story: @post.story }
@@ -14,7 +14,7 @@
       .minor-clutter
         = render :partial => 'comments/display_all_with_form', :locals => { :type => :post }
 
-    .span8.main-image.attach
+    .span9.main-image.attach
       -if @post.image?
         .center
           = link_to (image_tag @post.image.url(:large)),

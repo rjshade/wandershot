@@ -1,12 +1,19 @@
 @import "shared/colors";
 body {
   padding-bottom: 150px;
+  color: #555;
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
+  font-size: 14px;
 }
 
-.page-header {
-}
-
+//.page-header {
+//  border: none;
+//  padding: none;
+//  margin: none;
+//  /*line-height: 1em;*/
+//}
+//
 .navbar-inner {
   font-weight: 300;
   -moz-box-shadow: none;
@@ -41,8 +48,9 @@ h1.frontpage {
   }
 }
 
-h1 {font-weight: 300}
-h2,h3,h4,h5 { font-weight: 100 }
+h1,h2,h3,h4,h5 { 
+  font-weight: 300;
+}
 
 .center {
   text-align: center;

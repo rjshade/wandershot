@@ -1,13 +1,6 @@
 .page-header.title
+  = render partial: 'posts/controls', locals: { post: post }
+  %h3.title-text= link_to post.title, story_post_path(story, post)
   - if post.has_location?
-    .topline
-      = render partial: 'posts/controls', locals: { post: post }
-      %h1.title-text= link_to post.title, story_post_path(story, post)
-    .bottomline
-      %span.date= post.get_date
-      %span.location= link_to (truncate(post.get_location, length: 40)), map_story_path(story)
-  - else
-    .bottomline
-      = render partial: 'posts/controls', locals: { post: post }
-      %span.title-text= link_to post.title, story_post_path(story, post)
-      %span.date= post.get_date
+    %h4.location= link_to (truncate(post.get_location, length: 40)), map_story_path(story)
+  %h4.date= post.get_date
