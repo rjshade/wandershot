@@ -1,6 +1,6 @@
 .comments.minor-clutter
   .page-header
-    %h3 Comments
+    %h4 Comments
 
   #comment-block
     - if @comments
@@ -17,7 +17,8 @@
           = f.button :submit, :class => 'btn'
         = render partial: 'shared/markdown_instructions'
     - else
-      = render :partial => 'users/signup_link',  :locals => { :content => "Sign up" }
-      or
-      = render :partial => 'users/login_link',  :locals => { :content => "login" }
-      to post a comment
+      %p
+        = render :partial => 'users/signup_link',  :locals => { :content => "Sign up" }
+        or
+        = render :partial => 'users/login_link',  :locals => { :content => "login" }
+        to post a comment

@@ -2,7 +2,7 @@
   .row
     .span3
       .back.minor-clutter
-        = link_to "&laquo; back to #{@post.story.title}".html_safe, story_path(@post.story)
+        = link_to "&laquo; part of #{@post.story.title}".html_safe, story_path(@post.story)
       = render partial: 'posts/title', locals: { post: @post, story: @post.story }
       .body
         .text

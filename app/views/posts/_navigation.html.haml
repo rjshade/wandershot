@@ -1,6 +1,3 @@
-%hr
-Posted in #{link_to truncate(@story.title, length: 20), @story}
-%br
 .prev
   - if prev_post = @post.prev
     = link_to '&larr; prev'.html_safe, story_post_path(@story,prev_post)

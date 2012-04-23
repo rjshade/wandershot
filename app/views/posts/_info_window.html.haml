@@ -3,5 +3,8 @@
     .center
       = link_to (image_tag post.image(:small), style: 'max-width: 180px'),
                 story_post_path(post.story,post)
-  .read-more.center
-    = link_to 'View post &raquo;'.html_safe , story_post_path(post.story,post)
+  .details.center
+    %h5= post.get_location
+    %h5= post.get_date
+    .read-more
+      = link_to 'View post &raquo;'.html_safe , story_post_path(post.story,post)

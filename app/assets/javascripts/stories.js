@@ -128,20 +128,24 @@ function gmaps_story_init(){
     selectPost( this.post_id, true, true );
   }
 
-  function selectPost( post_id, scrollTo, zoomTo ) {
+  function selectPost( post_id, scrollTo, zoomTo, openInfoWindow ) {
     scrollTo = typeof scrollTo !== 'undefined' ? scrollTo : true;
+    zoomTo = typeof zoomTo !== 'undefined' ? zoomTo : true;
+    openInfoWindow = typeof openInfoWindow !== 'undefined' ? openInfoWindow : true;
 
     var selectedMarker = markers[post_id];
 
     // on the large map page we want to display info windows
     // whereas on the story page we scroll to and highlight
     // the post teaser
-    if( largeMap ) {
-      infowindow.close();
+    infowindow.close();
+    if( openInfoWindow ) {
       infowindow.setContent(selectedMarker.content);
       infowindow.setPosition(selectedMarker.getPosition());
       infowindow.open(map);
-    } else {
+    }
+
+    if( !largeMap ) {
       // remove selected class from all post teasers
       for( var m in markers ) {
         $('.post.teaser').removeClass("selected")
@@ -224,7 +228,7 @@ function gmaps_story_init(){
   function postHoverHandler(event) {
     // toggle visibility of map marker highlight
     toggleMarkerHighlight( $(this).data('post-id') );
-    selectPost( $(this).data('post-id'), false )
+    selectPost( $(this).data('post-id'), false, false, false )
   }
 
   function toggleMarkerHighlight( marker_id ) {
@@ -254,9 +258,10 @@ function gmaps_story_init(){
   }
 
   if( $(document).width() >= 800 ) {
+    // desktop layout so we try and make map as tall as possible while still fitting in window
     var elem = $('#gmaps-story-view')
     var top = elem.offset().top - parseFloat(elem.css('marginTop').replace(/auto/,0));
-    $('#gmaps-story-view').css('height', $(window).height() - top - 200);
+    $('#gmaps-story-view').css('height', $(window).height() - top);
   }
 
   $(document).keydown(function (evt) {
