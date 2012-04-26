@@ -7,26 +7,30 @@
             = link_to (image_tag @post.image.url(:large)), story_post_path(@post.story,@post)
     .span4
       .page-header
-        %h3
+        %h1
           #{wandershot_text}
       %p
         Travel blogging. Simplified.
+        
+      %p
+        #{wandershot_text} is designed to be a unobtrusive and minimalist way to record your travel stories and photos.
           
       .page-header
-        %h3
-          Explore...
-          Dream...
-          Discover...
+        %h2
+          Explore...  dream...  discover...
       %p
         Get inspired for your next adventure.
+      %p
         Have a look at some 
-        = link_to 'popular stories', popular_stories_path
+        = link_to 'popular posts', popular_stories_path
+        or
+        = link_to 'browse all stories', stories_path
   
       .page-header
-        %h3
-          Discover...
+        %h2
+          Get started now
       %p
-        Create an account and you can start posting content immediately!
+        Create an account and you can start posting immediately!
   
       %br
       - if !current_user
