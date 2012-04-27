@@ -1,0 +1,17 @@
+.social{
+  margin-top: 10px;
+  .gplus, .facebook, .fb-like {
+    display: inline-block;
+  }
+
+  /*border: 1px solid blue;*/
+  .gplus {
+    /*border: 1px solid green;*/
+  }
+  .facebook {
+    /*border: 1px solid red;*/
+    position: relative;
+    top:-3px;
+    left:-25px;
+  }
+}

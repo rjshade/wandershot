@@ -10,6 +10,8 @@
 
       .navigation.minor-clutter
         = render 'navigation'
+        %br
+        = render 'shared/social'
 
       .minor-clutter
         = render :partial => 'comments/display_all_with_form', :locals => { :type => :post }
