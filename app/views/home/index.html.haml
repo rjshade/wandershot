@@ -1,10 +1,10 @@
 .home
   .row
     .span8
-      - if @post
+      - if @main_post
         .main-image
           .center
-            = link_to (image_tag @post.image.url(:large)), story_post_path(@post.story,@post)
+            = link_to (image_tag @main_post.image.url(:large)), story_post_path(@main_post.story,@main_post)
     .span4
       .page-header
         %h1
