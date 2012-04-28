@@ -3,5 +3,5 @@
 
 - @posts.each do |post|
   .post
-    = link_to post.title, post
-    = link_to '&times;'.html_safe, post, :confirm => "Are you sure?", :method => :delete
+    = link_to post.title, story_post_path( post.story, post )
+    = link_to '&times;'.html_safe, story_post_path(post.story,post), :confirm => "Are you sure?", :method => :delete
