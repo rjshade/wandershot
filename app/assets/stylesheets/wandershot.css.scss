@@ -106,3 +106,9 @@ footer {
     border-top: 1px solid $borderColor;
   }
 }
+
+blockquote {
+  p {
+    font-size: 0.9em !important;
+  }
+}
