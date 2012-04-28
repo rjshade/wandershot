@@ -20,4 +20,8 @@ module ApplicationHelper
   def md( text )
     text.blank? ? "" : raw(Maruku.new(text).to_html)
   end
+
+  def full_url( str )
+    request.protocol + request.host_with_port + str
+  end
 end

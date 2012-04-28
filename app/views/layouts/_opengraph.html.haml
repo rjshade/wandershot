@@ -1,8 +1,8 @@
 - if @post
-  %meta{property: "og:image", content: @post.image(:small_crop)}
+  %meta{property: "og:image", content: full_url(@post.image(:small_crop))}
   %meta{property: "og:title", content: @post.title}
 - else
-  %meta{property: "og:image", content: '/opengraph.png'}
+  %meta{property: "og:image", content: full_url('/opengraph.png')}
   - if @story
     %meta{property: "og:title", content: @story.title}
   - else
