@@ -6,6 +6,6 @@
     - users.each do |user|
       -if user
         .span2
-          = link_to (image_tag user.avatar(:thumb), class: 'avatar'), user
+          = link_to (image_tag user.avatar(:large), class: 'avatar'), user
           .center
             .name= link_to user.name, user
