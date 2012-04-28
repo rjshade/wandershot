@@ -15,4 +15,4 @@
           = f.input :password_confirmation, label: "Confirm new password", :required => true
       
         .form-actions
-          = f.button :submit, "Change my password", :class => 'btn'
+          = button_tag "Change my password", :disable_with => "please wait...", :class => 'btn'

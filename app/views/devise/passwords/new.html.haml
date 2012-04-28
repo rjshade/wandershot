@@ -11,7 +11,7 @@
           = f.input :email, :required => true
       
         .form-actions
-          = f.button :submit, "Send me password reset instructions", :class => 'btn'
+          = button_tag "Send me password reset instructions", :disable_with => "please wait...", :class => 'btn'
       
         %hr
         = render "links"

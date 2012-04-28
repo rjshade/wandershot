@@ -1,9 +1,9 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate_user!
-
   def create
     @comment = Comment.new(params[:comment])
-    @comment.user = current_user.id
+    if current_user
+      @comment.user = current_user.id
+    end
 
     if params[:post]
       @post = Post.find(params[:post][:id])
@@ -21,6 +21,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    authenticate_user!
     @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|

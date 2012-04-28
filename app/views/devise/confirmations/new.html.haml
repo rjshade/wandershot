@@ -9,6 +9,6 @@
         = f.input :email, :required => true
       
         .form-actions
-          = f.button :submit, "Resend confirmation instructions", :class => 'btn'
+          = button_tag "Resend confirmation instructions", :disable_with => "please wait...", :class => 'btn'
         %hr
         = render "links"

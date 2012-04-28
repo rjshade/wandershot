@@ -20,7 +20,7 @@
           %hr
           = f.input :current_password, :hint => "needed to make changes", :required => true
         .form-actions
-          = f.button :submit, "Update account", :class => 'btn btn-large'
+          = button_tag "Update account", :disable_with => "please wait...", :class => 'btn'
       
         - authentications = current_user.authentications
         - unless authentications.empty?

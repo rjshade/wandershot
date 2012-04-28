@@ -6,9 +6,15 @@
 - else
   .comment
     .author
-      = image_tag comment.user.avatar(:thumb), :class => 'avatar'
+      - if comment.user
+        = image_tag comment.user.avatar(:thumb), :class => 'avatar'
+      - else
+        = image_tag 'avatar/avatar_default_96x96.png', :class => 'avatar'
       .name-and-date
-        %span.name= link_to comment.user.name, user_path( comment.user )
+        - if comment.user
+          %span.name= link_to comment.user.name, user_path( comment.user )
+        - else
+          %span.name= comment.name
         %br
         %span.date= time_ago_in_words(comment.created_at) + " ago"
 

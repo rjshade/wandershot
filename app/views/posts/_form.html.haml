@@ -43,6 +43,6 @@
               = image_tag @post.image.url(:large), class: 'photo'
     .form-actions
       .span12
-        = f.button :submit, "Submit post", :class => 'btn btn-large'
+        = button_tag "save post", :disable_with => "please wait...", :class => 'btn btn-large'
         or
         = link_to 'cancel', :back

@@ -16,5 +16,8 @@ class Ability
       can :manage, Story,   :user_id => user.id
       can :manage, User,    :id      => user.id
     end
+
+    # everyone can post comments
+    can :create, Comment
   end
 end

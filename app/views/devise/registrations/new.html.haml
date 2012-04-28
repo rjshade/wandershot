@@ -15,7 +15,7 @@
           = f.input :password_confirmation, :required => true
       
         .form-actions
-          = f.button :submit, "Create account", :class => 'btn btn-large'
+          = button_tag "Create account", :disable_with => "please wait...", :class => 'btn'
           or
           = link_to 'Connect to Facebook', '/auth/facebook', class: 'btn btn-large btn-facebook'
 

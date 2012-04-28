@@ -6,6 +6,6 @@
   = f.input :summary, :label => 'Trip Summary', :as => :text, :placeholder => 'Summarise your trip...'
 
   .form-actions
-    = f.button :submit, "Submit", class: 'btn btn-large'
+    = button_tag "save story", :disable_with => "please wait...", :class => 'btn btn-large'
     or
     = link_to 'cancel', :back

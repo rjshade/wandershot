@@ -7,18 +7,25 @@
       - @comments.each do |c|
         = render :partial => 'comments/show', :locals => { :comment => c }
   .new-comment-form
-    - if current_user
-      .avatar
+    .avatar
+      - if current_user
         = image_tag current_user.avatar(:thumb)
-      .form
-        = form_for Comment.new, :html => {:'data-type' => 'html', :style => 'margin-bottom: 0px'}, :remote => true do |f|
-          = f.text_area :text, :placeholder => "Comment on this #{type.to_s}..."
-          = hidden_field type, :id
-          = f.button :submit, :class => 'btn'
-        = render partial: 'shared/markdown_instructions'
-    - else
-      %p
-        = render :partial => 'users/signup_link',  :locals => { :content => "Sign up" }
-        or
-        = render :partial => 'users/login_link',  :locals => { :content => "login" }
-        to post a comment
+      - else
+        = image_tag 'avatar/avatar_default_96x96.png'
+    .form
+      = form_for Comment.new, :html => {:'data-type' => 'html', :style => 'margin-bottom: 0px'}, :remote => true do |f|
+        = f.text_area :text, :placeholder => "Comment on this #{type.to_s}..."
+        = hidden_field type, :id
+        - if !current_user
+          / display fields for non-registered users
+          = f.text_field :name, placeholder: 'name'
+          = f.text_field :email, placeholder: 'email'
+          = f.text_field :email_confirmation, placeholder: 'Only fill this in if you are a robot...', class: 'email_confirmation', class: 'email-confirmation'
+        = button_tag "post comment", :disable_with => "please wait...", :class => 'btn'
+    = render partial: 'shared/markdown_instructions'
+  - if !current_user
+    %p
+      = render :partial => 'users/signup_link',  :locals => { :content => "Sign up" }
+      or
+      = render :partial => 'users/login_link',  :locals => { :content => "login" }
+      to comment more easily!

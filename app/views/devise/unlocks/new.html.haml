@@ -9,7 +9,7 @@
       
         = f.input :email, :required => true
         .form-actions
-          = f.button :submit, "Resend unlock instructions", :class => 'btn'
+          = button_tag "Resend unlock instructions", :disable_with => "please wait...", :class => 'btn'
           or
           = link_to 'cancel', :back
       %hr

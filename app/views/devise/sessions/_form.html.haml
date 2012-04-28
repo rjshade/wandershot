@@ -4,7 +4,7 @@
   = f.input :password, :required => false
 
   .form-actions
-    = f.button :submit, "Sign in", :class => 'btn btn-large'
+    = button_tag "Sign in", :disable_with => "please wait...", :class => 'btn'
     - if showfb
       or
       = link_to 'login with Facebook', '/auth/facebook', class: 'btn btn-large btn-facebook', id: 'fb-connect'
