@@ -3,7 +3,10 @@
   %meta{property: "og:title", content: @post.title}
 - else
   %meta{property: "og:image", content: '/opengraph.png'}
-  %meta{property: "og:title", content: "Wandershot: Travel blogging, simplified"}
+  - if @story
+    %meta{property: "og:title", content: @story.title}
+  - else
+    %meta{property: "og:title", content: "Wandershot: Travel blogging, simplified"}
 
 %meta{property: "og:type", content: "website"}
 %meta{property: "og:url", content: request.url}
