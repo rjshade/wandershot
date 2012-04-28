@@ -1,11 +1,11 @@
 .page-header
   %h1 #{wandershot_text} members
 
-- @users.in_groups_of(6).each do |users|
+- @users.in_groups_of(12).each do |users|
   .row.users-index
     - users.each do |user|
       -if user
-        .span2
-          = link_to (image_tag user.avatar(:large), class: 'avatar'), user
+        .span1
+          = link_to (image_tag user.avatar(:thumb), class: 'avatar'), user
           .center
             .name= link_to user.name, user
