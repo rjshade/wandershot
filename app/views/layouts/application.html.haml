@@ -1,7 +1,10 @@
 !!!
-%html
+%html{:"xmlns" => "http://www.w3.org/1999/xhtml", :"xmlns:og" => "http://ogp.me/ns#", :"xmlns:fb" => "https://www.facebook.com/2008/fbml"}
   %head
     %title Wandershot
+
+    = render 'layouts/opengraph'
+
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode/svn/trunk/html5.js"
 
@@ -12,6 +15,7 @@
     = javascript_include_tag "application"
 
     = csrf_meta_tags
+    = favicon_link_tag
 
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
 
