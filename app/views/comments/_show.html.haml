@@ -7,8 +7,10 @@
   .comment
     .author
       = image_tag comment.user.avatar(:thumb), :class => 'avatar'
-      %span.name= link_to comment.user.name, user_path( comment.user )
-      %span.date= time_ago_in_words(comment.created_at) + " ago"
+      .name-and-date
+        %span.name= link_to comment.user.name, user_path( comment.user )
+        %br
+        %span.date= time_ago_in_words(comment.created_at) + " ago"
 
       .controls
         -if can? :manage, comment
