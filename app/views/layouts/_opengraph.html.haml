@@ -1,10 +1,12 @@
-<meta property="og:title" content="The Rock"/>
-<meta property="og:type"  content="website"/>
+- if @post
+  %meta{property: "og:image", content: @post.image(:small_crop)}
+  %meta{property: "og:title", content: @post.title}
+- else
+  %meta{property: "og:image", content: '/opengraph.png'}
+  %meta{property: "og:title", content: "Wandershot: Travel blogging, simplified"}
 
-- img = @post.image(:small_crop)
-
-%meta{property: "og:image", content: "#{img}"}
-<meta property="og:url"   content=""/>
-<meta property="og:site_name" content="Wandershot"/>
-<meta property="fb:admins" content="rjshade"/>
-<meta property="fb:app_id" content="328201377234601"/>
+%meta{property: "og:type", content: "website"}
+%meta{property: "og:url", content: request.url}
+%meta{property: "og:site_name", content: "Wandershot"}
+%meta{property: "fb:admins", content: "rjshade"}
+%meta{property: "fb:app_id", content: "328201377234601"}
