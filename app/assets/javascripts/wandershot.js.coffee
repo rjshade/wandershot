@@ -1,6 +1,9 @@
 jQuery ->
-  $(document).ready( -> fadeOut('.clutter') )
-  $(document).ready( -> fadeOut('.minor-clutter') )
+  desktop = ($(document).width() >= 800 )
+  if desktop
+    $(document).ready( -> fadeOut('.clutter') )
+    $(document).ready( -> fadeOut('.minor-clutter') )
+
   $(document).ready(
     $('.markdown-examples-toggle').attr('href', null)
     $('.markdown-examples-toggle').bind 'click', -> 
@@ -17,15 +20,16 @@ jQuery ->
     $(element+'.toFadeOut').fadeTo('fast',1.0);
     $(element).removeClass('toFadeOut');
 
-  $('.clutter').hover( 
-    -> fadeIn('.clutter')
-    -> fadeOut('.clutter', 0.0)
-  )
-  $('.post').hover(
-    -> fadeIn('.minor-clutter')
-    -> fadeOut('.minor-clutter')
-  )
-  $('.story').hover(
-    -> fadeIn('.minor-clutter')
-    -> fadeOut('.minor-clutter')
-  )
+  if desktop
+    $('.clutter').hover( 
+      -> fadeIn('.clutter')
+      -> fadeOut('.clutter', 0.0)
+    )
+    $('.post').hover(
+      -> fadeIn('.minor-clutter')
+      -> fadeOut('.minor-clutter')
+    )
+    $('.story').hover(
+      -> fadeIn('.minor-clutter')
+      -> fadeOut('.minor-clutter')
+    )
