@@ -2,13 +2,13 @@
   %h1 Admin
 
 %h2 Users
-%p= link_to 'Users',    users_admin_index_path
+%p= link_to "Users (#{User.all.size})",    users_admin_index_path
 
 %h2 Stories
-%p= link_to 'Stories',  stories_admin_index_path
+%p= link_to "Stories (#{Story.all.size})",  stories_admin_index_path
 
 %h2 Posts
-%p= link_to 'Posts',    posts_admin_index_path
+%p= link_to "Posts (#{Post.all.size})",    posts_admin_index_path
 
 %h2 Comments
-%p= link_to 'Comments', comments_admin_index_path
+%p= link_to "Comments (#{Comment.all.size})", comments_admin_index_path
