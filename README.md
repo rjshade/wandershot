@@ -1,3 +1,3 @@
 # Wandershot
 
-A simple app for travel blogging.
+Travel blogging, simplified. Live site: [wandershot.com](http://wandershot.com)
